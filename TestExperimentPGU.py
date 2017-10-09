@@ -37,9 +37,11 @@ class DrawingArea(gui.Widget):#Object for where the pygame animation will happen
 
     # Call self function to take a snapshot of whatever has been rendered
     # onto the display over self widget.
-    def save_background(self):
+    def save_background(self,blit):
         disp = pygame.display.get_surface()
-        self.imageBuffer.blit(disp, self.get_abs_rect())
+        if blit:
+            self.imageBuffer.blit(disp, self.get_abs_rect())
+    
 
 class InputDlg(gui.Dialog):# The dialog for variables to be inputted
     def __init__(self):
@@ -308,27 +310,6 @@ class MainGui(gui.Desktop):
         tbl.tr()
         tbl.td(gui.Label("Resistance()"),style={'border':1})
 
-	
-##        num = self.minVar
-##        loopRange = int((self.maxVar - self.minVar)//self.interval + 2)
-##        for row in range(3):
-##            self.tableArea.tr()
-##            for col in range(loopRange):
-##                if row < 1 or col < 1 :
-##                    if row == 0 and col == 0:
-##                        lbl = gui.Label("Length of wire")
-##                    elif row == 1 and col == 0:
-##                        lbl = gui.Label("Current (A)")
-##                    elif row == 2 and col == 0:
-##                        lbl = gui.Label("Resistance (Ω)")
-##                    elif row == 0 and col > 0:
-##                        if num >= self.maxVar:
-##                            row = 1
-##                        lbl = gui.Label(str(num))
-##                        num += self.interval               
-##
-##                    self.tableArea.td(lbl,style={'border':1})
-
 
     def open(self, dlg, pos=None):
         # Gray out the game area before showing the popup
@@ -338,7 +319,7 @@ class MainGui(gui.Desktop):
 ##        pygame.display.get_surface().blit(dark, rect)
         # Save whatever has been rendered to the 'game area' so we can
         # render it as a static image while the dialog is open.
-        self.gameArea.save_background()
+        self.gameArea.save_background(True)
         # Pause the gameplay while the dialog is visible
         running = not(self.engine.clock.paused)
         self.engine.pause()
@@ -480,6 +461,7 @@ class GameEngine(object):
         self.isSetup = True
 
     def calcPoint(self,rulerRect):
+        self.app.gameArea.save_background(False)
         if self.currentLength == 0:
             self.crocPoint = rulerRect.left,rulerRect.center[1]-20
             current = 0
