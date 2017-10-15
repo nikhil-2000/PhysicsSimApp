@@ -1,5 +1,5 @@
 import pygame
-# This is a comment to test bitbucket and git workflow
+
 BLACK   = (  0,  0,  0)
 WHITE   = (255,255,255)
 BLUE    = (  0,  0,255)
@@ -7,15 +7,10 @@ GREEN   = (  0, 255, 0)
 RED     = (255,   0, 0)
 PURPLE  = (255,  0,255)
 
-sWidth,sHeight = 800,600
+sWidth = 800
+sHeight = 600
 
-pygame.init()
-
-screen = pygame.display.set_mode([sWidth,sHeight])
-
-clock = pygame.time.Clock()
 done = False
-
 
 class Experiment(object):
     def __init__(self,equipment):
@@ -23,12 +18,7 @@ class Experiment(object):
         self.particles = pygame.sprite.Group()
         for i in equipment:
             self.drawEquipment.add(i)
-
-##    def checkCollision(self):
-    
-            
-            
-
+			
 class Equipment(pygame.sprite.Sprite):
     def __init__(self,image,x,y):
         super().__init__()
@@ -58,6 +48,11 @@ beaker = Equipment(beakerImg,(sWidth-newDim[0])/2 ,(sHeight-newDim[1])/2)
 exp = Experiment([beaker])
 
 while not done:
+    pygame.init()
+    screen = pygame.display.set_mode([sWidth,sHeight])
+	
+    clock = pygame.time.Clock()
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
@@ -74,7 +69,6 @@ while not done:
     exp.drawEquipment.draw(screen)
     exp.particles.draw(screen)
 
-    
     pygame.display.flip()
     clock.tick(60)
 
