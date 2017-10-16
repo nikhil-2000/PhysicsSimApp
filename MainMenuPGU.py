@@ -1,21 +1,13 @@
-
 import pygame
 from pygame.locals import *
 from pgu import gui
-pygame.init()
+from Color import *
 
-
-BLACK   = (  0,  0,  0)
-WHITE   = (255,255,255)
-BLUE    = (  0,  0,255)
-GREEN   = (  0, 255, 0)
-RED     = (255,   0, 0)
-PURPLE  = (255,  0,255)
 def main():
+    pygame.init()
     app = gui.Desktop(width = 800,height = 600)
     app.connect(gui.QUIT,app.quit,None)
 
-        
     def createButton2(imgName,text,adj):
         firstpart, secondpart = text[:len(text)//2 +adj], text[len(text)//2 +adj:]
         main = gui.Table()
@@ -60,8 +52,6 @@ def main():
     menuTable.td(createButton2("Ball1.png","Measurement of g by free-fall",0))
     menuTable.tr()
     menuTable.td(createButton2("Ball1.png","Measurement of the Specific Heat Capacity for a Solid",1),col = 1)
-
-
 
     app.run(menuTable)
 

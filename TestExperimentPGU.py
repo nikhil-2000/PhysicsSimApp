@@ -11,20 +11,7 @@ import matplotlib.pyplot as plt
 ##import sys; sys.path.insert(0, "..")
 from pgu import gui, timer, html
 
-BLACK   = (  0,  0,  0)
-WHITE   = (255,255,255)
-BLUE    = (  0,  0,255)
-GREEN   = (  0, 255, 0)
-RED     = (255,   0, 0)
-PURPLE  = (255,  0,255)
-ORANGE  = (255,153,  0)
-SILVER  = (192,192,192)
-
-#Setting up colours
-
-
-
-
+from Color import *
 
 class DrawingArea(gui.Widget):#Object for where the pygame animation will happen
     def __init__(self, width, height):
@@ -154,8 +141,6 @@ class GraphDlg(gui.Dialog):
 
 ##Create a container class with a table attribute
     
-
-
 class MainGui(gui.Desktop):
     gameAreaWidth = 600
     gameAreaHeight = 400
@@ -650,8 +635,7 @@ def createGraph(xVals,yVals):
     plt.ylabel('Y-axis')
     plt.savefig("graph.png",bbox_inches = 'tight')
 
-   
-
+ 
 
 ###
 def main():
