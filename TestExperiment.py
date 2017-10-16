@@ -1,6 +1,6 @@
 import pygame
 
-from Color import *
+from Colour import *
 
 sWidth = 800
 sHeight = 600

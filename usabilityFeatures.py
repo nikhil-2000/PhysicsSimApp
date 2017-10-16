@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import sys; sys.path.insert(0, "..")
 from pgu import gui, timer, html
 
-from Color import *
+from Colour import *
 
 
 

@@ -27,7 +27,7 @@ class testSprites(pygame.sprite.Sprite):
         
 
 
-from Color import *
+from Colour import *
 
 sWidth,sHeight = 800,600
 

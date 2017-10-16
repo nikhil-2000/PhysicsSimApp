@@ -25,7 +25,7 @@ pygame.init()
  
 sWidth,sHeight = 800,600
  
-from Color import *
+from Colour import *
 
 
 screen = pygame.display.set_mode([sWidth,sHeight])

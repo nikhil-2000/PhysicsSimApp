@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 from pgu import gui
-from Color import *
+from Colour import *
 
 def main():
     pygame.init()
