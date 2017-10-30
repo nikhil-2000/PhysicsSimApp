@@ -3,9 +3,7 @@ def checkInt(num):
     if str.isdigit(num):
         return True
     return False
-        
-   
-    
+          
 
 def validateInputs (minIV,maxIV,interval):
     minRange = 0
