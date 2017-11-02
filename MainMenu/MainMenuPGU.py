@@ -1,8 +1,15 @@
+import os
+import sys
+sys.path.append(os.path.abspath('..'))
+
+#The previous lines were taken from https://stackoverflow.com/questions/10272879/how-do-i-import-a-python-script-from-a-sibling-directory
+#It explained how to access modules in sibling directories
+
 import pygame
 from pygame.locals import *
-from pgu import gui
-from Colour import *
-import resourceManager
+from externalModules.pgu.pgu import gui
+from resources import Colour
+import resources.resourceManager as resourceManager
 
 
 
@@ -36,7 +43,8 @@ def main():
 
     def cbFunc():
         app.quit()
-        import TestExperimentPGU as exp1
+        
+        import Tests.TestExperimentPGU as exp1
         exp1.main()
     a = createButton2(resourceManager.atomImg,"Determination of the Resistivity of a Metal",0)
     a.connect(gui.CLICK,cbFunc)

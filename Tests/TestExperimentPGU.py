@@ -1,17 +1,22 @@
-#!/usr/bin/env python
 
 # self is not needed if you have PGU installed
 import sys
 import os
+sys.path.append(os.path.abspath('..'))
+
+#The previous lines were taken from https://stackoverflow.com/questions/10272879/how-do-i-import-a-python-script-from-a-sibling-directory
+#It explained how to access modules in sibling directories
+
 import math
 import time
 import pygame
 import matplotlib.pyplot as plt
-# the following line is not needed if pgu is installed
-##import sys; sys.path.insert(0, "..")
-from pgu import gui, timer, html
 
-from Colour import *
+from externalModules.pgu.pgu import gui, timer, html
+
+from resources.Colour import *
+import resources.resourceManager as resM 
+
 
 class DrawingArea(gui.Widget):#Object for where the pygame animation will happen
     def __init__(self, width, height):
@@ -134,7 +139,7 @@ class ConstantsDlg(gui.Dialog):
 class GraphDlg(gui.Dialog):
     def __init__(self,experimentDone):
         if experimentDone:
-            msg = gui.Image("graph.png")
+            msg = gui.Image(resM.graphImg)
         else:
             msg = gui.Label("Complete the experiment first")
         gui.Dialog.__init__(self,gui.Label("Graph"),msg)
@@ -249,8 +254,8 @@ class MainGui(gui.Desktop):
 
         def menuBtn_cb():
             print("MAIN MENU")
-            if self.engine.experimentDone:
-                os.remove("graph.png")
+##            if self.engine.experimentDone:
+##                os.remove("graph.png")
             import MainMenuPGU as m
             m.main()
 
@@ -527,7 +532,7 @@ class GameEngine(object):
         pygame.quit()
 
 def setupBattery(rect):
-    battery = pygame.image.load("battery.png")
+    battery = pygame.image.load(resM.batteryImg)
     battery = pygame.transform.rotate(battery, 90)
     battery = pygame.transform.scale(battery,(60,50))
     batteryRect = battery.get_rect()
@@ -536,14 +541,14 @@ def setupBattery(rect):
     return battery,batteryRect
 
 def setupRuler(batteryRect):    
-    ruler = pygame.image.load("ruler.png")
+    ruler = pygame.image.load(resM.rulerImg)
     ruler = pygame.transform.scale(ruler,(300,28))
     rulerRect = ruler.get_rect()
     rulerRect.center = batteryRect.center[0],batteryRect.center[1] + 320
     return ruler,rulerRect
 
 def setupAmmeter(batteryRect):
-    ammeter = pygame.image.load("ammeter.png")
+    ammeter = pygame.image.load(resM.ammeterImg)
     ammeter = pygame.transform.scale(ammeter,(50,50))
     ammeterRect = ammeter.get_rect()
     ammeterRect.center = batteryRect.left - 200, batteryRect.center[1] + 80
@@ -551,7 +556,7 @@ def setupAmmeter(batteryRect):
 
 
 def setupVoltmeter(batteryRect):
-    voltmeter = pygame.image.load("voltmeter.png")
+    voltmeter = pygame.image.load(resM.voltmeterImg)
     voltmeter = pygame.transform.scale(voltmeter,(50,50))
     voltmeterRect = voltmeter.get_rect()
     voltmeterRect.center = batteryRect.center[0], batteryRect.center[1] + 150
