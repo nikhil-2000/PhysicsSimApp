@@ -2,6 +2,10 @@ import pygame
 from pygame.locals import *
 from pgu import gui
 from Colour import *
+import resourceManager
+
+
+
 
 def main():
     pygame.init()
@@ -25,16 +29,16 @@ def main():
 
     menuTable = gui.Table(width = 800,height = 600)
 
-    RofMetalImg = pygame.image.load("ResistivityOfAMetal.jpg")
+    RofMetalImg = pygame.image.load(resourceManager.resistivityOfAMetalDiagram)
     RofMetalImg = pygame.transform.scale(RofMetalImg,(256,200))
-    IRImg = pygame.image.load("InternalResistance.jpg")
+    IRImg = pygame.image.load(resourceManager.internalResistanceDiagram)
     IRImg = pygame.transform.scale(IRImg,(350,200))
 
     def cbFunc():
         app.quit()
         import TestExperimentPGU as exp1
         exp1.main()
-    a = createButton2("Ball1.png","Determination of the Resistivity of a Metal",0)
+    a = createButton2(resourceManager.atomImg,"Determination of the Resistivity of a Metal",0)
     a.connect(gui.CLICK,cbFunc)
 
 
@@ -44,14 +48,14 @@ def main():
     menuTable.td(gui.Button("Help",height = 50,width = 100))
     menuTable.tr()
     menuTable.td(a)
-    menuTable.td(createButton2("Ball1.png","Determination of the Internal Resistance of a Cell",4))
-    menuTable.td(createButton2("Ball1.png","Estimation of Absolute Zero by Use of the Gas Laws",6))
+    menuTable.td(createButton2(resourceManager.atomImg,"Determination of the Internal Resistance of a Cell",4))
+    menuTable.td(createButton2(resourceManager.atomImg,"Estimation of Absolute Zero by Use of the Gas Laws",6))
     menuTable.tr()
-    menuTable.td(createButton2("Ball1.png","Investigation of Newton’s Second Law",-1))
-    menuTable.td(createButton2("Ball1.png","Investigation of Radioactive Decay",0))
-    menuTable.td(createButton2("Ball1.png","Measurement of g by free-fall",0))
+    menuTable.td(createButton2(resourceManager.atomImg,"Investigation of Newton’s Second Law",-1))
+    menuTable.td(createButton2(resourceManager.atomImg,"Investigation of Radioactive Decay",0))
+    menuTable.td(createButton2(resourceManager.atomImg,"Measurement of g by free-fall",0))
     menuTable.tr()
-    menuTable.td(createButton2("Ball1.png","Measurement of the Specific Heat Capacity for a Solid",1),col = 1)
+    menuTable.td(createButton2(resourceManager.atomImg,"Measurement of the Specific Heat Capacity for a Solid",1),col = 1)
 
     app.run(menuTable)
 
