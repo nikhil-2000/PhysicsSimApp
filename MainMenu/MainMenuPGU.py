@@ -39,14 +39,18 @@ def generateLayout(app):
     menuTable.tr()
 
     btn1 = createButton(resourceManager.atomImg,"Determination of the Resistivity of a Metal")
-    menuTable.td(btn1)
 
+    menuTable.td(btn1)
     menuTable.td(createButton(resourceManager.atomImg,"Determination of the Internal Resistance of a Cell"))
-    menuTable.td(createButton(resourceManager.atomImg,"Estimation of Absolute Zero by Use of the Gas Laws"))
+
+    menuTable.td(createButton(resourceManager.atomImg,"Estimation of Absolute Zero by Use of the Gas laws,"))
+
+
     menuTable.tr()
-    menuTable.td(createButton(resourceManager.atomImg,"Investigation of Newton’s Second Law"))
+    menuTable.td(createButton(resourceManager.atomImg,"Investigation of Newton's 2nd Law"))
     menuTable.td(createButton(resourceManager.atomImg,"Investigation of Radioactive Decay"))
     menuTable.td(createButton(resourceManager.atomImg,"Measurement of g by free-fall"))
+
     menuTable.tr()
     menuTable.td(createButton(resourceManager.atomImg,"Measurement of the Specific Heat Capacity for a Solid"),col = 1)
     return menuTable
