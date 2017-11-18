@@ -12,7 +12,7 @@ import time
 import pygame
 import matplotlib.pyplot as plt
 
-from externalModules.pgu.pgu import gui, timer, html
+from externalModules.pgu.pgu import gui, timer
 
 from resources.Colour import *
 import resources.resourceManager as resM 

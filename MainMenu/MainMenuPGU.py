@@ -10,61 +10,55 @@ from pygame.locals import *
 from externalModules.pgu.pgu import gui
 from resources import Colour
 import resources.resourceManager as resourceManager
+import textwrap
 
 
 
-
-def main():
-    pygame.init()
-    app = gui.Desktop(width = 800,height = 600)
-    app.connect(gui.QUIT,app.quit,None)
-
-    def createButton2(imgName,text,adj):
-        firstpart, secondpart = text[:len(text)//2 +adj], text[len(text)//2 +adj:]
-        main = gui.Table()
+def createButton(imgName, text):
+    ##firstpart, secondpart = text[:len(text) // 2 + adj], text[len(text) // 2 + adj:]
+    splitText = textwrap.wrap(text,width = 30) # Splits text and sets width of line to 30 characters
+    main = gui.Table()
+    main.tr()
+    main.td(gui.Image(imgName))
+    for each in splitText: # Puts each line in a label then adds it to the widget
         main.tr()
-        main.td(gui.Image(imgName))
-        main.tr()
-        main.td(gui.Label(firstpart))
-        main.tr()
-        main.td(gui.Label(secondpart))
-        return gui.Button(main,height = 130,width = 200)
+        main.td(gui.Label(each))
 
+    return gui.Button(main, height=130, width=300)
 
+def generateLayout(app):
     font = pygame.font.SysFont("comicsansms", 60)
-    text = font.render("Main Menu",True, (0, 128, 0))
+    text = font.render("Main Menu", True, (0, 128, 0))
 
-    menuTable = gui.Table(width = 800,height = 600)
-
-    RofMetalImg = pygame.image.load(resourceManager.resistivityOfAMetalDiagram)
-    RofMetalImg = pygame.transform.scale(RofMetalImg,(256,200))
-    IRImg = pygame.image.load(resourceManager.internalResistanceDiagram)
-    IRImg = pygame.transform.scale(IRImg,(350,200))
-
-    def cbFunc():
-        app.quit()
-        
-        import Tests.TestExperimentPGU as exp1
-        exp1.main()
-    a = createButton2(resourceManager.atomImg,"Determination of the Resistivity of a Metal",0)
-    a.connect(gui.CLICK,cbFunc)
-
+    menuTable = gui.Table(width = 1000,height = 600)
 
     menuTable.tr()
     menuTable.td(gui.Label(""))
     menuTable.td(gui.Image(text))
     menuTable.td(gui.Button("Help",height = 50,width = 100))
     menuTable.tr()
-    menuTable.td(a)
-    menuTable.td(createButton2(resourceManager.atomImg,"Determination of the Internal Resistance of a Cell",4))
-    menuTable.td(createButton2(resourceManager.atomImg,"Estimation of Absolute Zero by Use of the Gas Laws",6))
-    menuTable.tr()
-    menuTable.td(createButton2(resourceManager.atomImg,"Investigation of Newton’s Second Law",-1))
-    menuTable.td(createButton2(resourceManager.atomImg,"Investigation of Radioactive Decay",0))
-    menuTable.td(createButton2(resourceManager.atomImg,"Measurement of g by free-fall",0))
-    menuTable.tr()
-    menuTable.td(createButton2(resourceManager.atomImg,"Measurement of the Specific Heat Capacity for a Solid",1),col = 1)
 
-    app.run(menuTable)
+    btn1 = createButton(resourceManager.atomImg,"Determination of the Resistivity of a Metal")
+    menuTable.td(btn1)
+
+    menuTable.td(createButton(resourceManager.atomImg,"Determination of the Internal Resistance of a Cell"))
+    menuTable.td(createButton(resourceManager.atomImg,"Estimation of Absolute Zero by Use of the Gas Laws"))
+    menuTable.tr()
+    menuTable.td(createButton(resourceManager.atomImg,"Investigation of Newton’s Second Law"))
+    menuTable.td(createButton(resourceManager.atomImg,"Investigation of Radioactive Decay"))
+    menuTable.td(createButton(resourceManager.atomImg,"Measurement of g by free-fall"))
+    menuTable.tr()
+    menuTable.td(createButton(resourceManager.atomImg,"Measurement of the Specific Heat Capacity for a Solid"),col = 1)
+    return menuTable
+
+
+
+
+def main():
+    pygame.init()# Intialise Pygame Module
+    app = gui.Desktop(width = 1000,height = 600)#Sets the size and type of app
+    app.connect(gui.QUIT,app.quit,None) # Adds functionality to close button to quit app
+
+    app.run(generateLayout(app))
 
 main()
