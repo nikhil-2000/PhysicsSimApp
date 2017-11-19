@@ -7,11 +7,10 @@ sys.path.append(os.path.abspath('..'))
 
 import pygame
 from pygame.locals import *
-from externalModules.pgu.pgu import gui
 from resources import Colour
 import resources.resourceManager as resourceManager
 import textwrap
-
+import externalModules.pgu.pgu.gui as gui
 
 
 def createButton(imgName, text):
@@ -38,17 +37,34 @@ def generateLayout(app):
     menuTable.td(gui.Button("Help",height = 50,width = 100))
     menuTable.tr()
 
+    def btn1_cb():
+        import Experiments.ResistivityOfAMetal.experiment as e
+        gui.Desktop.open(e)
+
     btn1 = createButton(resourceManager.atomImg,"Determination of the Resistivity of a Metal")
-
     menuTable.td(btn1)
-    menuTable.td(createButton(resourceManager.atomImg,"Determination of the Internal Resistance of a Cell"))
+    btn1.connect(gui.CLICK,btn1_cb)
 
-    menuTable.td(createButton(resourceManager.atomImg,"Estimation of Absolute Zero by Use of the Gas laws,"))
+
+
+    btn2 = createButton(resourceManager.atomImg,"Determination of the Internal Resistance of a Cell")
+    menuTable.td(btn2)
+
+
+    btn3 = createButton(resourceManager.atomImg,"Estimation of Absolute Zero by Use of the Gas laws,")
+    menuTable.td(btn3)
 
 
     menuTable.tr()
-    menuTable.td(createButton(resourceManager.atomImg,"Investigation of Newton's 2nd Law"))
+
+
+    btn4 = createButton(resourceManager.atomImg,"Investigation of Newton's 2nd Law")
+    menuTable.td(btn4)
+
+
     menuTable.td(createButton(resourceManager.atomImg,"Investigation of Radioactive Decay"))
+
+
     menuTable.td(createButton(resourceManager.atomImg,"Measurement of g by free-fall"))
 
     menuTable.tr()

@@ -37,15 +37,25 @@ class TableArea(gui.Table):
 
 # This will be run once the user has entered a valid set of variables
 
-class MenuArea(gui.Container):
+class MenuArea(gui.Table):
     def __init__(self, width, height, app):
-        gui.Container.__init__(self, width=width, height=height)
+        gui.Table.__init__(self, width=width, height=height)
         self.app = app
 
     def setup(self):
         # All the buttons are created and organised here
         # The function for each will be defined in this method as well
-        pass
+        def menuBtn_cb():
+            pygame.quit()
+            import MainMenu.MainMenuPGU as m
+            gui.Desktop.open(m)
+
+        menuBtn = gui.Button("Back to Menu",width= 150, height = 50)
+        menuBtn.connect(gui.CLICK,menuBtn_cb)
+        self.tr()
+        self.td(menuBtn)
+
+
 
 
 class Experiment(gui.Desktop):
@@ -147,6 +157,8 @@ class AnimationEngine(object):
             pygame.time.wait(10)
 
         pygame.quit()
+
+
 
 
 def main():

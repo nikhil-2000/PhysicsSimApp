@@ -256,7 +256,7 @@ class MainGui(gui.Desktop):
             print("MAIN MENU")
 ##            if self.engine.experimentDone:
 ##                os.remove("graph.png")
-            import MainMenuPGU as m
+            import MainMenu.MainMenuPGU as m
             m.main()
 
         menuBtn = gui.Button("Back to Menu", height = buttonHeight, width = buttonWidth)
