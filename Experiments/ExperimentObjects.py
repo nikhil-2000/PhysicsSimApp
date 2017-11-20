@@ -47,8 +47,8 @@ class MenuArea(gui.Table):
         # The function for each will be defined in this method as well
         def menuBtn_cb():
             pygame.quit()
-            import MainMenu.MainMenuPGU as m
-            gui.Desktop.open(m)
+            import MainMenu as m
+            m.run()
 
         menuBtn = gui.Button("Back to Menu",width= 150, height = 50)
         menuBtn.connect(gui.CLICK,menuBtn_cb)
@@ -61,6 +61,7 @@ class MenuArea(gui.Table):
 class Experiment(gui.Desktop):
     def __init__(self, screen):
         gui.Desktop.__init__(self)
+        self.connect(gui.QUIT,self.quit)
 
         self.engine = None
         self.animationAreaWidth = 600

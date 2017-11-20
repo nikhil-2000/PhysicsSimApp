@@ -5,7 +5,8 @@ sys.path.append(os.path.abspath('..'))
 import Experiments.ExperimentObjects as exp
 
 
-def main():
+def run():
     exp.main()
 
-main()
+if __name__ == '__main__':
+    run()

@@ -5,7 +5,9 @@ sys.path.append(os.path.abspath('..'))
 #The previous three lines were taken from https://stackoverflow.com/questions/10272879/how-do-i-import-a-python-script-from-a-sibling-directory
 #It explained how to access modules in sibling directories
 from externalModules.pythonUtils.utils import resources as res
-                
+
+
+
 
 apppath = os.path.dirname(os.path.abspath(__file__))
 appresources = res.Resources(os.path.join(apppath, "images"))
