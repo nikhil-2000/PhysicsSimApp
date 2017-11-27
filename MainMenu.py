@@ -21,15 +21,15 @@ def createButton(imgName, text):
         main.tr()
         main.td(gui.Label(each))
 
-    return gui.Button(main, height=130, width=300)
+    return gui.Button(main, height=130, width=250)
 
 
 def generateLayout(app):
     pygame.font.init()
-    font = pygame.font.SysFont("comicsansms", 60)
-    text = font.render("Main Menu", True, (0, 128, 0))
+    font = pygame.font.SysFont("trajan", 100)
+    text = font.render("Menu", True, (0, 128, 0))
 
-    menuTable = gui.Table(width=1000, height=600)
+    menuTable = gui.Table(width=800, height=600)
 
     menuTable.tr()
     menuTable.td(gui.Label(""))
@@ -104,7 +104,7 @@ def generateLayout(app):
 def run():
     pygame.init()  # Intialise Pygame Module
     pygame.font.init()
-    app = gui.Desktop(width=1000, height=600)  # Sets the size and type of app
+    app = gui.Desktop(width=900, height=600)  # Sets the size and type of app
     app.connect(gui.QUIT, pygame.quit, None)  # Adds functionality to close button to quit app
 
     app.run(generateLayout(app))

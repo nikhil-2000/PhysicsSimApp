@@ -15,7 +15,8 @@ import matplotlib.pyplot as plt
 from externalModules.pgu.pgu import gui, timer
 
 from resources.Colour import *
-import resources.resourceManager as resM 
+import resources.resourceManager as resM
+
 
 
 class DrawingArea(gui.Widget):#Object for where the pygame animation will happen
@@ -139,7 +140,7 @@ class ConstantsDlg(gui.Dialog):
 class GraphDlg(gui.Dialog):
     def __init__(self,experimentDone):
         if experimentDone:
-            msg = gui.Image(resM.graphImg)
+            msg = gui.Image(pygame.image.load("graphImg.png"))
         else:
             msg = gui.Label("Complete the experiment first")
         gui.Dialog.__init__(self,gui.Label("Graph"),msg)
