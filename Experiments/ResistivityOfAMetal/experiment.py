@@ -6,7 +6,7 @@ import Experiments.ExperimentObjects as exp
 
 
 def run():
-    exp.main()
+    exp.main("Determination Of the Resistivity Of A Metal")
 
 if __name__ == '__main__':
     run()

@@ -44,17 +44,40 @@ class MenuArea(gui.Table):
 
     def setup(self):
         # All the buttons are created and organised here
-        # The function for each will be defined in this method as well
+
+        #The button variables are all created here
+        self.graphBtn = createButton("Graph")
+
+        self.variablesBtn = createButton("Input Variables")
+
+        self.startExperimentBtn = createButton("Start Experiment")
+
+        self.pauseExperimentBtn = createButton("Pause Experiment")
+
+        self.restartExperimentBtn = createButton("Restart Experiment")
+
+        self.instructionBtn = createButton("Instructions/Links")
+
+        self.constantsBtn = createButton("Constants")
+
+        self.menuBtn = createButton("Back to Menu")
+
+        #The buttons' function are defined here
         def menuBtn_cb():
-            pygame.quit()
             import MainMenu as m
             m.run()
 
-        menuBtn = gui.Button("Back to Menu",width= 150, height = 50)
-        menuBtn.connect(gui.CLICK,menuBtn_cb)
-        self.tr()
-        self.td(menuBtn)
+        self.menuBtn.connect(gui.CLICK,menuBtn_cb)
 
+        #Adding the buttons to the table
+        self = addBtnToTbl(self,self.graphBtn)
+        self = addBtnToTbl(self,self.variablesBtn)
+        self = addBtnToTbl(self,self.startExperimentBtn)
+        self = addBtnToTbl(self,self.pauseExperimentBtn)
+        self = addBtnToTbl(self,self.restartExperimentBtn)
+        self = addBtnToTbl(self,self.instructionBtn)
+        self = addBtnToTbl(self,self.constantsBtn)
+        self = addBtnToTbl(self,self.menuBtn)
 
 
 
@@ -64,7 +87,7 @@ class Experiment(gui.Desktop):
         self.connect(gui.QUIT,self.quit)
 
         self.engine = None
-        self.animationAreaWidth = 600
+        self.animationAreaWidth = 650
         self.animationAreaHeight = 400
         self.animationArea = DrawingArea(self.animationAreaWidth, self.animationAreaHeight)
 
@@ -159,10 +182,18 @@ class AnimationEngine(object):
 
         pygame.quit()
 
+def createButton(text):
+    return gui.Button(text,width = 225, height = 40)
+
+def addBtnToTbl(tbl,btn):
+    tbl.tr()
+    tbl.td(btn)
+    return tbl
 
 
+def main(expName):
 
-def main():
-    disp = pygame.display.set_mode((800, 600))
+    disp = pygame.display.set_mode((900, 600))
+    pygame.display.set_caption(expName)
     eng = AnimationEngine(disp)
     eng.run()
