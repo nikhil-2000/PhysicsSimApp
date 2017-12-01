@@ -6,7 +6,7 @@ import Experiments.ExperimentObjects as exp
 
 
 def run():
-    exp.main()
+    exp.main("Analogy of Radioactive Decay")
 
 if __name__ == '__main__':
     run()

@@ -6,7 +6,7 @@ import Experiments.ExperimentObjects as exp
 
 
 def run():
-    exp.main()
+    exp.main("Specific Heat Capacity of a Solid")
 
 if __name__ == '__main__':
     run()

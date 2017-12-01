@@ -6,7 +6,7 @@ import Experiments.ExperimentObjects as exp
 
 
 def run():
-    exp.main()
+    exp.main("Internal Resistance of a Battery")
 
 if __name__ == '__main__':
     run()
