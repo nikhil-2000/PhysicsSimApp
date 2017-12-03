@@ -318,7 +318,7 @@ class Container(widget.Widget):
         self.widgets.append(w)
         self.chsize()
     
-    def open(self,w=None,x=None,y=None):
+    def open(self, w: object = None, x: object = None, y: object = None) -> object:
         if (not w):
             w = self
 

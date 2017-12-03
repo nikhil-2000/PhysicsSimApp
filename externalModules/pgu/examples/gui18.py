@@ -105,7 +105,7 @@ class MainGui(gui.Desktop):
 
         this.menuArea.add(tbl, 0, 0)
 
-    def open(this, dlg, pos=None):
+    def open(this, dlg: object, pos: object = None) -> object:
         # Gray out the game area before showing the popup
         rect = this.gameArea.get_abs_rect()
         dark = pygame.Surface(rect.size).convert_alpha()

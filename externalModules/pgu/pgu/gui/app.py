@@ -263,7 +263,7 @@ class App(container.Container):
     def quit(self,value=None): 
         self._quit = True
 
-    def open(self, w, pos=None):
+    def open(self, w: object, pos: object = None) -> object:
         """Opens the given PGU window and positions it on the screen"""
         w.container = self
         

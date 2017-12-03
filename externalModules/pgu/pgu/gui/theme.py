@@ -410,7 +410,7 @@ class Theme(object):
             return r
         return theme_update
         
-    def open(self,w,func):
+    def open(self, w: object, func: object) -> object:
         def theme_open(widget=None,x=None,y=None):
             if not hasattr(w,'_rect_content'):
                 # HACK: so that container.open won't resize again!

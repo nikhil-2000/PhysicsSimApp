@@ -127,7 +127,7 @@ class Widget(object):
         """Blur this Widget."""
         if self.container: self.container.blur(self)
 
-    def open(self):
+    def open(self) -> object:
         """Open this widget as a modal dialog."""
         #if getattr(self,'container',None) != None: self.container.open(self)
         pguglobals.app.open(self)
