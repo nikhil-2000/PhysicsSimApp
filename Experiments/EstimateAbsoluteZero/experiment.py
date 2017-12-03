@@ -6,7 +6,7 @@ import Experiments.ExperimentObjects as exp
 
 
 def run():
-    exp.main()
+    exp.main("Estimating Absolute Zero Using Gas Laws")
 
 if __name__ == '__main__':
     run()

@@ -6,7 +6,7 @@ import Experiments.ExperimentObjects as exp
 
 
 def run():
-    exp.main()
+    exp.main("Investigation of Newton's 2nd Law")
 
 if __name__ == '__main__':
     run()
