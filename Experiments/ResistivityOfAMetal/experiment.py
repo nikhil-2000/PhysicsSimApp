@@ -141,19 +141,23 @@ class VariablesDialog(gui.Dialog):
 
 class InstructionsLinkDialog(gui.Dialog):
     def __init__(self):
+        #The method
         method = """<p> 1. Set up the circuit as shown in the diagram<br>
          2. Start with crocodile clip at your starting value, record the current<br>
          3. Increase the length of the wire by moving the crocodile clip by your chosen interval<br>
          4. Once taking 5 or more results, divide the voltage by the current for each length. This gives the resistance"<br>
-         5. Now plot a graph for resistance(y-axis) against length(x-axis). The gradient will be equal to th resistance over the cross-sectional area"<br>
+         5. Now plot a graph for resistance(y-axis) against length(x-axis). The gradient will be equal to the resistance over the cross-sectional area"<br>
          6. Solve for the resistivity<p>
          """
+        #Adding the method to the document which html
         doc = html.HTML(method,width = 600)
 
+        #Links to the useful websites
         link1 = "http://hyperphysics.phy-astr.gsu.edu/hbase/electric/resis.html"
         link2 = "http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/rstiv.html"
         link3 = "http://papers.xtremepapers.com/CIE/Cambridge%20International%20A%20and%20AS%20Level/Physics%20(9702)/9702_nos_ps_9.pdf"
 
+        #Linking websites to buttons
         def link1_cb():
             webbrowser.open(link1)
 
@@ -170,6 +174,7 @@ class InstructionsLinkDialog(gui.Dialog):
         link3Btn = gui.Button("Another Method")
         link3Btn.connect(gui.CLICK, link3_cb)
 
+        #Adding buttons to the dialog
         tbl = gui.Table()
         tbl.tr()
         tbl.td(doc)
@@ -187,11 +192,11 @@ class InstructionsLinkDialog(gui.Dialog):
 
 class ConstantsDialog(gui.Dialog):
     def __init__(self):
+        #The controlled variables
         materialLbl = gui.Label("Material: Constantan")
-
         CSALbl = gui.Label("Cross-Sectional Area: 2.01 x 10^-8")
         voltageLbl = gui.Label("Voltage:"+str(voltage)+"V")
-
+        #Adding the labels to the table
         tbl = gui.Table()
         tbl.tr()
         tbl.td(materialLbl)
