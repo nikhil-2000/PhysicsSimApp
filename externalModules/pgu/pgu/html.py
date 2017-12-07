@@ -17,7 +17,7 @@ import re
 import pygame
 from pygame.locals import *
 
-from pgu import gui
+from externalModules.pgu.pgu import gui
 
 _amap = {'left':-1,'right':1,'center':0,None:None,'':None,}
 _vamap = {'top':-1,'bottom':1,'center':0,'middle':0,None:None,'':None,}

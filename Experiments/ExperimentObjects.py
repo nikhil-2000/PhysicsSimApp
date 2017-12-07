@@ -15,77 +15,6 @@ class ErrorDlg(gui.Dialog):
     def __init__(self,msg):
         gui.Dialog.__init__(self,gui.Label("ERROR"),gui.Label(msg))
 
-class VariablesDialog(gui.Dialog):
-    def __init__(self,defaultVals,minRange,maxRange):
-        explainLbl = gui.Label("Input your variables below")
-        nOfResultsLbl = gui.Label("Have between 5-10 recordings")
-        rangeStr = str("The range is " + str(minRange) + " to " + str(maxRange))
-        rangeLbl = gui.Label(rangeStr)
-
-        minIVUserLbl = gui.Label("Min")
-        maxIVUserLbl = gui.Label("Max")
-        intervalUserLbl = gui.Label("Interval")
-
-        minIVUserInput = gui.Input()
-        maxIVUserInput = gui.Input()
-        intervalIVUserInput = gui.Input()
-
-        minIVUnitLbl = gui.Label("cm")
-        maxIVUnitLbl = gui.Label("cm")
-        intervalIVUnitLbl = gui.Label("cm")
-
-        buttonHeight = 50
-        buttonWidth = 120
-
-        okBtn = gui.Button("Enter",height=buttonHeight, width=buttonWidth)
-        defaultBtn = gui.Button("Default Values",height=buttonHeight, width=buttonWidth)
-
-        def okBtn_cb():
-            minIV = minIVUserInput
-            maxIV = maxIVUserInput
-            interval = intervalIVUserInput
-
-            isValidated,error = validation.validateInputs(minIV,maxIV,interval,maxRange,minRange)
-
-
-        textTbl = gui.Table()
-        inputTbl = gui.Table()
-        buttonTbl = gui.Table()
-
-        textTbl.tr()
-        textTbl.td(explainLbl)
-        textTbl.tr()
-        textTbl.td(nOfResultsLbl)
-        textTbl.tr()
-        textTbl.td(rangeLbl)
-
-        inputTblStyle = {'padding':10}
-        inputTbl.tr()
-        inputTbl.td(minIVUserLbl,style=inputTblStyle)
-        inputTbl.td(minIVUserInput,style=inputTblStyle)
-        inputTbl.td(minIVUnitLbl,style=inputTblStyle)
-        inputTbl.tr()
-        inputTbl.td(maxIVUserLbl,style=inputTblStyle)
-        inputTbl.td(maxIVUserInput,style=inputTblStyle)
-        inputTbl.td(maxIVUnitLbl,style=inputTblStyle)
-        inputTbl.tr()
-        inputTbl.td(intervalUserLbl,style=inputTblStyle)
-        inputTbl.td(intervalIVUserInput,style=inputTblStyle)
-        inputTbl.td(intervalIVUnitLbl,style=inputTblStyle)
-
-        buttonTbl.tr()
-        buttonTbl.td(okBtn,style=inputTblStyle)
-        buttonTbl.td(defaultBtn,style=inputTblStyle)
-
-        tbl = gui.Table()
-        tbl.tr()
-        tbl.td(textTbl)
-        tbl.tr()
-        tbl.td(inputTbl)
-        tbl.tr()
-        tbl.td(buttonTbl)
-
-        gui.Dialog.__init__(self,gui.Label("Variables"),tbl)
 
 class DrawingArea(gui.Widget):  # Same object as found in gui18.py in the pgu examples
     def __init__(self, width, height):
@@ -118,6 +47,7 @@ class MenuAreaTemplate(gui.Table):
     def __init__(self, width, height, app):
         gui.Table.__init__(self, width=width, height=height)
         self.app = app
+
 
     def setup(self):
         # All the buttons are created and organised here
@@ -153,7 +83,14 @@ class MenuAreaTemplate(gui.Table):
         self.startExperimentBtn.connect(gui.CLICK,startExperiment_cb)
 
         def pauseExperiment_cb():
-            self.app.engine.clock.pause()
+            clock = self.app.engine.clock
+            clock.paused = not (clock.paused)
+            if clock.paused:
+                self.pauseExperimentBtn.value = "Play Experiment"
+            elif not clock.paused:
+                self.pauseExperimentBtn.value = "Pause Experiment"
+
+
 
         self.pauseExperimentBtn.connect(gui.CLICK,pauseExperiment_cb)
 
@@ -193,7 +130,6 @@ class ExperimentTemplate(gui.Desktop):
         self.animationRunning = False
         self.experimentFinished = False
 
-        screentbl = gui.Table()
         topTbl = gui.Table()
         topTbl.tr()
         topTbl.td(self.animationArea)
@@ -234,7 +170,6 @@ class AnimationEngineTemplate(object):
         self.app.engine = self
 
     def render(self, dest, rect):
-
         # Drawing code should go here
 
         return (rect,)
