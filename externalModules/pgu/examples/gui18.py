@@ -11,6 +11,8 @@ import pgu
 from pgu import gui, timer
 
 
+
+
 class DrawingArea(gui.Widget):
     def __init__(this, width, height):
         gui.Widget.__init__(this, width=width, height=height)

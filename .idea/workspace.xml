@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7915d3f9-eaf2-4389-b445-d097a5acdf26" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/dialogs.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Experiments/ExperimentObjects.py" afterPath="$PROJECT_DIR$/Experiments/ExperimentObjects.py" />
       <change beforePath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py" afterPath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py" />
+      <change beforePath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/graph.png" afterPath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/graph.png" />
+      <change beforePath="$PROJECT_DIR$/Experiments/creatingGraphs.py" afterPath="$PROJECT_DIR$/Experiments/creatingGraphs.py" />
+      <change beforePath="$PROJECT_DIR$/Validation/validation.py" afterPath="$PROJECT_DIR$/Validation/validation.py" />
+      <change beforePath="$PROJECT_DIR$/externalModules/pgu/examples/gui18.py" afterPath="$PROJECT_DIR$/externalModules/pgu/examples/gui18.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,15 +23,69 @@
     <favorites_list name="physicssimulationapp" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="experiment.py" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
+      <file leaf-file-name="experiment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-466">
-              <caret line="230" column="0" lean-forward="false" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="areaObjects.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dialogs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/dialogs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="1" column="26" lean-forward="true" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="creatingGraphs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Experiments/creatingGraphs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExperimentObjects.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestExperimentPGU.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/TestExperimentPGU.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3698">
+              <caret line="240" column="0" lean-forward="true" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -49,12 +111,22 @@
       <find>input</find>
       <find>graph</find>
       <find>variables</find>
-      <find>pause</find>
-      <find>paused</find>
       <find>.open</find>
       <find>constant</find>
       <find>.close</find>
       <find>close</find>
+      <find>ErrorDlg</find>
+      <find>pauseAp</find>
+      <find>table</find>
+      <find>inputDlg</find>
+      <find>Table</find>
+      <find>default</find>
+      <find>pause</find>
+      <find>animto</find>
+      <find>paused</find>
+      <find>experiment</find>
+      <find>colours</find>
+      <find>template</find>
     </findStrings>
     <replaceStrings>
       <replace>AnimationEngineTemplate</replace>
@@ -73,19 +145,22 @@
         <option value="$PROJECT_DIR$/Tests/TestExperimentPGU.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pip/_vendor/distlib/_backport/tarfile.py" />
         <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/creatingGraphs.py" />
-        <option value="$PROJECT_DIR$/Experiments/creatingGraphs.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/tarfile.py" />
-        <option value="$PROJECT_DIR$/Validation/validation.py" />
         <option value="$PROJECT_DIR$/externalModules/pgu/pgu/html.py" />
-        <option value="$PROJECT_DIR$/Experiments/ExperimentObjects.py" />
+        <option value="$PROJECT_DIR$/externalModules/pgu/examples/gui18.py" />
+        <option value="$PROJECT_DIR$/Validation/validation.py" />
+        <option value="$PROJECT_DIR$/Experiments/creatingGraphs.py" />
+        <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/dialogs.py" />
         <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py" />
+        <option value="$PROJECT_DIR$/Experiments/ExperimentObjects.py" />
+        <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-14" />
     <option name="width" value="1948" />
-    <option name="height" value="2074" />
+    <option name="height" value="2174" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -102,7 +177,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -124,50 +198,20 @@
             <path>
               <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
-              <item name="externalModules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
-              <item name="externalModules" type="462c0819:PsiDirectoryNode" />
-              <item name="pgu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
-              <item name="externalModules" type="462c0819:PsiDirectoryNode" />
-              <item name="pgu" type="462c0819:PsiDirectoryNode" />
-              <item name="pgu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
-              <item name="externalModules" type="462c0819:PsiDirectoryNode" />
-              <item name="pgu" type="462c0819:PsiDirectoryNode" />
-              <item name="pgu" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
               <item name="Tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
-              <item name="Validation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/externalModules/pgu/pgu/gui/style.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
@@ -188,6 +232,24 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.experiment">
+    <configuration name="ExperimentObjects" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Experiments" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="physicssimulationapp" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Experiments/ExperimentObjects.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="MainMenu" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -201,6 +263,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="physicssimulationapp" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MainMenu.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="TestExperimentPGU" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="physicssimulationapp" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tests/TestExperimentPGU.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -242,7 +322,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="html2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="gui18" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -254,43 +334,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="physicssimulationapp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/externalModules/pgu/examples/html2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="layout1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/externalModules/pgu/examples" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="physicssimulationapp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/externalModules/pgu/examples/layout1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="text1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/externalModules/pgu/examples" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="physicssimulationapp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/externalModules/pgu/examples/text1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/externalModules/pgu/examples/gui18.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -299,18 +343,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.MainMenu" />
       <item index="1" class="java.lang.String" itemvalue="Python.experiment" />
-      <item index="2" class="java.lang.String" itemvalue="Python.html2" />
-      <item index="3" class="java.lang.String" itemvalue="Python.layout1" />
-      <item index="4" class="java.lang.String" itemvalue="Python.text1" />
-      <item index="5" class="java.lang.String" itemvalue="Python.gui13" />
+      <item index="2" class="java.lang.String" itemvalue="Python.gui13" />
+      <item index="3" class="java.lang.String" itemvalue="Python.TestExperimentPGU" />
+      <item index="4" class="java.lang.String" itemvalue="Python.gui18" />
+      <item index="5" class="java.lang.String" itemvalue="Python.ExperimentObjects" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.experiment" />
-        <item index="1" class="java.lang.String" itemvalue="Python.gui13" />
-        <item index="2" class="java.lang.String" itemvalue="Python.text1" />
-        <item index="3" class="java.lang.String" itemvalue="Python.layout1" />
-        <item index="4" class="java.lang.String" itemvalue="Python.html2" />
+        <item index="1" class="java.lang.String" itemvalue="Python.TestExperimentPGU" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ExperimentObjects" />
+        <item index="3" class="java.lang.String" itemvalue="Python.gui18" />
+        <item index="4" class="java.lang.String" itemvalue="Python.gui13" />
       </list>
     </recent_temporary>
   </component>
@@ -331,15 +375,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="3840" height="2160" extended-state="6" />
-    <editor active="true" />
+    <frame x="-16" y="-16" width="3872" height="2192" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18177083" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3640625" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33114755" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25181347" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18177083" sideWeight="0.503268" order="2" side_tool="true" content_ui="tabs" />
@@ -386,27 +429,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons/py/path/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22960">
-          <caret line="574" column="31" lean-forward="true" selection-start-line="574" selection-start-column="25" selection-end-line="574" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/matplotlib/backends/backend_webagg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5920">
-          <caret line="148" column="37" lean-forward="true" selection-start-line="148" selection-start-column="31" selection-end-line="148" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/telnetlib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8760">
-          <caret line="219" column="31" lean-forward="true" selection-start-line="219" selection-start-column="25" selection-end-line="219" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/setuptools/sandbox.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18520">
@@ -519,13 +541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/creatingGraphs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/generatingResistanceVals.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1800">
@@ -537,13 +552,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3040">
           <caret line="77" column="59" lean-forward="false" selection-start-line="77" selection-start-column="59" selection-end-line="77" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Validation/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="47" column="8" lean-forward="false" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -638,13 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/externalModules/pgu/examples/gui18.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="143" column="13" lean-forward="false" selection-start-line="143" selection-start-column="8" selection-end-line="143" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/externalModules/pgu/examples/gui17.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-600">
@@ -708,20 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1283">
-          <caret line="121" column="21" lean-forward="false" selection-start-line="121" selection-start-column="21" selection-end-line="121" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/TestExperimentPGU.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5643">
-          <caret line="208" column="34" lean-forward="false" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/externalModules/pgu/pgu/gui/deprecated.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -736,12 +723,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Validation/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/externalModules/pgu/pgu/gui/widget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="178" column="8" lean-forward="false" selection-start-line="178" selection-start-column="8" selection-end-line="178" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/externalModules/pgu/examples/gui18.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1778">
+          <caret line="147" column="0" lean-forward="true" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/TestExperimentPGU.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3698">
+          <caret line="240" column="0" lean-forward="true" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-466">
-          <caret line="230" column="0" lean-forward="false" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/dialogs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="1" column="26" lean-forward="true" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/creatingGraphs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="7" column="21" lean-forward="false" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="3" column="34" lean-forward="false" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>

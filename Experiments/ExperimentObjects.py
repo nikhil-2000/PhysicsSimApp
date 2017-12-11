@@ -1,19 +1,18 @@
 import os
 import sys
+
 sys.path.append(os.path.abspath('..'))
 
-import Experiments.creatingGraphs as graph
-import Validation.validation as validation
-
-#The previous lines were taken from https://stackoverflow.com/questions/10272879/how-do-i-import-a-python-script-from-a-sibling-directory
-#It explained how to access modules in sibling directories
+# The previous lines were taken from https://stackoverflow.com/questions/10272879/how-do-i-import-a-python-script-from-a-sibling-directory
+# It explained how to access modules in sibling directories
 
 import pygame
 from externalModules.pgu.pgu import gui, timer
 
+
 class ErrorDlg(gui.Dialog):
-    def __init__(self,msg):
-        gui.Dialog.__init__(self,gui.Label("ERROR"),gui.Label(msg))
+    def __init__(self, msg):
+        gui.Dialog.__init__(self, gui.Label("ERROR"), gui.Label(msg))
 
 
 class DrawingArea(gui.Widget):  # Same object as found in gui18.py in the pgu examples
@@ -36,6 +35,8 @@ class TableAreaTemplate(gui.Table):
     def __init__(self, width, height, app):
         gui.Table.__init__(self, width=width, height=height)
         self.app = app
+        self.xPoints = []
+        self.yPoints = []
 
     def setup(self):
         pass
@@ -48,11 +49,10 @@ class MenuAreaTemplate(gui.Table):
         gui.Table.__init__(self, width=width, height=height)
         self.app = app
 
-
     def setup(self):
         # All the buttons are created and organised here
 
-        #The button variables are all created here
+        # The button variables are all created here
         self.graphBtn = createButton("Graph")
 
         self.variablesBtn = createButton("Input Variables")
@@ -69,54 +69,60 @@ class MenuAreaTemplate(gui.Table):
 
         self.menuBtn = createButton("Back to Menu")
 
-        #The buttons' function are defined here
+        # The buttons' function are defined here
 
         def startExperiment_cb():
-            if self.app.variablesInputted:
-                if self.app.animationRunning == False:
-                    self.app.animationRunning = True
+            if self.variablesDlg.isValidated:  # If the user inputs are valid
+                if not (self.app.animationRunning):  # And if the animation hasn't started yet
+                    self.app.animationRunning = True  # Tell the rest of the program that the animation can now run
+                    self.app.tableArea.setup()
                 else:
-                    gui.Dialog(gui.Label("ERROR"), gui.Label("Experiment already running"))
-            else:
-                gui.Dialog(gui.Label("ERROR"),gui.Label("You haven't set the variables"))
+                    errorDlg = ErrorDlg("Experiment is already running")
+                    errorDlg.open()
 
-        self.startExperimentBtn.connect(gui.CLICK,startExperiment_cb)
+            else:
+                errorDlg = ErrorDlg("You haven't set the variables")
+                errorDlg.open()
+
+        self.startExperimentBtn.connect(gui.CLICK, startExperiment_cb)
 
         def pauseExperiment_cb():
-            clock = self.app.engine.clock
-            clock.paused = not (clock.paused)
-            if clock.paused:
+            self.app.engine.isPaused = not (self.app.engine.isPaused)
+            if (self.app.engine.isPaused):
                 self.pauseExperimentBtn.value = "Play Experiment"
-            elif not clock.paused:
+            else:
                 self.pauseExperimentBtn.value = "Pause Experiment"
 
+        self.pauseExperimentBtn.connect(gui.CLICK, pauseExperiment_cb)
 
+        def restartExperimentBtn_cb():
+            self.app.restart()
 
-        self.pauseExperimentBtn.connect(gui.CLICK,pauseExperiment_cb)
+        self.restartExperimentBtn.connect(gui.CLICK, restartExperimentBtn_cb)
 
         def menuBtn_cb():
             import MainMenu as m
             m.run()
 
-        self.menuBtn.connect(gui.CLICK,menuBtn_cb)
+        self.menuBtn.connect(gui.CLICK, menuBtn_cb)
 
-        #Adding the buttons to the table
-        self = addBtnToTbl(self,self.graphBtn)
-        self = addBtnToTbl(self,self.variablesBtn)
-        self = addBtnToTbl(self,self.startExperimentBtn)
-        self = addBtnToTbl(self,self.pauseExperimentBtn)
-        self = addBtnToTbl(self,self.restartExperimentBtn)
-        self = addBtnToTbl(self,self.instructionBtn)
-        self = addBtnToTbl(self,self.constantsBtn)
-        self = addBtnToTbl(self,self.menuBtn)
-
+        # Adding the buttons to the table
+        self = addBtnToTbl(self, self.graphBtn)
+        self = addBtnToTbl(self, self.variablesBtn)
+        self = addBtnToTbl(self, self.startExperimentBtn)
+        self = addBtnToTbl(self, self.pauseExperimentBtn)
+        self = addBtnToTbl(self, self.restartExperimentBtn)
+        self = addBtnToTbl(self, self.instructionBtn)
+        self = addBtnToTbl(self, self.constantsBtn)
+        self = addBtnToTbl(self, self.menuBtn)
 
 
 class ExperimentTemplate(gui.Desktop):
     def __init__(self, screen):
         gui.Desktop.__init__(self)
-        self.connect(gui.QUIT,self.quit)
+        self.connect(gui.QUIT, self.quit)
 
+        self.disp = screen
         self.engine = None
         self.animationAreaWidth = 650
         self.animationAreaHeight = 400
@@ -130,11 +136,15 @@ class ExperimentTemplate(gui.Desktop):
         self.animationRunning = False
         self.experimentFinished = False
 
+        self.minIV = None
+        self.maxIV = None
+        self.interval = None
+
         topTbl = gui.Table()
         topTbl.tr()
         topTbl.td(self.animationArea)
         topTbl.td(self.menuArea)
-        screenTbl = gui.Table(height= screen.get_height(), width = screen.get_width())
+        screenTbl = gui.Table(height=screen.get_height(), width=screen.get_width())
 
         screenTbl.tr()
         screenTbl.td(topTbl)
@@ -162,12 +172,17 @@ class ExperimentTemplate(gui.Desktop):
     def get_render_area(self):
         return self.animationArea.get_abs_rect()
 
+    def restart(self):
+        pass
+
 
 class AnimationEngineTemplate(object):
     def __init__(self, disp):
         self.disp = disp
         self.app = ExperimentTemplate(self.disp)
         self.app.engine = self
+        self.clock = timer.Clock()
+        self.isPaused = False
 
     def render(self, dest, rect):
         # Drawing code should go here
@@ -182,13 +197,12 @@ class AnimationEngineTemplate(object):
         self.app.update(self.disp)
         pygame.display.flip()
 
-        self.clock = timer.Clock()
         done = False
 
         while not done:
             for event in pygame.event.get():
                 quitBool = (event.type == pygame.QUIT) or (
-                    event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE)
+                        event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE)
                 if quitBool:
                     done = True
                 else:
@@ -197,6 +211,7 @@ class AnimationEngineTemplate(object):
             rect = self.app.get_render_area()
             updates = []
             self.disp.set_clip(rect)
+
             lst = self.render(self.disp, rect)
             if (lst):
                 updates += lst
@@ -214,17 +229,12 @@ class AnimationEngineTemplate(object):
 
         pygame.quit()
 
-def createButton(text):
-    return gui.Button(text,width = 225, height = 40)
 
-def addBtnToTbl(tbl,btn):
+def createButton(text):
+    return gui.Button(text, width=225, height=40)
+
+
+def addBtnToTbl(tbl, btn):
     tbl.tr()
     tbl.td(btn)
     return tbl
-
-
-def main(expName):
-    disp = pygame.display.set_mode((900, 600))
-    pygame.display.set_caption(expName)
-    eng = AnimationEngineTemplate(disp)
-    eng.run()

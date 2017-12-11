@@ -40,7 +40,11 @@ def validateInputs (minIV,maxIV,interval,maxRange,minRange):
     if minIV < minRange or maxIV > maxRange:  #Checks that both numbers are within the range
         error = "Both the minimum and maximum should be between 0-100"
         return False,error
-        
+
+    if maxIV * interval == 0:
+        error = "Your maximum or interval can't equal zero"
+        return False,error
+
     noOfIntervals = ((maxIV - minIV) // interval)  + 1 #Calculates the number of intervals
     if noOfIntervals < 5:
         error = "Make your range larger or decrease the interval"

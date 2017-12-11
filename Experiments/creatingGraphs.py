@@ -1,8 +1,11 @@
-def createGraph(xPoints, yPoints):
+import matplotlib.pyplot as plt
+import numpy as np
+
+def createGraph(xPoints, yPoints,xLabel,yLabel):
     plt.scatter(xPoints, yPoints)
     plt.plot(np.unique(xPoints), np.poly1d(np.polyfit(xPoints, yPoints, 1))(np.unique(xPoints)))
-    plt.xlabel("Current Length/cm")
-    plt.ylabel("Resistance/Ω")
+    plt.xlabel(xLabel)
+    plt.ylabel(yLabel)
     plt.savefig("graph.png")
     gradient = calcGradient(xPoints, yPoints)
     yIntercept = calcYintercept(gradient, xPoints[0], yPoints[0])
