@@ -3,7 +3,8 @@ import externalModules.pgu.pgu.gui as gui
 import Validation.validation as validation
 import Experiments.creatingGraphs as graph
 from externalModules.pgu.pgu import html
-
+from Experiments.ResistivityOfAMetal.experiment import *
+import webbrowser
 
 class GraphDialog(gui.Dialog):
     def __init__(self,xPoints,yPoints):
@@ -22,7 +23,7 @@ class GraphDialog(gui.Dialog):
         gui.Dialog.__init__(self,gui.Label("Graph"),tbl)
 
 class VariablesDialog(gui.Dialog):
-    def __init__(self,defaultVals,minRange,maxRange):
+    def __init__(self,defaultVals):
         #Object can tell menu that inputs are valid if isValidated is True
         self.isValidated = False
         #Allows menu object to access these variables one defined
@@ -135,14 +136,14 @@ class VariablesDialog(gui.Dialog):
 class InstructionsLinkDialog(gui.Dialog):
     def __init__(self):
         #The method
-        method = """<ol type = "1">
-         <li> Set up the circuit as shown in the diagram</li>
-         <li> Start with crocodile clip at your starting value, record the current</li>
-         <li> Increase the length of the wire by moving the crocodile clip by your chosen interval</li>
-         <li> Once taking 5 or more results, divide the voltage by the current for each length. This gives the resistance</li>
-         <li> Now plot a graph for resistance(y-axis) against length(x-axis). The gradient will be equal to the resistance over the cross-sectional area"</li>
-         <li> Solve for the resistivity</li>
-         </ol>
+        method = """<p>
+         1. Set up the circuit as shown in the diagram<br>
+         2. Start with crocodile clip at your starting value, record the current<br>
+         3. Increase the length of the wire by moving the crocodile clip by your chosen interval<br>
+         4. Once taking 5 or more results, divide the voltage by the current for each length. This gives the resistance<br>
+         5. Now plot a graph for resistance(y-axis) against length(x-axis). The gradient will be equal to the resistance over the cross-sectional area"<br>
+         6. Solve for the resistivity</li>
+         </p>
          """
         #Adding the method to the document which html
         doc = html.HTML(method,width = 600)

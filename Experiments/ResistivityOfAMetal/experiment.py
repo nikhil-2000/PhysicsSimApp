@@ -1,15 +1,20 @@
 import pygame
+import os,sys
+sys.path.append(os.path.abspath('../../'))
+
 
 import Experiments.ExperimentObjects as template
 from Experiments.ResistivityOfAMetal import areaObjects
 from externalModules.pgu.pgu import gui
 
-# sys.path.append(os.path.abspath('..'))
 
 
 csa = round(2.01 * 10 ** -8,10)
 voltage = 1.5
+resistivity = 49 * 10**-8
 
+minRange = 0
+maxRange = 100
 
 class Experiment(template.ExperimentTemplate):
     def __init__(self,screen):

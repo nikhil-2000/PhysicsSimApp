@@ -2,46 +2,15 @@ import resources.resourceManager as resM
 from Experiments.ResistivityOfAMetal.dialogs import *
 from Experiments.ResistivityOfAMetal.experiment import *
 import resources.Colour as colours
-
-class Ball(pygame.sprite.Sprite):
-
-    def __init__(self):
-
-        super().__init__()
-
-        self.image = pygame.image.load(resM.atomImg)
-        self.image = pygame.transform.scale(self.image, (20, 20))
-
-        self.rect = self.image.get_rect()
-
-        self.rect.x = 10
-        self.rect.y = 10
-        self.xSpeed = -5
-        self.ySpeed = -5
-        self.ballsLeft = 5
-
-    def changePlace(self):
-        self.rect.x += self.xSpeed
-        self.rect.y += self.ySpeed
-
-    def move(self,screenArea):
-
-        self.rect.move_ip(self.xSpeed, self.ySpeed)
-        if self.rect.right > screenArea.right or self.rect.left < screenArea.left:
-            self.xSpeed *= -1
-
-        if self.rect.top == screenArea.top or self.rect.bottom == screenArea.bottom:
-            self.ySpeed *= -1
-
-
-        self.rect.clamp_ip(screenArea)
+from resources.Equipment.ElectricalComponents import *
 
 
 class TableArea(template.TableAreaTemplate):
     def __init__(self,width,height,app):
         super(TableArea, self).__init__(width,height,app)
         self.xPoints = []
-        self.yPoints = [1,2,3,4,5,6,7,8,9,10]
+        self.yPoints = []
+        self.currentColumn = 1
 
     def setup(self):
         minIV = self.app.minIV
@@ -65,11 +34,19 @@ class TableArea(template.TableAreaTemplate):
         self.tr()
         self.td(gui.Label("Resistance"),style = cellStyle)
 
+    def addToTable(self,current,resistance):
+        currentLbl = gui.Label(str(round(current,2)))                                           #Round the values to make
+        resistanceLbl = gui.Label(str(round(resistance, 2)))                                    #them more presentable
+        self.app.tableArea.td(currentLbl, col=self.currentColumn, row=1, style={'border': 1})   #Adding the values
+        self.app.tableArea.td(resistanceLbl, col=self.currentColumn, row=2, style={'border': 1})#To the tables
+        self.yPoints.append(resistance)#Adds the unrounded values to y-points
+        self.currentColumn += 1 # Increments columnCount for the add next value
+
 
 class MenuArea(template.MenuAreaTemplate):
     def __init__(self,width,height,app):
         super(MenuArea, self).__init__(width,height,app)
-        self.variablesDlg = VariablesDialog(["10","100","10"], 0, 100)
+        self.variablesDlg = VariablesDialog(["10","100","10"])
         self.setupButtons()
 
 
@@ -85,7 +62,6 @@ class MenuArea(template.MenuAreaTemplate):
             else:
                 errorDlg = template.ErrorDlg("Finish the Experiment")
                 self.app.open(errorDlg)
-                self.app.experimentFinished = True
 
 
         self.graphBtn.connect(gui.CLICK,graph_cb)
@@ -118,17 +94,120 @@ class AnimationEngine(template.AnimationEngineTemplate):
         super(AnimationEngine, self).__init__(disp)
         self.app = Experiment(self.disp)
         self.app.engine = self
+        self.components = pygame.sprite.Group()
+        self.rect = self.app.get_render_area()
 
-        ballImg = pygame.image.load(resM.atomImg)
-        self.ball = Ball()
-        self.spriteGroup = pygame.sprite.Group()
-        self.spriteGroup.add(self.ball)
+        self.circuitTop = 50
+        self.circuitBottom = self.rect.bottom - 50
+        self.circuitLeft = self.rect.left + 50
+        self.circuitRight = self.rect.right - 50
 
-    def render(self, dest, rect):
+        self.battery = Battery(self.rect.center[0], 50, 40, 40)
+        self.ammeter = Ammeter(50, self.rect.center[1] // 2, 40)
+        self.voltmeter = Voltmeter(self.rect.center[0], self.rect.center[1], 40)
+        self.constantanWire = ConstantanWire(self.rect.center[0], self.circuitBottom, self.rect.width - 200, 3)
+        self.crocSlideX = self.constantanWire.rect.left
 
-        dest.fill(colours.GREEN)
-        self.spriteGroup.draw(dest)
-        if self.app.animationRunning and not(self.isPaused):
-            self.ball.move(rect)
+        self.components.add(self.battery)
+        self.components.add(self.ammeter)
+        self.components.add(self.voltmeter)
+        self.components.add(self.constantanWire)
 
-        return (rect,)
+        self.wireColour = list(colours.RED)
+
+        self.endPointCalculated = False
+
+    def setExperimentVariables(self):
+        self.endingPoint = self.constantanWire.rect.left + ((self.app.maxIV/maxRange) * self.constantanWire.rect.width)
+        self.currentLength = self.app.minIV
+
+
+    def genValues(self):
+        if self.currentLength == 0:
+            return 0, 0
+
+        resistance = (resistivity * self.currentLength)/ (100 * csa)
+        current = voltage / resistance
+
+        return current, resistance
+
+    def sendValues(self,current,resistance):
+        self.app.tableArea.addToTable(current,resistance)
+
+
+    def render(self, rect):
+            self.disp.fill(colours.BLUE)    # Background Colour to complement menu colour
+            self.components.draw(self.disp) # Draws components initialised above
+
+            points = []
+            points.append((self.battery.rect.left,self.battery.centerY))#left battery
+            points.append((self.ammeter.centerX, self.battery.centerY)) #topleft corner
+            points.append((self.ammeter.centerX,self.ammeter.rect.top)) #top Ammeter
+            pygame.draw.lines(self.disp,self.wireColour,False,points, 3)     #draw section
+
+            points = []
+            points.append((self.ammeter.centerX,self.ammeter.rect.bottom))  #bottom Ammeter
+            points.append((self.ammeter.centerX,self.voltmeter.centerY))    #Middle left
+            points.append((self.voltmeter.rect.left,self.voltmeter.centerY))#Left Voltmeter
+            pygame.draw.lines(self.disp,self.wireColour,False,points,3)
+
+            points = []
+            points.append((self.voltmeter.rect.right,self.voltmeter.centerY))   #Right Voltmeter
+            points.append((self.circuitRight ,self.voltmeter.centerY))          #Right Middle
+            points.append((self.circuitRight ,self.battery.centerY))            # Top Right
+            points.append((self.battery.rect.right,self.battery.centerY))       #Right Battery
+            pygame.draw.lines(self.disp,self.wireColour,False,points,3)
+
+            points = []
+            points.append((self.circuitLeft,self.voltmeter.centerY))                    # Left Middle
+            points.append((self.circuitLeft, self.circuitBottom))                       #Bottome Left
+            points.append((self.constantanWire.rect.left, self.constantanWire.centerY)) #MainWireLeft
+            pygame.draw.lines(self.disp,self.wireColour,False,points,3)
+
+
+            movingCrocPoints = []
+            basePoint = [self.crocSlideX, self.constantanWire.rect.top]     #Bottom of crocClip
+            movingCrocPoints.append(basePoint)
+            movingCrocPoints.append([basePoint[0] - 10,basePoint[1] - 30])  #Top Left of Croc Clip
+            movingCrocPoints.append([basePoint[0] + 10,basePoint[1] - 30])  #Top Right of Croc Clip
+            pygame.draw.polygon(self.disp,self.wireColour,movingCrocPoints,0)
+
+            points = []
+            #Connecting from Croc Clip to rest of circuit
+            points.append((basePoint[0],basePoint[1] - 30))
+            points.append((basePoint[0],basePoint[1] - 80))
+            points.append((self.circuitRight,basePoint[1] - 80))
+            points.append((self.circuitRight,self.voltmeter.centerY))
+            pygame.draw.lines(self.disp,self.wireColour,False,points,3)
+
+
+            if self.app.animationRunning and not(self.isPaused) and not(self.app.experimentFinished):
+                if not (self.endPointCalculated):
+                    #Sets up the experiment if it hasn't happened yet
+                    self.setExperimentVariables()
+                    self.endPointCalculated = True
+
+                #Calculates where on the wire the next recording should be taken
+                nextRecordPoint = self.constantanWire.rect.left + (self.constantanWire.rect.width * (self.currentLength)// maxRange)
+                if self.crocSlideX == nextRecordPoint:      #If on recording point
+                    current, resistance = self.genValues()  #Get values for current and resistance
+                    self.sendValues(current, resistance)    #Add values to table and graph
+                    self.currentLength += self.app.interval #Increment to the next length to be recorded at
+
+                if self.crocSlideX <= self.endingPoint:     #If it hasn't hit the end point
+                    self.crocSlideX += 1                    #Slide Croc Clip by one each time
+                else:                                       #Otherwise
+                    self.app.experimentFinished = True      #End experiment
+
+
+                if self.wireColour[1] == 155:
+                    self.colourDirection = -5
+                elif self.wireColour[1] == 0:
+                    self.colourDirection = 5
+
+                self.wireColour[1] += self.colourDirection
+
+
+            return (rect,)  #Give back are that has been drawn on
+
+

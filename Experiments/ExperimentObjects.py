@@ -212,7 +212,7 @@ class AnimationEngineTemplate(object):
             updates = []
             self.disp.set_clip(rect)
 
-            lst = self.render(self.disp, rect)
+            lst = self.render(rect)
             if (lst):
                 updates += lst
 
