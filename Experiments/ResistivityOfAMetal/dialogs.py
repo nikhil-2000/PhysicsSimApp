@@ -5,10 +5,11 @@ import Experiments.creatingGraphs as graph
 from externalModules.pgu.pgu import html
 from Experiments.ResistivityOfAMetal.experiment import *
 import webbrowser
+import subprocess
 
 class GraphDialog(gui.Dialog):
     def __init__(self,xPoints,yPoints):
-        gradient,yIntercept = graph.createGraph(xPoints,yPoints,"Current Length/cm","Resistance/Ω")
+        gradient,yIntercept = graph.createGraph(xPoints,yPoints,"Current Length/cm","Resistance/Î©")
         gradientLbl = gui.Label("Gradient:" + str(round(gradient,3)))
         yInterceptLbl = gui.Label("Y-Intercept:" + str(round(yIntercept,3)))
 
@@ -152,6 +153,8 @@ class InstructionsLinkDialog(gui.Dialog):
         link1 = "http://hyperphysics.phy-astr.gsu.edu/hbase/electric/resis.html"
         link2 = "http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/rstiv.html"
         link3 = "http://papers.xtremepapers.com/CIE/Cambridge%20International%20A%20and%20AS%20Level/Physics%20(9702)/9702_nos_ps_9.pdf"
+        pdf = "file:///D:/My%20Docs/School/Computer%20Science/Programming%20Project/physicssimulationapp/resources/Methods/DeterminationOfResistivityOfAMetal.pdf"
+        chrome = "C:\Program Files (x86)\Google\Chrome\chrome.exe"
 
         #Linking websites to buttons
         def link1_cb():
@@ -163,13 +166,18 @@ class InstructionsLinkDialog(gui.Dialog):
         def link3_cb():
             webbrowser.open(link3)
 
-        btnWidth = 50
+        def link4_cb():
+            subprocess.Popen("%s %s" %(chrome,pdf))
+
+        btnWidth = 200
         btnHeight = 50
         link1Btn = gui.Button("About Resistance and Resistivity",width = 2*btnWidth, height=btnHeight)
         link1Btn.connect(gui.CLICK,link1_cb)
         link2Btn = gui.Button("Compare your Results",width = btnWidth, height=btnHeight)
         link2Btn.connect(gui.CLICK, link2_cb)
         link3Btn = gui.Button("Another Method",width = btnWidth, height=btnHeight)
+        link3Btn.connect(gui.CLICK, link3_cb)
+        link4Btn = gui.Button("Eduqas Practical Sheet", width=2*btnWidth, height=btnHeight)
         link3Btn.connect(gui.CLICK, link3_cb)
 
         #Adding buttons to the dialog
@@ -178,13 +186,18 @@ class InstructionsLinkDialog(gui.Dialog):
         tbl.td(doc)
         tbl.tr()
         tbl.td(gui.Label("Links"))
-        btnsTbl = gui.Table(width=200)
-        btnsTbl.tr()
-        btnsTbl.td(link3Btn)
-        btnsTbl.td(link2Btn)
-        btnsTbl.td(link1Btn)
+        topBtnTbl = gui.Table()
+        topBtnTbl.tr()
+        topBtnTbl.td(link2Btn)
+        topBtnTbl.td(link1Btn)
+        bottomBtnTbl = gui.Table()
+        bottomBtnTbl.tr()
+        bottomBtnTbl.td(link3Btn)
+        bottomBtnTbl.td(link4Btn)
         tbl.tr()
-        tbl.td(btnsTbl)
+        tbl.td(topBtnTbl)
+        tbl.tr()
+        tbl.td(bottomBtnTbl)
 
 
         gui.Dialog.__init__(self,gui.Label("Instructions and Links"), tbl)

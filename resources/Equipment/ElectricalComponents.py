@@ -54,4 +54,3 @@ class ConstantanWire(pygame.sprite.Sprite):
         self.centerY = self.rect.center[1]
 
 
-

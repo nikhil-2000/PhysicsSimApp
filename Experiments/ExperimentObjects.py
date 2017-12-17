@@ -87,6 +87,7 @@ class MenuAreaTemplate(gui.Table):
         self.startExperimentBtn.connect(gui.CLICK, startExperiment_cb)
 
         def pauseExperiment_cb():
+            self.app.animationArea.save_background()
             self.app.engine.isPaused = not (self.app.engine.isPaused)
             if (self.app.engine.isPaused):
                 self.pauseExperimentBtn.value = "Play Experiment"

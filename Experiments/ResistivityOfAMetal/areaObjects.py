@@ -190,6 +190,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
                 #Calculates where on the wire the next recording should be taken
                 nextRecordPoint = self.constantanWire.rect.left + (self.constantanWire.rect.width * (self.currentLength)// maxRange)
                 if self.crocSlideX == nextRecordPoint:      #If on recording point
+                    self.app.animationArea.save_background()
                     current, resistance = self.genValues()  #Get values for current and resistance
                     self.sendValues(current, resistance)    #Add values to table and graph
                     self.currentLength += self.app.interval #Increment to the next length to be recorded at
@@ -209,5 +210,4 @@ class AnimationEngine(template.AnimationEngineTemplate):
 
 
             return (rect,)  #Give back are that has been drawn on
-
 

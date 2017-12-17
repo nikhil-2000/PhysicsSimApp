@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7915d3f9-eaf2-4389-b445-d097a5acdf26" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/Equipment/ElectricalComponents.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/Equipment/__init__.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Experiments/ExperimentObjects.py" afterPath="$PROJECT_DIR$/Experiments/ExperimentObjects.py" />
       <change beforePath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py" afterPath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py" />
@@ -11,6 +9,33 @@
       <change beforePath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py" afterPath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py" />
       <change beforePath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/graph.png" afterPath="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/graph.png" />
       <change beforePath="$PROJECT_DIR$/resources/Colour.py" afterPath="$PROJECT_DIR$/resources/Colour.py" />
+      <change beforePath="$PROJECT_DIR$/resources/Equipment/ElectricalComponents.py" afterPath="$PROJECT_DIR$/resources/Equipment/ElectricalComponents.py" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Determination of Young modulus of a metal.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Determination of h using LEDs.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Determination of resistivity of a metal.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Determination of the internal resistance of a cell.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Determination of the speed of sound using stationary waves.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Determination of unknown masses by using the principle of moments.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Determination of wavelength using Young's double slits.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Determination of wavelength using a diffraction grating.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Estimation of absolute zero by use of the gas laws.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Investigation of Newton's second law.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Investigation of radioactive decay - a dice analogy.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Investigation of the IV characteristics.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Investigation of the charging and discharging of a capacitor.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Investigation of the damping of a spring.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Investigation of the energy stored in a capacitor.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Investigation of the force on a current in a magnetic field.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Investigation of the force-extension relationship for rubber.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Investigation of the variation of R with T for a metal wire.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Investigation of the variation of intensity of gamma radiation.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Measurement of g by freefall.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Measurement of g with a pendulum.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Measurement of the density of solids.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Measurement of the intensity variations for polarisation.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Measurement of the refractive index of a material.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/Measurement of the specific heat capacity for a solid.pdf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/resources/Methods/investigation of magnetic flux density using a Hall probe.pdf" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,12 +48,12 @@
     <favorites_list name="physicssimulationapp" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="areaObjects.py" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
+      <file leaf-file-name="areaObjects.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="42" column="64" lean-forward="false" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
+            <state relative-caret-position="572">
+              <caret line="192" column="60" lean-forward="false" selection-start-line="192" selection-start-column="60" selection-end-line="192" selection-end-column="60" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -39,8 +64,8 @@
       <file leaf-file-name="experiment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="789">
-              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="560">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -48,21 +73,55 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Colour.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/Colour.py">
+      <file leaf-file-name="ExperimentObjects.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="-1375">
+              <caret line="90" column="38" lean-forward="false" selection-start-line="90" selection-start-column="38" selection-end-line="90" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExperimentObjects.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
+      <file leaf-file-name="ElectricalComponents.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/Equipment/ElectricalComponents.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="174" column="15" lean-forward="false" selection-start-line="174" selection-start-column="4" selection-end-line="174" selection-end-column="15" />
+            <state relative-caret-position="1225">
+              <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/Equipment/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dialogs.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/dialogs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="967">
+              <caret line="199" column="27" lean-forward="false" selection-start-line="199" selection-start-column="27" selection-end-line="199" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gui16.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/externalModules/pgu/examples/gui16.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="101" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -79,6 +138,18 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>cls</find>
+      <find>TableArea</find>
+      <find>MenuArea</find>
+      <find>Experiment(</find>
+      <find>exp</find>
+      <find>AnimationEngine</find>
+      <find>setupScreen</find>
+      <find>input</find>
+      <find>graph</find>
+      <find>variables</find>
+      <find>.open</find>
+      <find>constant</find>
       <find>.close</find>
       <find>close</find>
       <find>ErrorDlg</find>
@@ -93,34 +164,12 @@
       <find>experiment</find>
       <find>colours</find>
       <find>template</find>
-      <find>maxRange</find>
-      <find>- 50</find>
-      <find>+ 50</find>
-      <find>m</find>
-      <find>+= self.app.</find>
-      <find>+= self.app.inter</find>
-      <find>pri</find>
-      <find>resistance, current</find>
-      <find>round</find>
-      <find>.rect.center[1]</find>
-      <find>.rect.center[0]</find>
-      <find>rect</find>
-      <find>wireColour</find>
-      <find>def restart</find>
-      <find>print</find>
-      <find>restart</find>
     </findStrings>
     <replaceStrings>
       <replace>AnimationEngineTemplate</replace>
       <replace>template</replace>
       <replace>⁸</replace>
-      <replace>.centerY</replace>
-      <replace>self.disp</replace>
-      <replace>self.wireColour</replace>
     </replaceStrings>
-    <dirStrings>
-      <dir>D:\My Docs\School\Computer Science\Programming Project\physicssimulationapp\Experiments\ResistivityOfAMetal</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -138,18 +187,16 @@
         <option value="$PROJECT_DIR$/externalModules/pgu/examples/gui18.py" />
         <option value="$PROJECT_DIR$/Validation/validation.py" />
         <option value="$PROJECT_DIR$/Experiments/creatingGraphs.py" />
-        <option value="$PROJECT_DIR$/resources/Diagram/ElectricalComponents.py" />
         <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py" />
-        <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/dialogs.py" />
         <option value="$PROJECT_DIR$/resources/Equipment/ElectricalComponents.py" />
         <option value="$PROJECT_DIR$/Experiments/ExperimentObjects.py" />
-        <option value="$PROJECT_DIR$/resources/Colour.py" />
         <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py" />
+        <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/dialogs.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-14" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1906" />
     <option name="width" value="1948" />
     <option name="height" value="2174" />
   </component>
@@ -168,6 +215,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,26 +235,22 @@
               <item name="Experiments" type="462c0819:PsiDirectoryNode" />
               <item name="ResistivityOfAMetal" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="full.screen.before.presentation.mode" value="true" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\My Docs\School\Computer Science\Programming Project\physicssimulationapp\resources\Equipment" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\My Docs\School\Computer Science\Programming Project\physicssimulationapp\Experiments" />
     </key>
@@ -223,24 +268,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.experiment">
-    <configuration name="Colour" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/resources" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="physicssimulationapp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/resources/Colour.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="ExperimentObjects" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -295,24 +322,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="areaObjects" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="physicssimulationapp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="experiment" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -331,21 +340,57 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="gui13" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/externalModules/pgu/examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="physicssimulationapp" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/externalModules/pgu/examples/gui13.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="gui18" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/externalModules/pgu/examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="physicssimulationapp" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/externalModules/pgu/examples/gui18.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.MainMenu" />
       <item index="1" class="java.lang.String" itemvalue="Python.experiment" />
-      <item index="2" class="java.lang.String" itemvalue="Python.TestExperimentPGU" />
-      <item index="3" class="java.lang.String" itemvalue="Python.ExperimentObjects" />
-      <item index="4" class="java.lang.String" itemvalue="Python.areaObjects" />
-      <item index="5" class="java.lang.String" itemvalue="Python.Colour" />
+      <item index="2" class="java.lang.String" itemvalue="Python.gui13" />
+      <item index="3" class="java.lang.String" itemvalue="Python.TestExperimentPGU" />
+      <item index="4" class="java.lang.String" itemvalue="Python.gui18" />
+      <item index="5" class="java.lang.String" itemvalue="Python.ExperimentObjects" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.experiment" />
-        <item index="1" class="java.lang.String" itemvalue="Python.areaObjects" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Colour" />
-        <item index="3" class="java.lang.String" itemvalue="Python.TestExperimentPGU" />
-        <item index="4" class="java.lang.String" itemvalue="Python.ExperimentObjects" />
+        <item index="1" class="java.lang.String" itemvalue="Python.TestExperimentPGU" />
+        <item index="2" class="java.lang.String" itemvalue="Python.ExperimentObjects" />
+        <item index="3" class="java.lang.String" itemvalue="Python.gui18" />
+        <item index="4" class="java.lang.String" itemvalue="Python.gui13" />
       </list>
     </recent_temporary>
   </component>
@@ -366,27 +411,36 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-16" y="-16" width="3872" height="2192" extended-state="6" />
-    <editor active="true" />
+    <frame x="1906" y="0" width="1948" height="2174" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24036458" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4817328" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.265285" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26778242" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18177083" sideWeight="0.503268" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25181347" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3640625" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18177083" sideWeight="0.503268" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -396,18 +450,18 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25138888" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33114755" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24036458" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18177083" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18177083" sideWeight="0.503268" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -421,6 +475,13 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/webbrowser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="590" column="34" lean-forward="false" selection-start-line="590" selection-start-column="28" selection-end-line="590" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/urllib/request.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -491,6 +552,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/SlidingCrocClipFunc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="27" column="42" lean-forward="false" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Experiments/InternalResistance/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -502,6 +570,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="12" column="39" lean-forward="false" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/generatingResistanceVals.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1800">
+          <caret line="48" column="47" lean-forward="false" selection-start-line="48" selection-start-column="47" selection-end-line="48" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainMenu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3040">
+          <caret line="77" column="59" lean-forward="false" selection-start-line="77" selection-start-column="59" selection-end-line="77" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -605,8 +687,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/externalModules/pgu/examples/gui16.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3000">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="280">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="101" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -684,6 +767,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="412">
           <caret line="178" column="8" lean-forward="false" selection-start-line="178" selection-start-column="8" selection-end-line="178" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -694,6 +778,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/TestExperimentPGU.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3698">
+          <caret line="240" column="0" lean-forward="true" selection-start-line="240" selection-start-column="0" selection-end-line="240" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Experiments/creatingGraphs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -701,90 +792,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/SlidingCrocClipFunc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MainMenu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2269">
-          <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/numpy/lib/polynomial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="554" column="0" lean-forward="false" selection-start-line="554" selection-start-column="0" selection-end-line="554" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/TestExperimentPGU.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14982">
-          <caret line="455" column="35" lean-forward="false" selection-start-line="455" selection-start-column="35" selection-end-line="455" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/generatingResistanceVals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1023">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/dialogs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4587">
-          <caret line="145" column="13" lean-forward="false" selection-start-line="145" selection-start-column="13" selection-end-line="145" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/Equipment/ElectricalComponents.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1235">
-          <caret line="53" column="42" lean-forward="false" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
+        <state relative-caret-position="1225">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/Colour.py">
+    <entry file="file://$PROJECT_DIR$/resources/Equipment/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="174" column="15" lean-forward="false" selection-start-line="174" selection-start-column="4" selection-end-line="174" selection-end-column="15" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="789">
-          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="560">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1375">
+          <caret line="90" column="38" lean-forward="false" selection-start-line="90" selection-start-column="38" selection-end-line="90" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="42" column="64" lean-forward="false" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
+        <state relative-caret-position="572">
+          <caret line="192" column="60" lean-forward="false" selection-start-line="192" selection-start-column="60" selection-end-line="192" selection-end-column="60" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/dialogs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="967">
+          <caret line="199" column="27" lean-forward="false" selection-start-line="199" selection-start-column="27" selection-end-line="199" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
