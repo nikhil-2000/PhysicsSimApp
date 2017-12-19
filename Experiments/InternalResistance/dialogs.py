@@ -1,27 +1,58 @@
 import Experiments.ExperimentObjects as template
 import externalModules.pgu.pgu.gui as gui
 import Validation.validation as validation
-import Experiments.creatingGraphs as graph
+import Experiments.creatingGraphs as g
 from externalModules.pgu.pgu import html
-from Experiments.ResistivityOfAMetal.experiment import *
+from Experiments.InternalResistance.experiment import *
 import webbrowser
 import subprocess
+import matplotlib.pyplot as plt
 
 class GraphDialog(gui.Dialog):
-    def __init__(self,xPoints,yPoints):
-        gradient,yIntercept = graph.createGraph(xPoints,yPoints,"Current Length/cm","Resistance/Ω")
-        gradientLbl = gui.Label("Gradient:" + str(round(gradient,3)))
-        yInterceptLbl = gui.Label("Y-Intercept:" + str(round(yIntercept,3)))
+    def __init__(self,app):
+        self.app = app
+        firstGraph = self.app.tableArea.voltageCurrentGraph
+        secondGraph = self.app.tableArea.resistanceCurrentGraph
+        firstGraph.drawGraph()
+        secondGraph.drawGraph()
+
+        s1 = self.createSection(firstGraph)
+        s2 = self.createSection(secondGraph)
+
+        subTbl = gui.Table(width = 640)
+        subTbl.tr()
+        subTbl.td(s1)
+        subTbl.td(s2)
+
+
 
         tbl = gui.Table()
         tbl.tr()
-        tbl.td(gui.Image("graph.png"))
+        tbl.td(gui.Image("graphs.png"))
         tbl.tr()
-        tbl.td(gradientLbl)
-        tbl.tr()
-        tbl.td(yInterceptLbl)
+        tbl.td(subTbl)
 
-        gui.Dialog.__init__(self,gui.Label("Graph"),tbl)
+        gui.Dialog.__init__(self,gui.Label("Graphs"),tbl)
+
+    def createSection(self,graph):
+        graphDataTbl = gui.Table()
+        gradient = round(graph.gradient)
+        graphDataTbl.td(gui.Label("Gradient:"))
+        graphDataTbl.td(gui.Label(str(gradient)))
+        graphDataTbl.tr()
+        yInt = round(graph.yInt)
+        graphDataTbl.td(gui.Label("Y-Intercept:"))
+        graphDataTbl.td(gui.Label(str(yInt)))
+
+        tbl = gui.Table()
+        tbl.tr()
+        tbl.td(gui.Label(graph.graphName))
+        tbl.tr()
+        tbl.td(graphDataTbl)
+        return tbl
+
+
+
 
 class VariablesDialog(gui.Dialog):
     def __init__(self,defaultVals):
@@ -50,9 +81,9 @@ class VariablesDialog(gui.Dialog):
         intervalIVUserInput = gui.Input()
 
         #The units for each input
-        minIVUnitLbl = gui.Label("cm")
-        maxIVUnitLbl = gui.Label("cm")
-        intervalIVUnitLbl = gui.Label("cm")
+        minIVUnitLbl = gui.Label("Ω")
+        maxIVUnitLbl = gui.Label("Ω")
+        intervalIVUnitLbl = gui.Label("Ω")
 
         #Standard width and height for buttons in this dialog
         buttonHeight = 50
@@ -139,21 +170,21 @@ class InstructionsLinkDialog(gui.Dialog):
         #The method
         method = """<p>
          1. Set up the circuit as shown in the diagram<br>
-         2. Start with crocodile clip at your starting value, record the current<br>
-         3. Increase the length of the wire by moving the crocodile clip by your chosen interval<br>
-         4. Once taking 5 or more results, divide the voltage by the current for each length. This gives the resistance<br>
-         5. Now plot a graph for resistance(y-axis) against length(x-axis). The gradient will be equal to the resistance over the cross-sectional area"<br>
-         6. Solve for the resistivity</li>
+         2. Start with crocodile clip at your 0 resistance, record the current<br>
+         3. Increase the resistance by moving the crocodile clip<br>
+         4. Once taking 5 or more results, multiply the resistance by the current for each recording. This gives the voltage<br>
+         5. Now plot a graph for resistance(y-axis) against 1/Current(x-axis). The gradient will be the EMF and the internal resistance is the y-intercept"<br>
+         6. Also plot a 2nd graph for Voltage(y-axis) against Current(x-axis). The gradient will be the internal resistance and the y-intercept is the EMF<br>
          </p>
          """
         #Adding the method to the document which html
         doc = html.HTML(method,width = 600)
 
         #Links to the useful websites
-        link1 = "http://hyperphysics.phy-astr.gsu.edu/hbase/electric/resis.html"
-        link2 = "http://hyperphysics.phy-astr.gsu.edu/hbase/Tables/rstiv.html"
-        link3 = "http://papers.xtremepapers.com/CIE/Cambridge%20International%20A%20and%20AS%20Level/Physics%20(9702)/9702_nos_ps_9.pdf"
-        pdf = "file:///D:/My%20Docs/School/Computer%20Science/Programming%20Project/physicssimulationapp/resources/Methods/DeterminationOfResistivityOfAMetal.pdf"
+        link1 = "https://www.s-cool.co.uk/a-level/physics/resistance/revise-it/internal-resistance-emf-and-potential-difference"
+        link2 = "http://physicsnet.co.uk/a-level-physics-as-a2/current-electricity/electromotive-force-and-internal-resistance/"
+        link3 = "http://personal.psu.edu/bqw/physics_151/lab/lab151_5.html"
+        pdf = "file:///D:/My%20Docs/School/Computer%20Science/Programming%20Project/physicssimulationapp/resources/Methods/DeterminationOfTheInternalResistanceOfACell.pdf"
         chrome = "C:\Program Files (x86)\Google\Chrome\chrome.exe"
 
         #Linking websites to buttons
@@ -171,9 +202,9 @@ class InstructionsLinkDialog(gui.Dialog):
 
         btnWidth = 200
         btnHeight = 50
-        link1Btn = gui.Button("About Resistance and Resistivity",width = 2*btnWidth, height=btnHeight)
+        link1Btn = gui.Button("The Theory behind the Experiment",width = 2*btnWidth, height=btnHeight)
         link1Btn.connect(gui.CLICK,link1_cb)
-        link2Btn = gui.Button("Compare your Results",width = btnWidth, height=btnHeight)
+        link2Btn = gui.Button("More Theory",width = btnWidth, height=btnHeight)
         link2Btn.connect(gui.CLICK, link2_cb)
         link3Btn = gui.Button("Another Method",width = btnWidth, height=btnHeight)
         link3Btn.connect(gui.CLICK, link3_cb)
@@ -206,65 +237,54 @@ class Questions(gui.Dialog):
     def __init__(self,app):
         #Needs access to the app use open method
         self.app = app
+        tdStyle = {'padding':10}
+
         #The controlled variables
-        materialLbl = gui.Label("Material: Constantan")
-        CSALbl = gui.Label("Cross-Sectional Area: 2.01 x 10^-8")
-        voltageLbl = gui.Label("Voltage:"+str(voltage)+"V")
+        lbl1 = gui.Label("The equations below show the line the equation for the graphs")
+        lbl2 = gui.Label("Using the graphs, determine values for the EMF and internal resistance of this battery")
         dataTbl = gui.Table()
         dataTbl.tr()
-        dataTbl.td(materialLbl)
+        dataTbl.td(lbl1)
         dataTbl.tr()
-        dataTbl.td(CSALbl)
-        dataTbl.tr()
-        dataTbl.td(voltageLbl)
+        dataTbl.td(lbl2)
+
 
         #The equation needed
-        img = pygame.image.load("resistivityEquations.png")
-        img = pygame.transform.scale(img,(210,150))
+        img = pygame.image.load("internalResistanceEquations.png")
         equationImg = gui.Image(img)
-        img = pygame.image.load("resistivityDefinitions.png")
-        img = pygame.transform.scale(img,(210,150))
-        defintionsImg = gui.Image(img)
         imgTable = gui.Table()
         imgTable.td(equationImg)
-        imgTable.td(defintionsImg)
 
         #The question
-        questionLbl = gui.Label("Find the resistivity of constantan using the equation above and the gradient of the graph")
-        answerPrompt = gui.Label("Select one of the options below then click answer")
+        questionLbl = gui.Label("Enter the values for EMF and internal resistance")
         questionTable = gui.Table()
         questionTable.tr()
         questionTable.td(questionLbl)
         questionTable.tr()
-        questionTable.td(answerPrompt)
 
         #The Options for answers
-        optionsTbl = gui.Table()
-        optionsGroup = gui.Group()
-        correctAnswer = gui.Label("4.9 x 10^-7 Ωm")
-        correctAnswerCheckBox = gui.Radio(optionsGroup,value=1)
-        incorrectAnswer1 = gui.Label("6.7 x 10 ^ -11 Ωm")
-        incorrectAnswer1CheckBox = gui.Radio(optionsGroup,value=2)
-        incorrectAnswer2 = gui.Label("2.2 x 10 ^ -9 Ωm")
-        incorrectAnswer2CheckBox = gui.Radio(optionsGroup,value=3)
+        answerTbl = gui.Table()
+        EMFLbl = gui.Label("EMF")
+        EMFAns = gui.Input()
+        internalRLbl = gui.Label("Internal Resistance")
+        internalRAns = gui.Input()
+        answerTbl.tr()
+        answerTbl.td(EMFLbl,style = tdStyle)
+        answerTbl.td(EMFAns)
+        answerTbl.tr()
+        answerTbl.td(internalRLbl)
+        answerTbl.td(internalRAns,style = tdStyle)
 
-        tdStyle = {'padding':10}
-        optionsTbl.td(correctAnswer,style = tdStyle)
-        optionsTbl.td(incorrectAnswer1,style = tdStyle)
-        optionsTbl.td(incorrectAnswer2,style = tdStyle)
-        optionsTbl.tr()
-        optionsTbl.td(correctAnswerCheckBox)
-        optionsTbl.td(incorrectAnswer1CheckBox)
-        optionsTbl.td(incorrectAnswer2CheckBox)
+
 
         #Checking User Answers
         checkAnswerBtn = gui.Button("Check Answer",width=100,height=30)
 
         def checkAnswer():
-            if optionsGroup.value == 1:
-                dlg = gui.Dialog(gui.Label("Your answer was..."),gui.Label("Correct. Well Done"))
+            if EMFAns.value == str(EMF) and internalRAns.value == str(internalResistance):
+                dlg = gui.Dialog(gui.Label("Your answers were..."),gui.Label("Correct. Well Done"))
             else:
-                dlg = gui.Dialog(gui.Label("Your answer was..."),gui.Label("Wrong. Try Again"))
+                dlg = gui.Dialog(gui.Label("Your answers were..."),gui.Label("Wrong. Try Again"))
 
             self.app.open(dlg)
 
@@ -279,7 +299,7 @@ class Questions(gui.Dialog):
         tbl.tr()
         tbl.td(questionTable,style = tdStyle)
         tbl.tr()
-        tbl.td(optionsTbl,style = tdStyle)
+        tbl.td(answerTbl,style = tdStyle)
         tbl.tr()
         tbl.td(checkAnswerBtn,style = tdStyle)
 
@@ -289,9 +309,9 @@ class Questions(gui.Dialog):
 class OptionsDialog(gui.Dialog):
     def __init__(self,app):
         self.app = app
-        menuBtn = gui.Button("Back to Menu")
+        menuBtn = gui.Button("Back to Menu",width = 200,height=50)
 
-        restartBtn = gui.Button("Restart Experiment")
+        restartBtn = gui.Button("Restart Experiment",width = 200,height=50)
 
         def restartExperimentBtn_cb():
             self.app.restart()

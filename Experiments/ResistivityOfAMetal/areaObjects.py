@@ -3,6 +3,7 @@ from Experiments.ResistivityOfAMetal.dialogs import *
 from Experiments.ResistivityOfAMetal.experiment import *
 import resources.Colour as colours
 from resources.Equipment.ElectricalComponents import *
+from Experiments.ResistivityOfAMetal import dialogs as dlgs
 
 
 class TableArea(template.TableAreaTemplate):
@@ -77,17 +78,23 @@ class MenuArea(template.MenuAreaTemplate):
 
         self.variablesBtn.connect(gui.CLICK,variables_cb)
 
-        def constant_cb():
-            constantsDlg = ConstantsDialog()
-            self.open(constantsDlg)
+        def question_cb():
+            qDlg = Questions(self.app)
+            self.open(qDlg)
 
-        self.constantsBtn.connect(gui.CLICK,constant_cb)
+        self.questionBtn.connect(gui.CLICK,question_cb)
 
         def instructions_cb():
             instructionsDlg = InstructionsLinkDialog()
             self.open(instructionsDlg)
 
         self.instructionBtn.connect(gui.CLICK,instructions_cb)
+
+        def optionBtn_cb():
+            dlg = dlgs.OptionsDialog(self.app)
+            self.app.open(dlg)
+
+        self.optionsBtn.connect(gui.CLICK, optionBtn_cb)
 
 class AnimationEngine(template.AnimationEngineTemplate):
     def __init__(self, disp):
@@ -114,6 +121,16 @@ class AnimationEngine(template.AnimationEngineTemplate):
         self.components.add(self.constantanWire)
 
         self.wireColour = list(colours.RED)
+
+        voltmeterLabel = DiagramLabel(self.voltmeter.centerX,self.voltmeter.rect.top - 30,self.voltmeter,True,True,"Voltmeter")
+        ammeterLabel = DiagramLabel(self.ammeter.rect.right + 70, self.ammeter.centerY,self.ammeter,False,True,"Ammeter")
+        batteryLabel = DiagramLabel(self.battery.centerX,self.battery.rect.bottom+ 30,self.battery,True,False,"Battery")
+        wireLabel = DiagramLabel(self.constantanWire.centerX,self.constantanWire.centerY+30,self.constantanWire,True,False,"Constantan Wire")
+        self.labels = []
+        self.labels.append(voltmeterLabel)
+        self.labels.append(ammeterLabel)
+        self.labels.append(batteryLabel)
+        self.labels.append(wireLabel)
 
         self.endPointCalculated = False
 
@@ -160,7 +177,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
 
             points = []
             points.append((self.circuitLeft,self.voltmeter.centerY))                    # Left Middle
-            points.append((self.circuitLeft, self.circuitBottom))                       #Bottome Left
+            points.append((self.circuitLeft, self.circuitBottom))                       #Bottom Left
             points.append((self.constantanWire.rect.left, self.constantanWire.centerY)) #MainWireLeft
             pygame.draw.lines(self.disp,self.wireColour,False,points,3)
 
@@ -180,6 +197,10 @@ class AnimationEngine(template.AnimationEngineTemplate):
             points.append((self.circuitRight,self.voltmeter.centerY))
             pygame.draw.lines(self.disp,self.wireColour,False,points,3)
 
+            if self.app.showLabels:         #If the user wants to see the labels
+                for label in self.labels:
+                    label.draw(self.disp)   #Draw them onto the screen
+
 
             if self.app.animationRunning and not(self.isPaused) and not(self.app.experimentFinished):
                 if not (self.endPointCalculated):
@@ -195,7 +216,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
                     self.sendValues(current, resistance)    #Add values to table and graph
                     self.currentLength += self.app.interval #Increment to the next length to be recorded at
 
-                if self.crocSlideX <= self.endingPoint:     #If it hasn't hit the end point
+                if self.crocSlideX < self.endingPoint:     #If it hasn't hit the end point
                     self.crocSlideX += 1                    #Slide Croc Clip by one each time
                 else:                                       #Otherwise
                     self.app.experimentFinished = True      #End experiment
@@ -210,4 +231,39 @@ class AnimationEngine(template.AnimationEngineTemplate):
 
 
             return (rect,)  #Give back are that has been drawn on
+
+
+pygame.font.init()
+LblFont = pygame.font.SysFont("Helvetica",20,True)
+class DiagramLabel():
+    def __init__(self,x,y,target:pygame.sprite.Sprite,isVertical,isPositive,text):
+        self.LblText = LblFont.render(text,True,colour.BLACK)   #Text for Label
+        self.textRect = self.LblText.get_rect()
+        self.textRect.center = x,y                              #Setting Label Position
+        self.isVertical = isVertical                            #True(Up/Down) False(Left/Right)
+        self.isPositive = isPositive                            #True(x/y-coordinate increasing) False(x/y-Coordinate Decreasing)
+        self.target = target                                    #What is being labelled
+
+    def draw(self,screen):
+        screen.blit(self.LblText,self.textRect)     #Draw the Label
+        lineWidth = 3
+        #Setting the start points and end points of the line depending on the variables self.isVertical and self.isPositive
+        if self.isVertical:
+            if self.isPositive:
+                startPoint = (self.textRect.center[0],self.textRect.bottom)
+                endPoint = (self.target.rect.center[0],self.target.rect.top)
+            else:
+                startPoint = (self.textRect.center[0], self.textRect.top)
+                endPoint = (self.target.rect.center[0], self.target.rect.bottom)
+        else:
+            if self.isPositive:
+                startPoint = (self.textRect.left,self.textRect.center[1])
+                endPoint = (self.target.rect.right,self.target.rect.center[1])
+            else:
+                startPoint = (self.textRect.right, self.textRect.center[1])
+                endPoint = (self.target.rect.left, self.target.rect.center[1])
+
+        pygame.draw.line(screen, colour.BLACK, startPoint, endPoint, lineWidth) #Draw the line from label to target
+
+
 

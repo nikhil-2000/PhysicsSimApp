@@ -1,6 +1,5 @@
 import os
 import sys
-
 sys.path.append(os.path.abspath('..'))
 
 # The previous lines were taken from https://stackoverflow.com/questions/10272879/how-do-i-import-a-python-script-from-a-sibling-directory
@@ -61,13 +60,13 @@ class MenuAreaTemplate(gui.Table):
 
         self.pauseExperimentBtn = createButton("Pause Experiment")
 
-        self.restartExperimentBtn = createButton("Restart Experiment")
+        self.toggleLblsBtn = createButton("Show Labels")
 
         self.instructionBtn = createButton("Instructions/Links")
 
-        self.constantsBtn = createButton("Constants")
+        self.questionBtn = createButton("Questions")
 
-        self.menuBtn = createButton("Back to Menu")
+        self.optionsBtn = createButton("Options")
 
         # The buttons' function are defined here
 
@@ -96,26 +95,27 @@ class MenuAreaTemplate(gui.Table):
 
         self.pauseExperimentBtn.connect(gui.CLICK, pauseExperiment_cb)
 
-        def restartExperimentBtn_cb():
-            self.app.restart()
+        def toggleLblsBtnBtn_cb():
+            self.app.animationArea.save_background()
+            self.app.showLabels = not(self.app.showLabels)
+            if self.app.showLabels:
+                self.toggleLblsBtn.value = "Hide Labels"
+            else:
+                self.toggleLblsBtn.value = "Show Labels"
 
-        self.restartExperimentBtn.connect(gui.CLICK, restartExperimentBtn_cb)
+        self.toggleLblsBtn.connect(gui.CLICK, toggleLblsBtnBtn_cb)
 
-        def menuBtn_cb():
-            import MainMenu as m
-            m.run()
 
-        self.menuBtn.connect(gui.CLICK, menuBtn_cb)
 
         # Adding the buttons to the table
         self = addBtnToTbl(self, self.graphBtn)
         self = addBtnToTbl(self, self.variablesBtn)
         self = addBtnToTbl(self, self.startExperimentBtn)
         self = addBtnToTbl(self, self.pauseExperimentBtn)
-        self = addBtnToTbl(self, self.restartExperimentBtn)
+        self = addBtnToTbl(self, self.toggleLblsBtn)
         self = addBtnToTbl(self, self.instructionBtn)
-        self = addBtnToTbl(self, self.constantsBtn)
-        self = addBtnToTbl(self, self.menuBtn)
+        self = addBtnToTbl(self, self.questionBtn)
+        self = addBtnToTbl(self, self.optionsBtn)
 
 
 class ExperimentTemplate(gui.Desktop):
@@ -135,6 +135,7 @@ class ExperimentTemplate(gui.Desktop):
 
         self.variablesInputted = False
         self.animationRunning = False
+        self.showLabels = False
         self.experimentFinished = False
 
         self.minIV = None
@@ -185,7 +186,7 @@ class AnimationEngineTemplate(object):
         self.clock = timer.Clock()
         self.isPaused = False
 
-    def render(self, dest, rect):
+    def render(self, rect):
         # Drawing code should go here
 
         return (rect,)

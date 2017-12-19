@@ -16,6 +16,7 @@ class Voltmeter(pygame.sprite.Sprite):
         self.centerY = self.rect.center[1]
 
 
+
 class Ammeter(pygame.sprite.Sprite):
     def __init__(self, x, y, radius):
         super(Ammeter, self).__init__()
@@ -52,5 +53,19 @@ class ConstantanWire(pygame.sprite.Sprite):
         self.rect.center = x,y
         self.centerX = self.rect.center[0]
         self.centerY = self.rect.center[1]
+
+
+class Resistor(pygame.sprite.Sprite):
+    def __init__(self,x,y,width,height):
+        super(Resistor, self).__init__()
+
+
+        self.rect = pygame.Rect(x,y,width,height)
+        self.rect.center = x,y
+        self.centerX = self.rect.center[0]
+        self.centerY = self.rect.center[1]
+
+    def draw(self,screen):
+        pygame.draw.rect(screen,colour.BLACK,self.rect,1)
 
 

@@ -31,9 +31,6 @@ class Experiment(template.ExperimentTemplate):
 
         self.tableArea = areaObjects.TableArea(screen.get_width(), 200, self)
 
-        self.variablesInputted = False
-        self.animationRunning = False
-        self.experimentFinished = False
 
         topTbl = gui.Table()
         topTbl.tr()
@@ -52,8 +49,6 @@ class Experiment(template.ExperimentTemplate):
         run()
 
 
-
-
 def run():
     disp = pygame.display.set_mode((900, 600))
     pygame.display.set_caption("Determination of the Resistivity of a Metal")
@@ -64,3 +59,4 @@ def run():
 
 if __name__ == '__main__':
     run()
+
