@@ -21,15 +21,17 @@ def createButton(imgName, text):
         main.tr()
         main.td(gui.Label(each))
 
-    return gui.Button(main, height=130, width=300)
+    return gui.Button(main, height=130, width=250)
 
 
 def generateLayout(app):
     pygame.font.init()
-    font = pygame.font.SysFont("comicsansms", 60)
+    font = pygame.font.SysFont("cambria", 60)
     text = font.render("Main Menu", True, (0, 128, 0))
 
-    menuTable = gui.Table(width=1000, height=600)
+    menuTable = gui.Table(width=800, height=600)
+	
+    btnStyle = {"padding":10}
 
     menuTable.tr()
     menuTable.td(gui.Label(""))
@@ -42,7 +44,7 @@ def generateLayout(app):
         e.run()
 
     btn1 = createButton(resourceManager.atomImg, "Determination of the Resistivity of a Metal")
-    menuTable.td(btn1)
+    menuTable.td(btn1,style = btnStyle)
     btn1.connect(gui.CLICK, btn1_cb)
 
     def btn2_cb():
@@ -50,7 +52,7 @@ def generateLayout(app):
         e.run()
 
     btn2 = createButton(resourceManager.atomImg, "Determination of the Internal Resistance of a Cell")
-    menuTable.td(btn2)
+    menuTable.td(btn2,style = btnStyle)
     btn2.connect(gui.CLICK, btn2_cb)
 
     def btn3_cb():
@@ -58,7 +60,7 @@ def generateLayout(app):
         e.run()
 
     btn3 = createButton(resourceManager.atomImg, "Estimation of Absolute Zero by Use of the Gas laws,")
-    menuTable.td(btn3)
+    menuTable.td(btn3,style = btnStyle)
     btn3.connect(gui.CLICK,btn3_cb)
 
     menuTable.tr()
@@ -68,7 +70,7 @@ def generateLayout(app):
         e.run()
 
     btn4 = createButton(resourceManager.atomImg, "Investigation of Newton's 2nd Law")
-    menuTable.td(btn4)
+    menuTable.td(btn4,style = btnStyle)
     btn4.connect(gui.CLICK,btn4_cb)
 
 
@@ -77,7 +79,7 @@ def generateLayout(app):
         e.run()
 
     btn5 = createButton(resourceManager.atomImg, "Investigation of Radioactive Decay")
-    menuTable.td(btn5)
+    menuTable.td(btn5,style = btnStyle)
     btn5.connect(gui.CLICK,btn5_cb)
 
     def btn6_cb():
@@ -85,7 +87,7 @@ def generateLayout(app):
         e.run()
 
     btn6 = createButton(resourceManager.atomImg, "Measurement of g by free-fall")
-    menuTable.td(btn6)
+    menuTable.td(btn6,style = btnStyle)
     btn6.connect(gui.CLICK,btn6_cb)
 
     menuTable.tr()
@@ -95,7 +97,7 @@ def generateLayout(app):
         e.run()
 
     btn7 = createButton(resourceManager.atomImg, "Measurement of the Specific Heat Capacity for a Solid")
-    menuTable.td(btn7,col= 1)
+    menuTable.td(btn7,col= 1,style = btnStyle)
     btn7.connect(gui.CLICK,btn7_cb)
 
     return menuTable
@@ -104,8 +106,8 @@ def generateLayout(app):
 def run():
     pygame.init()  # Intialise Pygame Module
     pygame.font.init()
-    app = gui.Desktop(width=1000, height=600)  # Sets the size and type of app
-    app.connect(gui.QUIT, pygame.quit, None)  # Adds functionality to close button to quit app
+    app = gui.Desktop(width=900, height=600)  # Sets the size and type of app
+    app.connect(gui.QUIT, pygame.quit)  # Adds functionality to close button to quit app
 
     app.run(generateLayout(app))
 

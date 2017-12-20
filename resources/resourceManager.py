@@ -23,4 +23,3 @@ internalResistanceDiagram = appresources.get_path("InternalResistanceDiagram.png
 resistivityOfAMetalDiagram = appresources.get_path("ResistivityOfAMetalDiagram.png")
 rulerImg = appresources.get_path("ruler.png")
 voltmeterImg = appresources.get_path("voltmeter.png")
-

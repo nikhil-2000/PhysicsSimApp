@@ -15,7 +15,8 @@ import matplotlib.pyplot as plt
 from externalModules.pgu.pgu import gui, timer
 
 from resources.Colour import *
-import resources.resourceManager as resM 
+import resources.resourceManager as resM
+
 
 
 class DrawingArea(gui.Widget):#Object for where the pygame animation will happen
@@ -139,7 +140,7 @@ class ConstantsDlg(gui.Dialog):
 class GraphDlg(gui.Dialog):
     def __init__(self,experimentDone):
         if experimentDone:
-            msg = gui.Image(resM.graphImg)
+            msg = gui.Image(pygame.image.load("graphImg.png"))
         else:
             msg = gui.Label("Complete the experiment first")
         gui.Dialog.__init__(self,gui.Label("Graph"),msg)
@@ -195,7 +196,7 @@ class MainGui(gui.Desktop):
         inputDlg = InputDlg()
 
         def dialog_cb():
-            inputDlg.open()
+            self.open(inputDlg)
             
         varBtn = gui.Button("Variables", height = buttonHeight, width = buttonWidth)
         varBtn.connect(gui.CLICK, dialog_cb)
@@ -236,7 +237,7 @@ class MainGui(gui.Desktop):
 
         def constantsBtn_cb():
             constantsDlg = ConstantsDlg()
-            constantsDlg.open()
+            self.open(constantsDlg)
 
         constantsBtn = gui.Button("Constants",height = buttonHeight, width = buttonWidth)
         constantsBtn.connect(gui.CLICK, constantsBtn_cb)
@@ -245,7 +246,7 @@ class MainGui(gui.Desktop):
         graphBtn = gui.Button("Show Graph", height = buttonHeight, width = buttonWidth)
         def graphBtn_cb():
             dlg = GraphDlg(self.engine.experimentDone)
-            dlg.open()
+            self.open(dlg)
 
 
             #Run a function which shows the graph and hides the diagram
@@ -301,7 +302,7 @@ class MainGui(gui.Desktop):
         tbl.td(gui.Label("Resistance()"),style={'border':1})
 
 
-    def open(self, dlg, pos=None):
+    def open(self, dlg: object, pos: object = None) -> object:
         # Gray out the game area before showing the popup
 ##        rect = self.gameArea.get_abs_rect()
 ##        dark = pygame.Surface(rect.size).convert_alpha()
