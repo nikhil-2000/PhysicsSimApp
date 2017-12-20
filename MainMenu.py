@@ -1,7 +1,4 @@
-import os
-import sys
 
-sys.path.append(os.path.abspath('..'))
 
 # The previous lines were taken from https://stackoverflow.com/questions/10272879/how-do-i-import-a-python-script-from-a-sibling-directory
 # It explained how to access modules in sibling directories

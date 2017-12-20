@@ -1,9 +1,9 @@
-import resources.resourceManager as resM
-from Experiments.ResistivityOfAMetal.dialogs import *
-from Experiments.ResistivityOfAMetal.experiment import *
+from Experiments.ResistivityOfAMetal import experiment as exp
 import resources.Colour as colours
 from resources.Equipment.ElectricalComponents import *
 from Experiments.ResistivityOfAMetal import dialogs as dlgs
+from Experiments import ExperimentObjects as template
+import externalModules.pgu.pgu.gui as gui
 
 
 class TableArea(template.TableAreaTemplate):
@@ -47,7 +47,7 @@ class TableArea(template.TableAreaTemplate):
 class MenuArea(template.MenuAreaTemplate):
     def __init__(self,width,height,app):
         super(MenuArea, self).__init__(width,height,app)
-        self.variablesDlg = VariablesDialog(["10","100","10"])
+        self.variablesDlg = dlgs.VariablesDialog(["10","100","10"])
         self.setupButtons()
 
 
@@ -58,7 +58,7 @@ class MenuArea(template.MenuAreaTemplate):
             if self.app.experimentFinished:
                 xPoints = self.app.tableArea.xPoints
                 yPoints = self.app.tableArea.yPoints
-                graphDlg = GraphDialog(xPoints,yPoints)
+                graphDlg = dlgs.GraphDialog(xPoints,yPoints)
                 self.open(graphDlg)
             else:
                 errorDlg = template.ErrorDlg("Finish the Experiment")
@@ -79,13 +79,13 @@ class MenuArea(template.MenuAreaTemplate):
         self.variablesBtn.connect(gui.CLICK,variables_cb)
 
         def question_cb():
-            qDlg = Questions(self.app)
+            qDlg = dlgs.Questions(self.app)
             self.open(qDlg)
 
         self.questionBtn.connect(gui.CLICK,question_cb)
 
         def instructions_cb():
-            instructionsDlg = InstructionsLinkDialog()
+            instructionsDlg = dlgs.InstructionsLinkDialog()
             self.open(instructionsDlg)
 
         self.instructionBtn.connect(gui.CLICK,instructions_cb)
@@ -99,7 +99,7 @@ class MenuArea(template.MenuAreaTemplate):
 class AnimationEngine(template.AnimationEngineTemplate):
     def __init__(self, disp):
         super(AnimationEngine, self).__init__(disp)
-        self.app = Experiment(self.disp)
+        self.app = exp.Experiment(self.disp)
         self.app.engine = self
         self.components = pygame.sprite.Group()
         self.rect = self.app.get_render_area()
@@ -135,7 +135,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
         self.endPointCalculated = False
 
     def setExperimentVariables(self):
-        self.endingPoint = self.constantanWire.rect.left + ((self.app.maxIV/maxRange) * self.constantanWire.rect.width)
+        self.endingPoint = self.constantanWire.rect.left + ((self.app.maxIV/exp.maxRange) * self.constantanWire.rect.width)
         self.currentLength = self.app.minIV
 
 
@@ -143,8 +143,8 @@ class AnimationEngine(template.AnimationEngineTemplate):
         if self.currentLength == 0:
             return 0, 0
 
-        resistance = (resistivity * self.currentLength)/ (100 * csa)
-        current = voltage / resistance
+        resistance = (exp.resistivity * self.currentLength)/ (100 * exp.csa)
+        current = exp.voltage / resistance
 
         return current, resistance
 
@@ -209,7 +209,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
                     self.endPointCalculated = True
 
                 #Calculates where on the wire the next recording should be taken
-                nextRecordPoint = self.constantanWire.rect.left + (self.constantanWire.rect.width * (self.currentLength)// maxRange)
+                nextRecordPoint = self.constantanWire.rect.left + (self.constantanWire.rect.width * (self.currentLength)// exp.maxRange)
                 if self.crocSlideX == nextRecordPoint:      #If on recording point
                     self.app.animationArea.save_background()
                     current, resistance = self.genValues()  #Get values for current and resistance

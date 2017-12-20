@@ -1,12 +1,15 @@
+import sys
+import os
+
+sys.path.append("../../")
+
 import Experiments.ExperimentObjects as template
 import externalModules.pgu.pgu.gui as gui
 import Validation.validation as validation
-import Experiments.creatingGraphs as g
 from externalModules.pgu.pgu import html
-from Experiments.InternalResistance.experiment import *
 import webbrowser
-import subprocess
-import matplotlib.pyplot as plt
+from Experiments.InternalResistance import experiment as exp
+
 
 class GraphDialog(gui.Dialog):
     def __init__(self,app):
@@ -67,7 +70,7 @@ class VariablesDialog(gui.Dialog):
         #Explaining the paremeters of the input dialog
         explainLbl = gui.Label("Input your variables below")
         nOfResultsLbl = gui.Label("Have between 5-10 recordings")
-        rangeStr = str("The range is " + str(minRange) + " to " + str(maxRange))
+        rangeStr = str("The range is " + str(exp.minRange) + " to " + str(exp.maxRange))
         rangeLbl = gui.Label(rangeStr)
 
         #THe labels for each input
@@ -100,7 +103,7 @@ class VariablesDialog(gui.Dialog):
             interval = intervalIVUserInput.value
 
             #Runs through validation algorithm
-            self.isValidated,error = validation.validateInputs(minIV,maxIV,interval,maxRange,minRange)
+            self.isValidated,error = validation.validateInputs(minIV,maxIV,interval,exp.maxRange,exp.minRange)
             if not self.isValidated:#If they aren't valid
                 # Show error
                 errorDlg = template.ErrorDlg(error)
@@ -250,8 +253,7 @@ class Questions(gui.Dialog):
 
 
         #The equation needed
-        img = pygame.image.load("internalResistanceEquations.png")
-        equationImg = gui.Image(img)
+        equationImg = gui.Image("internalResistanceEquations.png")
         imgTable = gui.Table()
         imgTable.td(equationImg)
 
@@ -281,7 +283,7 @@ class Questions(gui.Dialog):
         checkAnswerBtn = gui.Button("Check Answer",width=100,height=30)
 
         def checkAnswer():
-            if EMFAns.value == str(EMF) and internalRAns.value == str(internalResistance):
+            if EMFAns.value == str(exp.EMF) and internalRAns.value == str(exp.internalResistance):
                 dlg = gui.Dialog(gui.Label("Your answers were..."),gui.Label("Correct. Well Done"))
             else:
                 dlg = gui.Dialog(gui.Label("Your answers were..."),gui.Label("Wrong. Try Again"))
