@@ -74,7 +74,6 @@ class MenuAreaTemplate(gui.Table):
             if self.variablesDlg.isValidated:  # If the user inputs are valid
                 if not (self.app.animationRunning):  # And if the animation hasn't started yet
                     self.app.animationRunning = True  # Tell the rest of the program that the animation can now run
-                    self.app.tableArea.setup()
                 else:
                     errorDlg = ErrorDlg("Experiment is already running")
                     errorDlg.open()

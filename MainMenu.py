@@ -56,7 +56,7 @@ def generateLayout(app):
         import Experiments.EstimateAbsoluteZero.experiment as e
         e.run()
 
-    btn3 = createButton(resourceManager.atomImg, "Estimation of Absolute Zero by Use of the Gas laws,")
+    btn3 = createButton(resourceManager.atomImg, "Estimation of Absolute Zero by Use of the Gas Laws")
     menuTable.td(btn3,style = btnStyle)
     btn3.connect(gui.CLICK,btn3_cb)
 
