@@ -12,16 +12,17 @@ class Circle:
         self.radius = 20
         self.x = random.randint(self.radius, 800-self.radius)
         self.y = random.randint(self.radius, 600-self.radius)
-        self.speedx = 0.5*(random.random()+1.0)
-        self.speedy = 0.5*(random.random()+1.0)
+        self.speedx = 0.1 #0.5*(random.random()+1.0)
+        self.speedy = 0.1#0.5*(random.random()+1.0)
 ##        self.mass = math.sqrt(self.radius)
-for x in range(20):
+for x in range(2):
     Circles.append(Circle())
 
 def CircleCollide(C1,C2):
     C1Speed = math.sqrt((C1.speedx**2)+(C1.speedy**2))
     XDiff = -(C1.x-C2.x)
     YDiff = -(C1.y-C2.y)
+
     if XDiff > 0:
         if YDiff > 0:
             Angle = math.degrees(math.atan(YDiff/XDiff))
@@ -72,7 +73,7 @@ def CollisionDetect():
 def Draw():
     Surface.fill((25,0,0))
     for Circle in Circles:
-        pygame.draw.circle(Surface,(0,0,150),(int(Circle.x),int(600-Circle.y)),Circle.radius)
+        pygame.draw.circle(Surface,(0,255,255),(int(Circle.x),int(600-Circle.y)),Circle.radius)
     pygame.display.flip()
 def GetInput():
     keystate = pygame.key.get_pressed()

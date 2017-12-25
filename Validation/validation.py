@@ -38,7 +38,7 @@ def validateInputs (minIV,maxIV,interval,maxRange,minRange):
         return False,error
 
     if minIV < minRange or maxIV > maxRange:  #Checks that both numbers are within the range
-        error = "Both the minimum and maximum should be between 0-100"
+        error = "Both the minimum and maximum should be between"+str(minRange)+"-"+str(maxRange)
         return False,error
 
     if maxIV * interval == 0:

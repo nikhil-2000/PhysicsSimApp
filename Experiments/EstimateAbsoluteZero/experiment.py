@@ -12,8 +12,8 @@ EMF = 4.5
 internalResistance = 20
 
 
-minRange = 0
-maxRange = 100
+minRange = 10
+maxRange = 95
 
 class Experiment(template.ExperimentTemplate):
     def __init__(self,screen):

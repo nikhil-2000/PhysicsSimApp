@@ -7,7 +7,7 @@ sys.path.append(os.path.abspath('..'))
 
 import pygame
 from externalModules.pgu.pgu import gui, timer
-
+import resources.Colour as colour
 
 class ErrorDlg(gui.Dialog):
     def __init__(self, msg):
@@ -202,8 +202,7 @@ class AnimationEngineTemplate(object):
 
         while not done:
             for event in pygame.event.get():
-                quitBool = (event.type == pygame.QUIT) or (
-                        event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE)
+                quitBool = (event.type == pygame.QUIT) or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE)
                 if quitBool:
                     done = True
                 else:
@@ -229,6 +228,70 @@ class AnimationEngineTemplate(object):
             pygame.time.wait(10)
 
         pygame.quit()
+
+
+pygame.font.init()
+LblFont = pygame.font.SysFont("Helvetica",20,True)
+class DiagramLabel():
+    def __init__(self,x,y,target,isVertical,isPositive,text):
+        self.LblText = LblFont.render(text,True,colour.BLACK)   #Text for Label
+        self.textRect = self.LblText.get_rect()
+        self.textRect.center = x,y                              #Setting Label Position
+        self.isVertical = isVertical                            #True(Up/Down) False(Left/Right)
+        self.isPositive = isPositive                            #True(x/y-coordinate increasing) False(x/y-Coordinate Decreasing)
+        self.target = target                                    #What is being labelled
+
+    def draw(self,screen):
+        screen.blit(self.LblText,self.textRect)     #Draw the Label
+        lineWidth = 3
+        #Setting the start points and end points of the line depending on the variables self.isVertical and self.isPositive
+        if self.isVertical:
+            if self.isPositive:
+                startPoint = (self.textRect.center[0],self.textRect.bottom)
+                endPoint = (self.target.rect.center[0],self.target.rect.top)
+            else:
+                startPoint = (self.textRect.center[0], self.textRect.top)
+                endPoint = (self.target.rect.center[0], self.target.rect.bottom)
+        else:
+            if self.isPositive:
+                startPoint = (self.textRect.left,self.textRect.center[1])
+                endPoint = (self.target.rect.right,self.target.rect.center[1])
+            else:
+                startPoint = (self.textRect.right, self.textRect.center[1])
+                endPoint = (self.target.rect.left, self.target.rect.center[1])
+
+        pygame.draw.line(screen, colour.BLACK, startPoint, endPoint, lineWidth) #Draw the line from label to target
+
+class DiagramLabel2():
+    def __init__(self,x,y,target,isVertical,isPositive,text):
+        self.LblText = LblFont.render(text,True,colour.BLACK)   #Text for Label
+        self.textRect = self.LblText.get_rect()
+        self.textRect.center = x,y                              #Setting Label Position
+        self.isVertical = isVertical                            #True(Up/Down) False(Left/Right)
+        self.isPositive = isPositive                            #True(x/y-coordinate increasing) False(x/y-Coordinate Decreasing)
+        self.target = target                                    #What is being labelled
+
+    def draw(self,screen):
+        screen.blit(self.LblText,self.textRect)     #Draw the Label
+        lineWidth = 3
+        #Setting the start points and end points of the line depending on the variables self.isVertical and self.isPositive
+        if self.isVertical:
+            if self.isPositive:
+                startPoint = (self.textRect.center[0],self.textRect.bottom)
+                endPoint = (self.target.rect.center[0],self.target.top)
+            else:
+                startPoint = (self.textRect.center[0], self.textRect.top)
+                endPoint = (self.target.center[0], self.target.bottom)
+        else:
+            if self.isPositive:
+                startPoint = (self.textRect.left,self.textRect.center[1])
+                endPoint = (self.target.right,self.target.center[1])
+            else:
+                startPoint = (self.textRect.right, self.textRect.center[1])
+                endPoint = (self.target.left, self.target.center[1])
+
+        pygame.draw.line(screen, colour.BLACK, startPoint, endPoint, lineWidth) #Draw the line from label to target
+
 
 
 def createButton(text):

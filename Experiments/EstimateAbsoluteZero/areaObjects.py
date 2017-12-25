@@ -65,14 +65,17 @@ class MenuArea(template.MenuAreaTemplate):
         self.graphBtn.connect(gui.CLICK,graph_cb)
 
         def variables_cb():
-            self.variablesDlg.open()
-            if self.variablesDlg.isValidated:
-                #Updates the values of the Experiment Object
-                self.app.variablesInputted = True
-                self.app.minIV = self.variablesDlg.minIVValue
-                self.app.maxIV = self.variablesDlg.maxIVValue
-                self.app.interval = self.variablesDlg.intervalValue
-                self.app.tableArea.setup()
+            if not self.app.variablesInputted:
+                self.variablesDlg.open()
+                if self.variablesDlg.isValidated:
+                    #Updates the values of the Experiment Object
+                    self.app.variablesInputted = True
+                    self.app.minIV = self.variablesDlg.minIVValue
+                    self.app.maxIV = self.variablesDlg.maxIVValue
+                    self.app.interval = self.variablesDlg.intervalValue
+                    self.app.tableArea.setup()
+            else:
+                self.app.open(template.ErrorDlg("You have already inputted variables."))
 
         self.variablesBtn.connect(gui.CLICK,variables_cb)
 
@@ -102,8 +105,9 @@ class AnimationEngine(template.AnimationEngineTemplate):
         self.rect = self.app.get_render_area()
 
         self.beaker = pEquip.WaterBeaker(self.rect.centerx,self.rect.centery,self.rect.height - 50)
-        self.pressureGauge = pEquip.PressureGauge(self.beaker.rect.right - 42,self.rect.centery,30)
+        self.pressureGauge = pEquip.PressureGauge(self.beaker.rect.right - 63,self.rect.centery,50)
         self.thermometer = pEquip.Thermometer(self.beaker.rect.left + 55,self.rect.centery,300)
+        self.bulbBeaker = pEquip.BulbBeaker()
 
 
         self.equipment = pygame.sprite.Group()
@@ -113,22 +117,25 @@ class AnimationEngine(template.AnimationEngineTemplate):
 
 
         self.isSetup = False
+        self.endTempCalculated = False
 
 
 
     def setExperimentVariables(self):
         self.currentTemp = self.app.minIV
+        self.pressure = self.genValues()
+        self.nextRecordTemp = self.app.minIV
         self.finalTemp = self.app.maxIV
         self.intervalTemp = self.app.interval
+        self.nextRecordTemp = self.app.minIV + self.intervalTemp
         self.thermometer.setupMarker(self.disp,self.currentTemp)
-
+        self.bulbBeaker.updateSpeeds(self.currentTemp,self.thermometer.minTemp,self.thermometer.maxTemp)
+        self.currentIndex = 0
 
     def genValues(self):
+        return (0.344709897611) * self.currentTemp + 94.106
 
-        current = exp.EMF / (self.currentResistance + exp.internalResistance)
-        voltage = -current*exp.internalResistance + exp.EMF
 
-        return current, voltage
 
     def sendValues(self,pressure):
         self.app.tableArea.addToTable(pressure)
@@ -138,80 +145,51 @@ class AnimationEngine(template.AnimationEngineTemplate):
             self.disp.fill(colours.BLUE)    # Background Colour to complement menu colour
             self.equipment.draw(self.disp)
 
+            if not self.isPaused:
+                self.bulbBeaker.moveAtoms()
+
+            self.bulbBeaker.drawAtoms(self.disp)
+
+
             if not self.isSetup and self.app.variablesInputted:
                 self.setExperimentVariables()
+                self.isSetup = True
+
+
+
+
+
+            if self.app.animationRunning and not (self.isPaused) and not (self.app.experimentFinished):
+                #self.bulbBeaker.updateSpeeds(self.currentTemp, self.thermometer.minTemp, self.thermometer.maxTemp)
+                self.pressure = self.genValues()  # Get values for current and resistance
+                if not (self.endTempCalculated):
+                    # Sets up the experiment if it hasn't happened yet
+                    self.setExperimentVariables()
+                    self.endTempCalculated = True
+
+
+                # Calculates where on the wire the next recording should be taken
+                nextRecordPoint = self.app.tableArea.xPoints[self.currentIndex]
+                if self.currentTemp == nextRecordPoint:  # If on recording point
+                    self.app.animationArea.save_background()
+                    self.sendValues(self.pressure)  # Add values to table and graph
+                    if self.currentTemp != self.finalTemp:
+                        self.currentIndex += 1
+
+                if self.currentTemp <= self.finalTemp:
+                    self.currentTemp = round(self.currentTemp + 0.2,1)
+                else:
+                    self.app.experimentFinished = True
 
             if self.app.variablesInputted:
                 self.thermometer.drawMarker(self.disp,self.currentTemp)
+                self.pressureGauge.drawPointer(self.disp,self.pressure)
 
-            if self.app.animationRunning and not (self.isPaused) and not (self.app.experimentFinished):
-                pass
 
 
             return (rect,)  #Give back rect that has been drawn on
 
 
-pygame.font.init()
-LblFont = pygame.font.SysFont("Helvetica",20,True)
-class DiagramLabel():
-    def __init__(self,x,y,target,isVertical,isPositive,text):
-        self.LblText = LblFont.render(text,True,colour.BLACK)   #Text for Label
-        self.textRect = self.LblText.get_rect()
-        self.textRect.center = x,y                              #Setting Label Position
-        self.isVertical = isVertical                            #True(Up/Down) False(Left/Right)
-        self.isPositive = isPositive                            #True(x/y-coordinate increasing) False(x/y-Coordinate Decreasing)
-        self.target = target                                    #What is being labelled
-
-    def draw(self,screen):
-        screen.blit(self.LblText,self.textRect)     #Draw the Label
-        lineWidth = 3
-        #Setting the start points and end points of the line depending on the variables self.isVertical and self.isPositive
-        if self.isVertical:
-            if self.isPositive:
-                startPoint = (self.textRect.center[0],self.textRect.bottom)
-                endPoint = (self.target.rect.center[0],self.target.rect.top)
-            else:
-                startPoint = (self.textRect.center[0], self.textRect.top)
-                endPoint = (self.target.rect.center[0], self.target.rect.bottom)
-        else:
-            if self.isPositive:
-                startPoint = (self.textRect.left,self.textRect.center[1])
-                endPoint = (self.target.rect.right,self.target.rect.center[1])
-            else:
-                startPoint = (self.textRect.right, self.textRect.center[1])
-                endPoint = (self.target.rect.left, self.target.rect.center[1])
-
-        pygame.draw.line(screen, colour.BLACK, startPoint, endPoint, lineWidth) #Draw the line from label to target
-
-class DiagramLabel2():
-    def __init__(self,x,y,target,isVertical,isPositive,text):
-        self.LblText = LblFont.render(text,True,colour.BLACK)   #Text for Label
-        self.textRect = self.LblText.get_rect()
-        self.textRect.center = x,y                              #Setting Label Position
-        self.isVertical = isVertical                            #True(Up/Down) False(Left/Right)
-        self.isPositive = isPositive                            #True(x/y-coordinate increasing) False(x/y-Coordinate Decreasing)
-        self.target = target                                    #What is being labelled
-
-    def draw(self,screen):
-        screen.blit(self.LblText,self.textRect)     #Draw the Label
-        lineWidth = 3
-        #Setting the start points and end points of the line depending on the variables self.isVertical and self.isPositive
-        if self.isVertical:
-            if self.isPositive:
-                startPoint = (self.textRect.center[0],self.textRect.bottom)
-                endPoint = (self.target.rect.center[0],self.target.top)
-            else:
-                startPoint = (self.textRect.center[0], self.textRect.top)
-                endPoint = (self.target.center[0], self.target.bottom)
-        else:
-            if self.isPositive:
-                startPoint = (self.textRect.left,self.textRect.center[1])
-                endPoint = (self.target.right,self.target.center[1])
-            else:
-                startPoint = (self.textRect.right, self.textRect.center[1])
-                endPoint = (self.target.left, self.target.center[1])
-
-        pygame.draw.line(screen, colour.BLACK, startPoint, endPoint, lineWidth) #Draw the line from label to target
 
 
 

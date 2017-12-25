@@ -9,33 +9,27 @@ import Validation.validation as validation
 from externalModules.pgu.pgu import html
 import webbrowser
 from Experiments.EstimateAbsoluteZero import experiment as exp
+import Experiments.creatingGraphs as graph
 
 
 class GraphDialog(gui.Dialog):
     def __init__(self,app):
         self.app = app
-
-
-        gui.Dialog.__init__(self,gui.Label("Graphs"),gui.Label("Create Graph Dialog"))
-
-    def createSection(self,graph):
-        graphDataTbl = gui.Table()
-        gradient = round(graph.gradient)
-        graphDataTbl.td(gui.Label("Gradient:"))
-        graphDataTbl.td(gui.Label(str(gradient)))
-        graphDataTbl.tr()
-        yInt = round(graph.yInt)
-        graphDataTbl.td(gui.Label("Y-Intercept:"))
-        graphDataTbl.td(gui.Label(str(yInt)))
+        xPoints = self.app.tableArea.xPoints
+        yPoints = self.app.tableArea.yPoints
+        gradient,yIntercept = graph.createGraph(xPoints,yPoints,"Temperature/°C","Pressure/kPa")
+        gradientLbl = gui.Label("Gradient:" + str(round(gradient,3)))
+        yInterceptLbl = gui.Label("Y-Intercept:" + str(round(yIntercept,3)))
 
         tbl = gui.Table()
         tbl.tr()
-        tbl.td(gui.Label(graph.graphName))
+        tbl.td(gui.Image("graph.png"))
         tbl.tr()
-        tbl.td(graphDataTbl)
-        return tbl
+        tbl.td(gradientLbl)
+        tbl.tr()
+        tbl.td(yInterceptLbl)
 
-
+        gui.Dialog.__init__(self,gui.Label("Graph"),tbl)
 
 
 class VariablesDialog(gui.Dialog):
