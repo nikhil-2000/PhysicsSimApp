@@ -26,8 +26,6 @@ class Thermometer(pygame.sprite.Sprite):
         startTemp = int(startTemp)
         self.drawMarker(screen,startTemp)
 
-
-
     def drawMarker(self,screen,temp):
         self.markerEnd = self.markerStart[0],self.markerStart[1] - self.getLength(temp)
         pygame.draw.line(screen, self.thermometerRed,self.markerStart,self.markerEnd,int(self.rect.width * (0.4/1.6)))
@@ -79,39 +77,52 @@ class WaterBeaker(pygame.sprite.Sprite):
         self.rect.center = x,y
 
 class Atom():
-    def __init__(self,diameter):
+    def __init__(self,diameter,minTemp,maxTemp):
 
         self.x = random.randrange(260,300)
         self.y = random.randrange(250,290)
         self.minSpeed = 1
-        self.maxSpeed = 5
+        self.maxSpeed = 10
         self.angle = math.radians(random.randrange(0,360))
 
-        temp = 20
-        minTemp = 10
-        maxTemp = 100
-        self.speed = self.minSpeed +  (self.maxSpeed - self.minSpeed)*(temp - minTemp)/(maxTemp - minTemp)
+        self.minTemp = minTemp
+        self.maxTemp = maxTemp
 
-        self.speedx = self.speed * math.cos(self.angle)
-        self.speedy = self.speed * math.sin(self.angle)
+        self.startspeedx = self.minSpeed * math.cos(self.angle)
+        self.startspeedy = self.minSpeed * math.sin(self.angle)
+
+        self.speedx = self.startspeedx
+        self.speedy = self.startspeedy
 
         self.radius = diameter/2
-
-
-
 
     def move(self):
         self.x += self.speedx
         self.y += self.speedy
 
-    def getComponents(self):
-        return self.speed * math.cos(self.angle), self.speed * math.sin(self.angle)
+    def updateSpeed(self,currentTemp):
+        #speedDiff = minSpeed + (speedRange * fractionOfTempRange)
 
-    def updateSpeed(self,temp,maxTemp,minTemp):
-        self.speed += 0.1
-        self.speedx = self.speed * math.cos(self.angle)
-        self.speedy = self.speed * math.sin(self.angle)
+        self.speedx = self.startspeedx * (1+ (currentTemp - self.minTemp)/(self.maxTemp - self.minTemp))
+        self.speedy = self.startspeedy * (1+ (currentTemp - self.minTemp)/(self.maxTemp - self.minTemp))
 
+        if self.speedx > self.maxSpeed or self.speedy > self.maxSpeed:
+            self.speedx = 5 * math.cos(math.atan(self.speedx/self.speedy))
+            self.speedy = 5 * math.sin(math.atan(self.speedx/self.speedy))
+
+    def turnAround(self):
+        self.speedx *= -1
+        self.speedy *= -1
+
+        self.startspeedx *= -1
+        self.startspeedy *= -1
+
+    def setStartSpeeds(self):
+        if (self.speedx < 0 and self.startspeedx > 0) or (self.speedx > 0 and self.startspeedx < 0):
+            self.startspeedx = -self.startspeedx
+
+        if (self.speedy < 0 and self.startspeedy > 0) or (self.speedy > 0 and self.startspeedy < 0):
+            self.startspeedy = -self.startspeedy
 
 
     def draw(self,screen):
@@ -120,56 +131,45 @@ class Atom():
 
 
 class BulbBeaker():
-    def __init__(self):
+    def __init__(self,minTemp,maxTemp):
 
-        self.radius = 74
-        self.origin = 283,271
+        self.minTemp = minTemp
+        self.maxTemp = maxTemp
+        self.radius = 73
+        self.origin = 283,271   # The beaker center
         self.atoms = []
-        for i in range(30):
-            self.atoms.append(Atom(7))
+        for i in range(20):     # Generating the atoms
+            self.atoms.append(Atom(10,minTemp,maxTemp))
 
-    def moveAtoms(self):
+        self.rect = pygame.Rect((0,0),(self.radius * 2, self.radius * 2))
+        self.rect.center = self.origin
+
+    def moveAtoms(self,currentTemp):
         for atom in self.atoms:
+            atom.updateSpeed(currentTemp)
             atom.move()
 
-        for atom in self.atoms:
+        for atom in self.atoms: #This loop checks if it hits the sides
+            #Calculating Distances
             xDistanceFromOrigin = atom.x - self.origin[0]
             yDistanceFromOrigin = atom.y - self.origin[1]
-            if xDistanceFromOrigin < 0:
-                xDistanceFromOrigin *= -1
-
-            if yDistanceFromOrigin < 0:
-                yDistanceFromOrigin *= -1
-
-            xDistanceFromOrigin += atom.radius
-            yDistanceFromOrigin += atom.radius
 
             distance = math.hypot(xDistanceFromOrigin,yDistanceFromOrigin)
-            if distance >= self.radius:
+            if distance >= self.radius-atom.radius:# Checks if atom is further than radious
+                #Turns the atom around
+                atom.turnAround()
+                #atom.x,atom.y = self.origin
 
-                atom.speedx *= -1
-                atom.speedy *= -1
-
-                atom.x += atom.speedx
-                atom.y += atom.speedy
-                #atom.rect.center = self.origin
-
-        for atom in self.atoms:
+        for atom in self.atoms: #Checks if atoms collide with each other
             for atom2 in self.atoms:
                 if atom != atom2:
                     centresDistance = math.hypot(atom.x - atom2.x , atom.y - atom2.y)
-                    #print("CentreDistance:", centresDistance , "Diameters",atom.diameter)
                     if centresDistance <= ( atom.radius * 2):
-                        collisions.CircleCollide(atom,atom2)
-
+                        atom = collisions.CircleCollide(atom,atom2)
 
     def drawAtoms(self,screen):
         for atom in self.atoms:
             atom.draw(screen)
-
-    def updateSpeeds(self,currentTemp,minTemp,maxTemp):
-        for atom in self.atoms:
-            atom.updateSpeed(currentTemp,maxTemp,minTemp)
 
 
 

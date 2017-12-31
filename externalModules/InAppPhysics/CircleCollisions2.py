@@ -15,13 +15,18 @@ class Circle:
         self.speedx = 0.1 #0.5*(random.random()+1.0)
         self.speedy = 0.1#0.5*(random.random()+1.0)
 ##        self.mass = math.sqrt(self.radius)
-for x in range(2):
+
+
+for x in range(20):
     Circles.append(Circle())
 
 def CircleCollide(C1,C2):
+    XSpeed = C1.speedx
+    YSpeed = C1.speedy
     C1Speed = math.sqrt((C1.speedx**2)+(C1.speedy**2))
     XDiff = -(C1.x-C2.x)
     YDiff = -(C1.y-C2.y)
+
 
     if XDiff > 0:
         if YDiff > 0:
@@ -55,10 +60,17 @@ def CircleCollide(C1,C2):
             Angle = 180
         XSpeed = C1Speed*math.cos(math.radians(Angle))
         YSpeed = C1Speed*math.sin(math.radians(Angle))
+
     C1.speedx = XSpeed
     C1.speedy = YSpeed
+
+    C1.setStartSpeeds()
+
+
+    return C1
 def Move():
     for Circle in Circles:
+        Circle.updateSpeed()
         Circle.x += Circle.speedx
         Circle.y += Circle.speedy
 def CollisionDetect():

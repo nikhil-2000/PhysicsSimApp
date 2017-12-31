@@ -10,6 +10,7 @@ from externalModules.pgu.pgu import html
 import webbrowser
 from Experiments.ResistivityOfAMetal import experiment as exp
 import Experiments.creatingGraphs as graph
+import resources.resourceManager as resM
 
 class GraphDialog(gui.Dialog):
     def __init__(self,xPoints,yPoints):
@@ -224,8 +225,8 @@ class Questions(gui.Dialog):
 
         #The equation needed
 
-        equationImg = gui.Image("resistivityEquations.png",width= 210,height=150)
-        defintionsImg = gui.Image("resistivityDefinitions.png",width = 210, height = 150)
+        equationImg = gui.Image(resM.resistivityEquations,width= 210,height=150)
+        defintionsImg = gui.Image(resM.resistivityDefinitions,width = 210, height = 150)
         imgTable = gui.Table()
         imgTable.td(equationImg)
         imgTable.td(defintionsImg)

@@ -1,6 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+def clearFig():
+    plt.gcf().clear()
+
+
 class Graph():
     def __init__(self,xLbl,yLbl,graphName,subplot):
         self.xPoints = []
@@ -31,6 +35,8 @@ class Graph():
     def calcYintercept(self):
         self.yInt = (self.yPoints[0] - (self.gradient * self.xPoints[0]))
         self.yInt = round(self.yInt,1)
+
+
 
 fig = plt.figure()
 

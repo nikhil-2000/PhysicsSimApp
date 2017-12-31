@@ -75,6 +75,7 @@ class MenuArea(template.MenuAreaTemplate):
                 self.app.minIV = self.variablesDlg.minIVValue
                 self.app.maxIV = self.variablesDlg.maxIVValue
                 self.app.interval = self.variablesDlg.intervalValue
+                self.app.tableArea.setup()
 
         self.variablesBtn.connect(gui.CLICK,variables_cb)
 

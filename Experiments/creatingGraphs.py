@@ -3,6 +3,7 @@ import numpy as np
 
 
 def createGraph(xPoints,yPoints,xLbl,yLbl):
+    plt.gcf().clear()
     plt.scatter(xPoints, yPoints)
     plt.plot(np.unique(xPoints), np.poly1d(np.polyfit(xPoints, yPoints, 1))(np.unique(xPoints)))
     plt.xlabel(xLbl)

@@ -184,6 +184,7 @@ class AnimationEngineTemplate(object):
         self.app.engine = self
         self.clock = timer.Clock()
         self.isPaused = False
+        self.isSetup = False
 
     def render(self, rect):
         # Drawing code should go here

@@ -87,6 +87,7 @@ class MenuArea(template.MenuAreaTemplate):
                 self.app.minIV = self.variablesDlg.minIVValue
                 self.app.maxIV = self.variablesDlg.maxIVValue
                 self.app.interval = self.variablesDlg.intervalValue
+                self.app.tableArea.setup()
 
         self.variablesBtn.connect(gui.CLICK,variables_cb)
 
@@ -107,6 +108,8 @@ class MenuArea(template.MenuAreaTemplate):
             self.app.open(dlg)
 
         self.optionsBtn.connect(gui.CLICK, optionBtn_cb)
+
+
 
 class AnimationEngine(template.AnimationEngineTemplate):
     def __init__(self, disp):

@@ -55,7 +55,7 @@ class MenuArea(template.MenuAreaTemplate):
 
         def graph_cb():
             if self.app.experimentFinished:
-                graphDlg = dlgs.GraphDialog(self.app)
+                graphDlg = dlgs.GraphDialog(self.app.tableArea)
                 self.open(graphDlg)
             else:
                 errorDlg = template.ErrorDlg("Finish the Experiment")
@@ -107,7 +107,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
         self.beaker = pEquip.WaterBeaker(self.rect.centerx,self.rect.centery,self.rect.height - 50)
         self.pressureGauge = pEquip.PressureGauge(self.beaker.rect.right - 63,self.rect.centery,50)
         self.thermometer = pEquip.Thermometer(self.beaker.rect.left + 55,self.rect.centery,300)
-        self.bulbBeaker = pEquip.BulbBeaker()
+        self.bulbBeaker = pEquip.BulbBeaker(self.thermometer.minTemp,self.thermometer.maxTemp)
 
 
         self.equipment = pygame.sprite.Group()
@@ -116,10 +116,25 @@ class AnimationEngine(template.AnimationEngineTemplate):
         self.equipment.add(self.thermometer)
 
 
+
+        self.currentTemp = 20
+        self.pressure = self.genValues()  # Get values for pressure
+
+        self.thermometer.setupMarker(self.disp,self.currentTemp)
+        self.pressureGauge.setupPointer(self.genValues(),self.disp)
+
+
         self.isSetup = False
         self.endTempCalculated = False
 
+        thermometerLbl = template.DiagramLabel(self.thermometer.rect.left - 70, self.thermometer.rect.centery,self.thermometer,False,False,"Thermometer")
+        pressureGaugeLbl = template.DiagramLabel(self.pressureGauge.rect.centerx, self.pressureGauge.rect.bottom + 60,self.pressureGauge,True,False,"Pressure Gauge")
+        bulbBeakerLbl = template.DiagramLabel(self.bulbBeaker.rect.centerx, self.bulbBeaker.rect.bottom + 40,self.bulbBeaker,True,False,"Bulb Beaker")
 
+        self.labels = []
+        self.labels.append(thermometerLbl)
+        self.labels.append(pressureGaugeLbl)
+        self.labels.append(bulbBeakerLbl)
 
     def setExperimentVariables(self):
         self.currentTemp = self.app.minIV
@@ -129,13 +144,10 @@ class AnimationEngine(template.AnimationEngineTemplate):
         self.intervalTemp = self.app.interval
         self.nextRecordTemp = self.app.minIV + self.intervalTemp
         self.thermometer.setupMarker(self.disp,self.currentTemp)
-        self.bulbBeaker.updateSpeeds(self.currentTemp,self.thermometer.minTemp,self.thermometer.maxTemp)
         self.currentIndex = 0
 
     def genValues(self):
         return (0.344709897611) * self.currentTemp + 94.106
-
-
 
     def sendValues(self,pressure):
         self.app.tableArea.addToTable(pressure)
@@ -146,7 +158,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
             self.equipment.draw(self.disp)
 
             if not self.isPaused:
-                self.bulbBeaker.moveAtoms()
+                self.bulbBeaker.moveAtoms(self.currentTemp)
 
             self.bulbBeaker.drawAtoms(self.disp)
 
@@ -155,13 +167,13 @@ class AnimationEngine(template.AnimationEngineTemplate):
                 self.setExperimentVariables()
                 self.isSetup = True
 
-
-
+            if self.app.showLabels:
+                for label in self.labels:
+                    label.draw(self.disp)
 
 
             if self.app.animationRunning and not (self.isPaused) and not (self.app.experimentFinished):
-                #self.bulbBeaker.updateSpeeds(self.currentTemp, self.thermometer.minTemp, self.thermometer.maxTemp)
-                self.pressure = self.genValues()  # Get values for current and resistance
+                self.pressure = self.genValues()  # Get values for pressure
                 if not (self.endTempCalculated):
                     # Sets up the experiment if it hasn't happened yet
                     self.setExperimentVariables()
@@ -181,11 +193,9 @@ class AnimationEngine(template.AnimationEngineTemplate):
                 else:
                     self.app.experimentFinished = True
 
-            if self.app.variablesInputted:
-                self.thermometer.drawMarker(self.disp,self.currentTemp)
-                self.pressureGauge.drawPointer(self.disp,self.pressure)
 
-
+            self.thermometer.drawMarker(self.disp,self.currentTemp)
+            self.pressureGauge.drawPointer(self.disp,self.pressure)
 
             return (rect,)  #Give back rect that has been drawn on
 

@@ -9,10 +9,13 @@ import Validation.validation as validation
 from externalModules.pgu.pgu import html
 import webbrowser
 from Experiments.InternalResistance import experiment as exp
+import resources.resourceManager as resM
+import Experiments.InternalResistance.drawGraph as graph
 
 
 class GraphDialog(gui.Dialog):
     def __init__(self,app):
+
         self.app = app
         firstGraph = self.app.tableArea.voltageCurrentGraph
         secondGraph = self.app.tableArea.resistanceCurrentGraph
@@ -26,7 +29,6 @@ class GraphDialog(gui.Dialog):
         subTbl.tr()
         subTbl.td(s1)
         subTbl.td(s2)
-
 
 
         tbl = gui.Table()
@@ -253,7 +255,7 @@ class Questions(gui.Dialog):
 
 
         #The equation needed
-        equationImg = gui.Image("internalResistanceEquations.png")
+        equationImg = gui.Image(resM.internalResistanceEquations)
         imgTable = gui.Table()
         imgTable.td(equationImg)
 

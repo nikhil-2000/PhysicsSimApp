@@ -46,8 +46,9 @@ class VariablesDialog(gui.Dialog):
         #Explaining the paremeters of the input dialog
         explainLbl = gui.Label("Input your variables below")
         nOfResultsLbl = gui.Label("Have between 5-10 recordings")
-        rangeStr = str("The temperature range is " + str(exp.minRange) + " to " + str(exp.maxRange))
+        rangeStr = str("The weight range is " + str(exp.minRange) + " to " + str(exp.maxRange))
         rangeLbl = gui.Label(rangeStr)
+        explain2Lbl = gui.Label("The min will be what starts on the mass holder and max is what is on it in the end")
 
         #THe labels for each input
         minIVUserLbl = gui.Label("Min")
@@ -60,9 +61,9 @@ class VariablesDialog(gui.Dialog):
         intervalIVUserInput = gui.Input()
 
         #The units for each input
-        minIVUnitLbl = gui.Label("°C")
-        maxIVUnitLbl = gui.Label("°C")
-        intervalIVUnitLbl = gui.Label("°C")
+        minIVUnitLbl = gui.Label("g")
+        maxIVUnitLbl = gui.Label("g")
+        intervalIVUnitLbl = gui.Label("g")
 
         #Standard width and height for buttons in this dialog
         buttonHeight = 50
@@ -149,10 +150,11 @@ class InstructionsLinkDialog(gui.Dialog):
         #The method
         method = """<p>
          1. Set up the circuit as shown in the diagram<br>
-         2. Start with the water at your start temperature<br>
-         3. Increase the temperature by adding hot water or using a bunsen burner. Record the pressure.<br>
-         4. Once taking 5 or more results, plot a graph for temperature against pressure<br>
-         5. Use this to find absolute zero by finding the x-intercept<br>
+         2. Start with crocodile clip at your 0 resistance, record the current<br>
+         3. Increase the resistance by moving the crocodile clip<br>
+         4. Once taking 5 or more results, multiply the resistance by the current for each recording. This gives the voltage<br>
+         5. Now plot a graph for resistance(y-axis) against 1/Current(x-axis). The gradient will be the EMF and the internal resistance is the y-intercept"<br>
+         6. Also plot a 2nd graph for Voltage(y-axis) against Current(x-axis). The gradient will be the internal resistance and the y-intercept is the EMF<br>
          </p>
          """
         #Adding the method to the document which html
@@ -306,3 +308,12 @@ class OptionsDialog(gui.Dialog):
         tbl.td(restartBtn)
 
         gui.Dialog.__init__(self,gui.Label("Options"),tbl)
+
+
+def createButton(text):
+    return gui.Button(text, width=225, height=40)
+
+def addBtnToTbl(tbl, btn):
+    tbl.tr()
+    tbl.td(btn)
+    return tbl

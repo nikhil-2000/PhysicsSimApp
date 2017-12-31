@@ -6,6 +6,7 @@ sys.path.append(os.path.abspath('../../'))
 import Experiments.ExperimentObjects as template
 from Experiments.InternalResistance import areaObjects
 from externalModules.pgu.pgu import gui
+import Experiments.InternalResistance.drawGraph as g
 
 
 EMF = 4.5
@@ -45,7 +46,9 @@ class Experiment(template.ExperimentTemplate):
         self.init(screenTbl, screen)
 
     def restart(self):
+        g.clearFig()
         run()
+
 
 
 def run():
