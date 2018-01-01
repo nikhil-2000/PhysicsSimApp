@@ -8,7 +8,7 @@ import externalModules.pgu.pgu.gui as gui
 import Validation.validation as validation
 from externalModules.pgu.pgu import html
 import webbrowser
-from Experiments.EstimateAbsoluteZero import experiment as exp
+from Experiments.Newtons2ndLaw import experiment as exp
 import Experiments.creatingGraphs as graph
 import resources.resourceManager as resM
 
@@ -18,7 +18,7 @@ class GraphDialog(gui.Dialog):
         self.tableArea = table
         xPoints = self.tableArea.xPoints
         yPoints = self.tableArea.yPoints
-        gradient,yIntercept = graph.createGraph(xPoints,yPoints,"Temperature/°C","Pressure/kPa")
+        gradient,yIntercept = graph.createGraph(xPoints,yPoints,"Weight Force of Mass Holder/N","Acceleration/(m/s²")
         gradientLbl = gui.Label("Gradient:" + str(round(gradient,3)))
         yInterceptLbl = gui.Label("Y-Intercept:" + str(round(yIntercept,3)))
 
@@ -48,22 +48,38 @@ class VariablesDialog(gui.Dialog):
         nOfResultsLbl = gui.Label("Have between 5-10 recordings")
         rangeStr = str("The weight range is " + str(exp.minRange) + " to " + str(exp.maxRange))
         rangeLbl = gui.Label(rangeStr)
-        explain2Lbl = gui.Label("The min will be what starts on the mass holder and max is what is on it in the end")
+
 
         #THe labels for each input
-        minIVUserLbl = gui.Label("Min")
-        maxIVUserLbl = gui.Label("Max")
-        intervalUserLbl = gui.Label("Interval")
+        minIVUserLbl = gui.Label("Weight Size")
+        maxIVUserLbl = gui.Label("Weights on Cart")
+        intervalUserLbl = gui.Label("Weights on Mass Holder")
 
         #The input boxes
-        minIVUserInput = gui.Input()
+        # The Options for answers
+        optionsTbl = gui.Table()
+        optionsGroup = gui.Group()
+        FiftygLbl = gui.Label("50g")
+        FiftygCheckBox = gui.Radio(optionsGroup, value=1)
+        HundredgLbl = gui.Label("100g")
+        HundredgCheckBox = gui.Radio(optionsGroup, value=2)
+        TwoHundredgLbl = gui.Label("200g")
+        TwoHundredgCheckBox = gui.Radio(optionsGroup, value=3)
+
+        tdStyle = {'padding': 10}
+        optionsTbl.td(FiftygLbl, style=tdStyle)
+        optionsTbl.td(FiftygCheckBox)
+        optionsTbl.td(HundredgLbl, style=tdStyle)
+        optionsTbl.td(HundredgCheckBox)
+        optionsTbl.td(TwoHundredgLbl, style=tdStyle)
+        optionsTbl.td(TwoHundredgCheckBox)
+
         maxIVUserInput = gui.Input()
         intervalIVUserInput = gui.Input()
 
         #The units for each input
-        minIVUnitLbl = gui.Label("g")
         maxIVUnitLbl = gui.Label("g")
-        intervalIVUnitLbl = gui.Label("g")
+        intervalUnitLbl = gui.Label("g")
 
         #Standard width and height for buttons in this dialog
         buttonHeight = 50
@@ -75,8 +91,16 @@ class VariablesDialog(gui.Dialog):
 
         def okBtn_cb():
             #Takes currently inputted values
-            minIV = minIVUserInput.value
-            maxIV = maxIVUserInput.value
+            if optionsGroup.value == 1:
+                interval = "50"
+            elif optionsGroup.value == 2:
+                interval = 100
+            elif optionsGroup.value == 3:
+                interval = 200
+            else:
+                self.open(template.ErrorDlg("Pick a weight size"))
+
+            minIV = minIV.value
             interval = intervalIVUserInput.value
 
             #Runs through validation algorithm
@@ -115,6 +139,7 @@ class VariablesDialog(gui.Dialog):
         textTbl.tr()
         textTbl.td(rangeLbl)
 
+
         inputTblStyle = {'padding':10}
         inputTbl.tr()
         inputTbl.td(minIVUserLbl,style=inputTblStyle)
@@ -127,7 +152,7 @@ class VariablesDialog(gui.Dialog):
         inputTbl.tr()
         inputTbl.td(intervalUserLbl,style=inputTblStyle)
         inputTbl.td(intervalIVUserInput,style=inputTblStyle)
-        inputTbl.td(intervalIVUnitLbl,style=inputTblStyle)
+        inputTbl.td(intervalUnitLbl,style=inputTblStyle)
 
         buttonTbl.tr()
         buttonTbl.td(okBtn,style=inputTblStyle)
@@ -149,22 +174,22 @@ class InstructionsLinkDialog(gui.Dialog):
     def __init__(self):
         #The method
         method = """<p>
-         1. Set up the circuit as shown in the diagram<br>
-         2. Start with crocodile clip at your 0 resistance, record the current<br>
-         3. Increase the resistance by moving the crocodile clip<br>
-         4. Once taking 5 or more results, multiply the resistance by the current for each recording. This gives the voltage<br>
-         5. Now plot a graph for resistance(y-axis) against 1/Current(x-axis). The gradient will be the EMF and the internal resistance is the y-intercept"<br>
-         6. Also plot a 2nd graph for Voltage(y-axis) against Current(x-axis). The gradient will be the internal resistance and the y-intercept is the EMF<br>
+         1. Set up the equipment as shown in the diagram<br>
+         2. Place all the weights on the cart<br>
+         3. Release the cart, the cart should begin to move<br>
+         4. The two light gates will record the velocity which can be used to calculate the acceleration of the cart<br>
+         5. Then move a mass from the cart to the mass holder and repeat step 3-4<br>
+         6. Once all the weights have been transferred, plot a graph of mg against a where m is the mass on the hanger and a is the acceleration of the cart<br>
          </p>
          """
         #Adding the method to the document which html
         doc = html.HTML(method,width = 600)
 
         #Links to the useful websites
-        link1 = "https://www.sciencedaily.com/terms/absolute_zero.htm"
-        link2 = "https://physics.info/gas-laws/"
-        link3 = "https://www.education.com/science-fair/article/coldest-temperature-estimating-absolute/"
-        pdf = "file:///D:/My%20Docs/School/Computer%20Science/Programming%20Project/physicssimulationapp/resources/Methods/file:///D:/My%20Docs/School/Computer%20Science/Programming%20Project/physicssimulationapp/resources/Methods/EstimationOfAbsoluteZeroByUseOfTheGasLaws.pdf"
+        link1 = "http://www.physicsandmathstutor.com/physics-revision/a-level-wjec-eduqas/component-1/"
+        link2 = "http://www.physicsclassroom.com/class/newtlaws/Lesson-3/Newton-s-Second-Law"
+        link3 = "http://practicalphysics.org/investigating-newtons-second-law-motion.html"
+        pdf = "file:///D:/My%20Docs/School/Computer%20Science/Programming%20Project/physicssimulationapp/resources/Methods/Investigation%20of%20Newton's%20second%20law.pdf"
 
         #Linking websites to buttons
         def link1_cb():
@@ -181,9 +206,9 @@ class InstructionsLinkDialog(gui.Dialog):
 
         btnWidth = 200
         btnHeight = 50
-        link1Btn = gui.Button("Explaing Absolute Zero",width = btnWidth, height=btnHeight)
+        link1Btn = gui.Button("Questions for Forces",width = btnWidth, height=btnHeight)
         link1Btn.connect(gui.CLICK,link1_cb)
-        link2Btn = gui.Button("The Gas Laws",width = btnWidth, height=btnHeight)
+        link2Btn = gui.Button("Newton's 2nd Law",width = btnWidth, height=btnHeight)
         link2Btn.connect(gui.CLICK, link2_cb)
         link3Btn = gui.Button("Alternative Method",width = btnWidth, height=btnHeight)
         link3Btn.connect(gui.CLICK, link3_cb)
@@ -226,10 +251,10 @@ class Questions(gui.Dialog):
         #The equation needed
         equationImg = gui.Image(resM.absoluteZero)
         imgTable = gui.Table()
-        imgTable.td(equationImg)
+        imgTable.td(gui.Label(""))
 
         #The question
-        questionLbl = gui.Label("What value represents absolute zero?")
+        questionLbl = gui.Label("What does the gradient represent?")
         questionTable = gui.Table()
         questionTable.tr()
         questionTable.td(questionLbl)
@@ -237,21 +262,21 @@ class Questions(gui.Dialog):
         #The Options for answers
         optionsTbl = gui.Table()
         optionsGroup = gui.Group()
-        correctAnswer = gui.Label("X-intercept")
+        correctAnswer = gui.Label("1/(M+m)")
         correctAnswerCheckBox = gui.Radio(optionsGroup,value=1)
-        incorrectAnswer1 = gui.Label("Y-intercept")
+        incorrectAnswer1 = gui.Label("M+m")
         incorrectAnswer1CheckBox = gui.Radio(optionsGroup,value=2)
-        incorrectAnswer2 = gui.Label("Gradient")
+        incorrectAnswer2 = gui.Label("M")
         incorrectAnswer2CheckBox = gui.Radio(optionsGroup,value=3)
 
         tdStyle = {'padding':10}
         optionsTbl.td(incorrectAnswer1,style = tdStyle)
-        optionsTbl.td(correctAnswer,style = tdStyle)
         optionsTbl.td(incorrectAnswer2,style = tdStyle)
+        optionsTbl.td(correctAnswer,style = tdStyle)
         optionsTbl.tr()
         optionsTbl.td(incorrectAnswer1CheckBox)
-        optionsTbl.td(correctAnswerCheckBox)
         optionsTbl.td(incorrectAnswer2CheckBox)
+        optionsTbl.td(correctAnswerCheckBox)
 
 
 

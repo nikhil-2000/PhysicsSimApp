@@ -47,7 +47,7 @@ class Experiment(template.ExperimentTemplate):
 
 def run():
     disp = pygame.display.set_mode((900, 600))
-    pygame.display.set_caption("Estimating Absolute Zero Using Gas Laws")
+    pygame.display.set_caption("Investigation Of Newton's 2nd Law")
     eng = areaObjects.AnimationEngine(disp)
     eng.run()
 

@@ -1,10 +1,12 @@
 from Experiments.Newtons2ndLaw import experiment as exp
 import resources.Colour as colours
-from resources.Equipment.ElectricalComponents import *
 from Experiments.Newtons2ndLaw import dialogs as dlgs
 from Experiments import ExperimentObjects as template
 import externalModules.pgu.pgu.gui as gui
-import resources.Equipment.PressureEquipment as pEquip
+import resources.resourceManager as resM
+import resources.Equipment.MotionEquipment as MEquip
+import pygame
+import math
 
 
 class TableArea(template.TableAreaTemplate):
@@ -23,30 +25,32 @@ class TableArea(template.TableAreaTemplate):
 
         currentNum = minIV
         self.tr()
-        self.td(gui.Label("Temperature/°C"),style = cellStyle)
+        self.td(gui.Label("Weight Force of Mass Holder/N"),style = cellStyle)
         while currentNum <= maxIV:
-            self.xPoints.append(int(currentNum))
+            self.xPoints.append(round(currentNum*9.81,2))
             lbl = gui.Label(str(currentNum))
             self.td(lbl,style = cellStyle)
             currentNum += interval
 
 
         self.tr()
-        self.td(gui.Label("Pressure/kPa"),style = cellStyle)
+        self.td(gui.Label("Initial Velocity/(m/s)"),style = cellStyle)
+        self.tr()
+        self.td(gui.Label("Final Velocity/(m/s)"),style = cellStyle)
+        self.tr()
+        self.td(gui.Image(resM.accelerationEquation,height=48,width=84),style = cellStyle)
 
 
     def addToTable(self,pressure):
-        pressureLbl = gui.Label(str(round(pressure,2)))                                           #Round the values to make
+        pressureLbl = gui.Label(str(round(pressure,2)))                                          #Round the values to make
         self.app.tableArea.td(pressureLbl, col=self.currentColumn, row=1, style={'border': 1})   #Adding the values
         self.yPoints.append(pressure)#Adds the unrounded values to y-points
         self.currentColumn += 1 # Increments columnCount for the add next value
 
-
-
 class MenuArea(template.MenuAreaTemplate):
     def __init__(self,width,height,app):
         super(MenuArea, self).__init__(width,height,app)
-        self.variablesDlg = dlgs.VariablesDialog(["20","65","5"])
+        self.variablesDlg = dlgs.VariablesDialog(["100","1000","100"])
         self.setupButtons()
 
 
@@ -104,10 +108,27 @@ class AnimationEngine(template.AnimationEngineTemplate):
         self.app.engine = self
         self.rect = self.app.get_render_area()
 
+        # Creating my Equipment
+        self.bench = MEquip.Bench(self.disp,200)
+        self.cart = MEquip.Cart(self.disp, self.bench)
+        self.pulley = MEquip.Pulley(self.disp, self.bench)
+        self.massHolder = MEquip.MassHolder(self.disp, self.pulley)
+        self.LG1 = MEquip.LightGate(self.disp, self.bench, 1)
+        self.LG2 = MEquip.LightGate(self.disp, self.bench, 2)
 
+        # Adding all sprite objects to group
+        self.equipment = pygame.sprite.Group()
+        self.equipment.add(self.bench)
+        self.equipment.add(self.cart)
+        self.equipment.add(self.massHolder)
+        self.equipment.add(self.LG1)
+        self.equipment.add(self.LG2)
 
     def setExperimentVariables(self):
-        pass
+        self.massHolderStartWeight = int(self.app.minIV)
+        self.massHolderEndWeight = int(self.app.maxIV)
+        self.massInterval = int(self.app.interval)
+        self.totalWeight =
 
     def genValues(self):
         return (0.344709897611) * self.currentTemp + 94.106
@@ -119,5 +140,35 @@ class AnimationEngine(template.AnimationEngineTemplate):
     def render(self, rect):
         self.disp.fill(colours.BLUE)    # Background Colour to complement menu colour
 
+        pygame.draw.line(self.disp, colours.BLACK, (self.cart.rect.right, self.pulley.top), (self.pulley.x, self.pulley.top),
+                         1)  # Connects string from cart to top pulley
+        pygame.draw.arc(self.disp, colours.BLACK, [self.pulley.left, self.pulley.top, 2 * self.pulley.radius, 2 * self.pulley.radius], 0, math.pi / 2,
+                        1)  # Wraps around pulley
 
+        pygame.draw.line(self.disp, colours.BLACK, (self.pulley.right, self.pulley.y), (self.massHolder.rect.centerx, self.massHolder.rect.top),
+                         1)  # Pulley to mass holder
+
+        self.equipment.draw(self.disp)  # Draws Equipment
+        self.pulley.draw()  # Draw Pulley
+        self.massHolder.drawWeights()  # Draws Weights for massHolder
+        self.cart.drawWeights()  # Draws Weights for Cart
+
+        if not self.isSetup and self.app.variablesInputted:
+            self.setExperimentVariables()
+
+
+        if not self.isPaused and self.app.animationRunning:
+            pass
+            # speed = self.massHolder.getSpeed()  # Fetches current speed
+            #
+            # if self.cart.rect.right + speed < self.pulley.left:  # If next shift is before pulley
+            #     cart, massHolder = shift(cart, massHolder, speed)  # Move cart
+            # elif cart.rect.right == pulley.left:  # If cart is touching the pulley
+            #     cart, massHolder = switchWeights(cart, massHolder)
+            #     cart.rect.center = cart.startCenter
+            #     massHolder.rect.center = massHolder.startCenter
+            # else:  # If the cart is about to hit the pulley
+            #     cart.rect.right = pulley.left
+                
+                
         return (rect,)  #Give back rect that has been drawn on
