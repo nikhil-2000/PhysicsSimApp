@@ -93,19 +93,18 @@ class MassHolder(pygame.sprite.Sprite):
         yCoord = self.rect.bottom - 15
         for i in range(self.noOfWeights):
             weight = pygame.Surface((40, 10))
-            weight.fill(YELLOW)
+            weight.fill(cols.YELLOW)
             rect = weight.get_rect()
             rect.center = self.rect.centerx,yCoord
             self.screen.blit(weight,rect)
-            pygame.draw.rect(self.screen,BLACK,rect,1)
+            pygame.draw.rect(self.screen,cols.BLACK,rect,1)
             yCoord -= 10
 
-    def getSpeed(self):
+    def getSpeed(self,weightOnMassHolder,totalMass):
         #This will accelerate the cart
-        #I will generate these values more accurately in the real program
-        #The aim of this was to get the cart accelerating depending on the weight
-        self.time += 1
-        return (self.noOfWeights/10) * self.time
+        self.time += 1/60
+        self.acceleration = weightOnMassHolder/(totalMass)
+        return  self.acceleration* self.time
 
 
 class LightGate(pygame.sprite.Sprite):

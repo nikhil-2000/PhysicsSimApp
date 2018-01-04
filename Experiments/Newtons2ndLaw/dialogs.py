@@ -18,8 +18,8 @@ class GraphDialog(gui.Dialog):
         self.tableArea = table
         xPoints = self.tableArea.xPoints
         yPoints = self.tableArea.yPoints
-        gradient,yIntercept = graph.createGraph(xPoints,yPoints,"Weight Force of Mass Holder/N","Acceleration/(m/s²")
-        gradientLbl = gui.Label("Gradient:" + str(round(gradient,3)))
+        gradient,yIntercept = graph.createGraph(xPoints,yPoints,"Weight Force of Mass Holder/N","Acceleration/(m/s²)")
+        gradientLbl = gui.Label("Gradient:" + str(round(gradient,6)))
         yInterceptLbl = gui.Label("Y-Intercept:" + str(round(yIntercept,3)))
 
         tbl = gui.Table()
@@ -38,9 +38,9 @@ class VariablesDialog(gui.Dialog):
         #Object can tell menu that inputs are valid if isValidated is True
         self.isValidated = False
         #Allows menu object to access these variables one defined
-        self.minIVValue = None
-        self.maxIVValue = None
-        self.intervalValue = None
+        self.cartWeights = None
+        self.massHolderWeights = None
+        self.weightSize = None
         self.defaultVals = defaultVals
 
         #Explaining the paremeters of the input dialog
@@ -51,22 +51,23 @@ class VariablesDialog(gui.Dialog):
 
 
         #THe labels for each input
-        minIVUserLbl = gui.Label("Weight Size")
-        maxIVUserLbl = gui.Label("Weights on Cart")
-        intervalUserLbl = gui.Label("Weights on Mass Holder")
+        minIVUserLbl = gui.Label("Weights on Cart")
+        maxIVUserLbl = gui.Label("Weights on Mass Holder")
 
         #The input boxes
         # The Options for answers
         optionsTbl = gui.Table()
         optionsGroup = gui.Group()
+        intervalUserLbl = gui.Label("Weights on Mass Holder")
         FiftygLbl = gui.Label("50g")
         FiftygCheckBox = gui.Radio(optionsGroup, value=1)
         HundredgLbl = gui.Label("100g")
         HundredgCheckBox = gui.Radio(optionsGroup, value=2)
-        TwoHundredgLbl = gui.Label("200g")
+        TwoHundredgLbl = gui.Label("150g")
         TwoHundredgCheckBox = gui.Radio(optionsGroup, value=3)
 
         tdStyle = {'padding': 10}
+        optionsTbl.td(intervalUserLbl, style=tdStyle)
         optionsTbl.td(FiftygLbl, style=tdStyle)
         optionsTbl.td(FiftygCheckBox)
         optionsTbl.td(HundredgLbl, style=tdStyle)
@@ -75,11 +76,11 @@ class VariablesDialog(gui.Dialog):
         optionsTbl.td(TwoHundredgCheckBox)
 
         maxIVUserInput = gui.Input()
-        intervalIVUserInput = gui.Input()
+        minIVUserInput = gui.Input()
 
         #The units for each input
         maxIVUnitLbl = gui.Label("g")
-        intervalUnitLbl = gui.Label("g")
+        minIVUnitLbl = gui.Label("g")
 
         #Standard width and height for buttons in this dialog
         buttonHeight = 50
@@ -94,17 +95,18 @@ class VariablesDialog(gui.Dialog):
             if optionsGroup.value == 1:
                 interval = "50"
             elif optionsGroup.value == 2:
-                interval = 100
+                interval = "100"
             elif optionsGroup.value == 3:
-                interval = 200
+                interval = "150"
             else:
-                self.open(template.ErrorDlg("Pick a weight size"))
+                interval = ""
 
-            minIV = minIV.value
-            interval = intervalIVUserInput.value
+
+            cartWeights = minIVUserInput.value
+            massHolderWeights = maxIVUserInput.value
 
             #Runs through validation algorithm
-            self.isValidated,error = validation.validateInputs(minIV,maxIV,interval,exp.maxRange,exp.minRange)
+            self.isValidated,error = validation.validateNewton2ndLaw(cartWeights,massHolderWeights,interval,exp.minRange,exp.maxRange)
             if not self.isValidated:#If they aren't valid
                 # Show error
                 errorDlg = template.ErrorDlg(error)
@@ -112,16 +114,17 @@ class VariablesDialog(gui.Dialog):
             else:
                 #Set object variables
                 self.isValidated = True
-                self.minIVValue = int(minIV)
-                self.maxIVValue = int(maxIV)
-                self.intervalValue = int(interval)
+                self.cartWeights = int(cartWeights)
+                self.massHolderWeights = int(massHolderWeights)
+                self.weightSize = round(int(interval) /1000,2)
+
                 self.close()
 
         def defaultBtn_cb():
             #A set of values if the user can't decide
-            minIVUserInput.value = self.defaultVals[0]
-            maxIVUserInput.value = self.defaultVals[1]
-            intervalIVUserInput.value = self.defaultVals[2]
+            optionsGroup.value = 2
+            minIVUserInput.value = self.defaultVals[1]
+            maxIVUserInput.value = self.defaultVals[2]
 
         #Links buttons with functions on click
         okBtn.connect(gui.CLICK,okBtn_cb)
@@ -149,10 +152,6 @@ class VariablesDialog(gui.Dialog):
         inputTbl.td(maxIVUserLbl,style=inputTblStyle)
         inputTbl.td(maxIVUserInput,style=inputTblStyle)
         inputTbl.td(maxIVUnitLbl,style=inputTblStyle)
-        inputTbl.tr()
-        inputTbl.td(intervalUserLbl,style=inputTblStyle)
-        inputTbl.td(intervalIVUserInput,style=inputTblStyle)
-        inputTbl.td(intervalUnitLbl,style=inputTblStyle)
 
         buttonTbl.tr()
         buttonTbl.td(okBtn,style=inputTblStyle)
@@ -164,7 +163,10 @@ class VariablesDialog(gui.Dialog):
         tbl.tr()
         tbl.td(inputTbl)
         tbl.tr()
+        tbl.td(optionsTbl)
+        tbl.tr()
         tbl.td(buttonTbl)
+
 
         gui.Dialog.__init__(self,gui.Label("Variables"),tbl)
 

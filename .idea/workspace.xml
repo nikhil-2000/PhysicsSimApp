@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7915d3f9-eaf2-4389-b445-d097a5acdf26" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/Equipment/MotionEquipment.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/Tests/NetwonValidationTests.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Experiments/Newtons2ndLaw/areaObjects.py" afterPath="$PROJECT_DIR$/Experiments/Newtons2ndLaw/areaObjects.py" />
       <change beforePath="$PROJECT_DIR$/Experiments/Newtons2ndLaw/dialogs.py" afterPath="$PROJECT_DIR$/Experiments/Newtons2ndLaw/dialogs.py" />
-      <change beforePath="$PROJECT_DIR$/Experiments/Newtons2ndLaw/experiment.py" afterPath="$PROJECT_DIR$/Experiments/Newtons2ndLaw/experiment.py" />
-      <change beforePath="$PROJECT_DIR$/Experiments/Newtons2ndLaw/testingEquipments.py" afterPath="$PROJECT_DIR$/Experiments/Newtons2ndLaw/testingEquipments.py" />
-      <change beforePath="$PROJECT_DIR$/resources/Colour.py" afterPath="$PROJECT_DIR$/resources/Colour.py" />
-      <change beforePath="$PROJECT_DIR$/resources/resourceManager.py" afterPath="$PROJECT_DIR$/resources/resourceManager.py" />
+      <change beforePath="$PROJECT_DIR$/Validation/validation.py" afterPath="$PROJECT_DIR$/Validation/validation.py" />
+      <change beforePath="$PROJECT_DIR$/graph.png" afterPath="$PROJECT_DIR$/graph.png" />
+      <change beforePath="$PROJECT_DIR$/resources/Equipment/MotionEquipment.py" afterPath="$PROJECT_DIR$/resources/Equipment/MotionEquipment.py" />
+      <change beforePath="$PROJECT_DIR$/resources/images/accelerationEquation.PNG" afterPath="$PROJECT_DIR$/resources/images/accelerationEquation.PNG" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
-      <file leaf-file-name="areaObjects.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="areaObjects.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/areaObjects.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="130" column="26" lean-forward="true" selection-start-line="130" selection-start-column="26" selection-end-line="130" selection-end-column="26" />
+            <state relative-caret-position="164">
+              <caret line="197" column="49" lean-forward="false" selection-start-line="197" selection-start-column="49" selection-end-line="197" selection-end-column="49" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dialogs.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="dialogs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/dialogs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="94" column="31" lean-forward="false" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+            <state relative-caret-position="-3929">
+              <caret line="62" column="57" lean-forward="true" selection-start-line="62" selection-start-column="57" selection-end-line="62" selection-end-column="57" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -50,33 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testingEquipments.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/testingEquipments.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="656">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="139" selection-end-column="80" />
-              <folding>
-                <element signature="e#49#62#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Colour.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/Colour.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MotionEquipment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/Equipment/MotionEquipment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-128">
-              <caret line="88" column="21" lean-forward="true" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
+            <state relative-caret-position="528">
+              <caret line="109" column="38" lean-forward="true" selection-start-line="109" selection-start-column="38" selection-end-line="109" selection-end-column="38" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -94,10 +72,20 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="validation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Validation/validation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4428">
+              <caret line="108" column="69" lean-forward="false" selection-start-line="108" selection-start-column="69" selection-end-line="108" selection-end-column="69" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="experiment.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1635">
+            <state relative-caret-position="1968">
               <caret line="49" column="65" lean-forward="false" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -117,17 +105,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>InternalResistance</find>
-      <find>setExperi</find>
-      <find>colours.RED</find>
-      <find>start</find>
-      <find>variablesInput</find>
-      <find>+= 1</find>
       <find>self.current</find>
       <find>endTemp</find>
       <find>setExper</find>
       <find>Circle</find>
-      <find>speed</find>
       <find>variable</find>
       <find>setup</find>
       <find>resM</find>
@@ -139,7 +120,6 @@
       <find>-</find>
       <find>0</find>
       <find>update</find>
-      <find>print</find>
       <find>current</find>
       <find>animationEn</find>
       <find>EstimateAbsoluteZero</find>
@@ -147,6 +127,14 @@
       <find>[</find>
       <find>screen</find>
       <find>cols</find>
+      <find>validateInputs</find>
+      <find>validInputs</find>
+      <find>print</find>
+      <find>speed</find>
+      <find>weightSize</find>
+      <find>pxSpeed</find>
+      <find>render</find>
+      <find>experi</find>
     </findStrings>
     <replaceStrings>
       <replace>AnimationEngineTemplate</replace>
@@ -160,6 +148,9 @@
       <replace>fig</replace>
       <replace>Newtons2ndLaw</replace>
       <replace>colours.BLACK</replace>
+      <replace>validateNewton2ndLaw</replace>
+      <replace>validInputs,e</replace>
+      <replace>speed</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\My Docs\School\Computer Science\Programming Project\physicssimulationapp\Experiments\ResistivityOfAMetal</dir>
@@ -172,7 +163,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/MainMenu.py" />
-        <option value="$PROJECT_DIR$/Tests/validationTests.py" />
         <option value="$PROJECT_DIR$/Tests/TestExperimentPGU.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pip/_vendor/distlib/_backport/tarfile.py" />
         <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/creatingGraphs.py" />
@@ -185,7 +175,6 @@
         <option value="$PROJECT_DIR$/Experiments/InternalResistance/genValues.py" />
         <option value="$PROJECT_DIR$/Experiments/EstimateAbsoluteZero/testingEquipments.py" />
         <option value="$PROJECT_DIR$/Experiments/EstimateAbsoluteZero/experiment.py" />
-        <option value="$PROJECT_DIR$/Validation/validation.py" />
         <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/dialogs.py" />
         <option value="$PROJECT_DIR$/Experiments/creatingGraphs.py" />
         <option value="$PROJECT_DIR$/Experiments/InternalResistance/drawGraph.py" />
@@ -202,9 +191,13 @@
         <option value="$PROJECT_DIR$/resources/resourceManager.py" />
         <option value="$PROJECT_DIR$/resources/Colour.py" />
         <option value="$PROJECT_DIR$/Experiments/Newtons2ndLaw/testingEquipments.py" />
+        <option value="$PROJECT_DIR$/Tests/validationTests.py" />
+        <option value="$PROJECT_DIR$/Tests/NetwonValidationTess.py" />
+        <option value="$PROJECT_DIR$/Tests/NetwonValidationTests.py" />
+        <option value="$PROJECT_DIR$/Validation/validation.py" />
+        <option value="$PROJECT_DIR$/Experiments/Newtons2ndLaw/dialogs.py" />
         <option value="$PROJECT_DIR$/resources/Equipment/MotionEquipment.py" />
         <option value="$PROJECT_DIR$/Experiments/Newtons2ndLaw/areaObjects.py" />
-        <option value="$PROJECT_DIR$/Experiments/Newtons2ndLaw/dialogs.py" />
       </list>
     </option>
   </component>
@@ -228,6 +221,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -272,14 +267,17 @@
             <path>
               <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
               <item name="Validation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -309,25 +307,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.experiment (1)">
-    <configuration name="CircleCollisions2" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/externalModules/InAppPhysics" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="physicssimulationapp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/externalModules/InAppPhysics/CircleCollisions2.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.MainMenu">
     <configuration name="MainMenu" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -436,22 +416,36 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="Unittests in NetwonValidationTests.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="physicssimulationapp" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Tests/NetwonValidationTests.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Python.MainMenu" />
       <item index="1" class="java.lang.String" itemvalue="Python.experiment" />
       <item index="2" class="java.lang.String" itemvalue="Python.resourceManager" />
-      <item index="3" class="java.lang.String" itemvalue="Python.CircleCollisions2" />
-      <item index="4" class="java.lang.String" itemvalue="Python.testingEquipments (1)" />
-      <item index="5" class="java.lang.String" itemvalue="Python.experiment (1)" />
-      <item index="6" class="java.lang.String" itemvalue="Python.MotionEquipment" />
+      <item index="3" class="java.lang.String" itemvalue="Python.testingEquipments (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.experiment (1)" />
+      <item index="5" class="java.lang.String" itemvalue="Python.MotionEquipment" />
+      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittests in NetwonValidationTests.py" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.experiment (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.MotionEquipment" />
-        <item index="2" class="java.lang.String" itemvalue="Python.testingEquipments (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.resourceManager" />
-        <item index="4" class="java.lang.String" itemvalue="Python.CircleCollisions2" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in NetwonValidationTests.py" />
+        <item index="1" class="java.lang.String" itemvalue="Python.experiment (1)" />
+        <item index="2" class="java.lang.String" itemvalue="Python.MotionEquipment" />
+        <item index="3" class="java.lang.String" itemvalue="Python.testingEquipments (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python.resourceManager" />
       </list>
     </recent_temporary>
   </component>
@@ -471,19 +465,42 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_in_NetwonValidationTests_py - 2018.01.02 at 21h 53m 06s.xml">
+      <configuration name="Unittests in NetwonValidationTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_NetwonValidationTests_py - 2018.01.02 at 21h 53m 42s.xml">
+      <configuration name="Unittests in NetwonValidationTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_NetwonValidationTests_py - 2018.01.02 at 21h 54m 07s.xml">
+      <configuration name="Unittests in NetwonValidationTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_NetwonValidationTests_py - 2018.01.02 at 21h 54m 50s.xml">
+      <configuration name="Unittests in NetwonValidationTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_NetwonValidationTests_py - 2018.01.02 at 21h 55m 24s.xml">
+      <configuration name="Unittests in NetwonValidationTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_NetwonValidationTests_py - 2018.01.02 at 21h 58m 38s.xml">
+      <configuration name="Unittests in NetwonValidationTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_NetwonValidationTests_py - 2018.01.03 at 21h 48m 39s.xml">
+      <configuration name="Unittests in NetwonValidationTests.py" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18984374" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2021858" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48306012" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18177083" sideWeight="0.503268" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -501,18 +518,18 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2021858" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48333332" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18984374" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18984374" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33211297" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295082" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18177083" sideWeight="0.503268" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -533,20 +550,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/externalModules/pgu/examples/gui7.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/externalModules/pgu/examples/gui8.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/externalModules/pgu/examples/gui17.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-600">
@@ -659,13 +662,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/matplotlib/axes/_axes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="4018" column="0" lean-forward="false" selection-start-line="4018" selection-start-column="0" selection-end-line="4018" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Experiments/InternalResistance/Voltage-Current.png" />
     <entry file="file://$PROJECT_DIR$/Experiments/InternalResistance/Resistance-Current.png" />
     <entry file="file://$PROJECT_DIR$/Experiments/InternalResistance/graphs.png">
@@ -703,13 +699,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1826">
           <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Validation/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2520">
-          <caret line="63" column="36" lean-forward="false" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -769,13 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/externalModules/InAppPhysics/CircleCollisions2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2560">
@@ -805,18 +787,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="186" column="28" lean-forward="false" selection-start-line="186" selection-start-column="28" selection-end-line="186" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/Equipment/PressureEquipment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/Colour.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/validationTests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-615">
+          <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/NetwonValidationTests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="18" column="72" lean-forward="false" selection-start-line="18" selection-start-column="72" selection-end-line="18" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/testingEquipments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="142" column="23" lean-forward="false" selection-start-line="142" selection-start-column="23" selection-end-line="142" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4264">
+          <caret line="97" column="56" lean-forward="true" selection-start-line="97" selection-start-column="56" selection-end-line="97" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/matplotlib/axes/_axes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="4018" column="0" lean-forward="false" selection-start-line="4018" selection-start-column="0" selection-end-line="4018" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/experiment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1968">
+          <caret line="49" column="65" lean-forward="false" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validation/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4428">
+          <caret line="108" column="69" lean-forward="false" selection-start-line="108" selection-start-column="69" selection-end-line="108" selection-end-column="69" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -828,67 +871,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/Colour.py">
+    <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/dialogs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3651">
-          <caret line="97" column="56" lean-forward="true" selection-start-line="97" selection-start-column="56" selection-end-line="97" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/testingEquipments.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="656">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="139" selection-end-column="80" />
+        <state relative-caret-position="-3929">
+          <caret line="62" column="57" lean-forward="true" selection-start-line="62" selection-start-column="57" selection-end-line="62" selection-end-column="57" />
           <folding>
-            <element signature="e#49#62#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3635">
+          <caret line="185" column="26" lean-forward="true" selection-start-line="185" selection-start-column="26" selection-end-line="185" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/Equipment/MotionEquipment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128">
-          <caret line="88" column="21" lean-forward="true" selection-start-line="88" selection-start-column="21" selection-end-line="88" selection-end-column="21" />
+        <state relative-caret-position="528">
+          <caret line="109" column="38" lean-forward="true" selection-start-line="109" selection-start-column="38" selection-end-line="109" selection-end-column="38" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/experiment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="49" column="65" lean-forward="false" selection-start-line="49" selection-start-column="65" selection-end-line="49" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/areaObjects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="130" column="26" lean-forward="true" selection-start-line="130" selection-start-column="26" selection-end-line="130" selection-end-column="26" />
+        <state relative-caret-position="164">
+          <caret line="197" column="49" lean-forward="false" selection-start-line="197" selection-start-column="49" selection-end-line="197" selection-end-column="49" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/dialogs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="94" column="31" lean-forward="false" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
