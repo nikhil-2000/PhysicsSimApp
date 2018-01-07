@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-fig = plt.figure()
+def clearFig():
+    plt.gcf().clear()
 
 
 class Graph():
@@ -22,6 +23,7 @@ class Graph():
         self.graph.plot(np.unique(self.xPoints), np.poly1d(np.polyfit(self.xPoints, self.yPoints, 1))(np.unique(self.xPoints)))
         self.calcGradient()
         self.calcYintercept()
+        fig.subplots_adjust(wspace = 0.3)
         fig.savefig("graphs.png")
 
 
@@ -33,3 +35,12 @@ class Graph():
     def calcYintercept(self):
         self.yInt = (self.yPoints[0] - (self.gradient * self.xPoints[0]))
         self.yInt = round(self.yInt,1)
+
+
+
+fig = plt.figure()
+
+
+
+
+

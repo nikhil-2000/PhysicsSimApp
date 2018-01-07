@@ -1,7 +1,4 @@
-import os
-import sys
 
-sys.path.append(os.path.abspath('..'))
 
 # The previous lines were taken from https://stackoverflow.com/questions/10272879/how-do-i-import-a-python-script-from-a-sibling-directory
 # It explained how to access modules in sibling directories
@@ -59,7 +56,7 @@ def generateLayout(app):
         import Experiments.EstimateAbsoluteZero.experiment as e
         e.run()
 
-    btn3 = createButton(resourceManager.atomImg, "Estimation of Absolute Zero by Use of the Gas laws,")
+    btn3 = createButton(resourceManager.atomImg, "Estimation of Absolute Zero by Use of the Gas Laws")
     menuTable.td(btn3,style = btnStyle)
     btn3.connect(gui.CLICK,btn3_cb)
 

@@ -1,11 +1,16 @@
+import sys
+import os
+
+sys.path.append("../../")
+
 import Experiments.ExperimentObjects as template
 import externalModules.pgu.pgu.gui as gui
 import Validation.validation as validation
-import Experiments.creatingGraphs as graph
 from externalModules.pgu.pgu import html
-from Experiments.ResistivityOfAMetal.experiment import *
 import webbrowser
-import subprocess
+from Experiments.ResistivityOfAMetal import experiment as exp
+import Experiments.creatingGraphs as graph
+import resources.resourceManager as resM
 
 class GraphDialog(gui.Dialog):
     def __init__(self,xPoints,yPoints):
@@ -36,7 +41,7 @@ class VariablesDialog(gui.Dialog):
         #Explaining the paremeters of the input dialog
         explainLbl = gui.Label("Input your variables below")
         nOfResultsLbl = gui.Label("Have between 5-10 recordings")
-        rangeStr = str("The range is " + str(minRange) + " to " + str(maxRange))
+        rangeStr = str("The range is " + str(exp.minRange) + " to " + str(exp.maxRange))
         rangeLbl = gui.Label(rangeStr)
 
         #THe labels for each input
@@ -69,7 +74,7 @@ class VariablesDialog(gui.Dialog):
             interval = intervalIVUserInput.value
 
             #Runs through validation algorithm
-            self.isValidated,error = validation.validateInputs(minIV,maxIV,interval,maxRange,minRange)
+            self.isValidated,error = validation.validateInputs(minIV,maxIV,interval,exp.maxRange,exp.minRange)
             if not self.isValidated:#If they aren't valid
                 # Show error
                 errorDlg = template.ErrorDlg(error)
@@ -209,7 +214,7 @@ class Questions(gui.Dialog):
         #The controlled variables
         materialLbl = gui.Label("Material: Constantan")
         CSALbl = gui.Label("Cross-Sectional Area: 2.01 x 10^-8")
-        voltageLbl = gui.Label("Voltage:"+str(voltage)+"V")
+        voltageLbl = gui.Label("Voltage:"+str(exp.voltage)+"V")
         dataTbl = gui.Table()
         dataTbl.tr()
         dataTbl.td(materialLbl)
@@ -219,12 +224,9 @@ class Questions(gui.Dialog):
         dataTbl.td(voltageLbl)
 
         #The equation needed
-        img = pygame.image.load("resistivityEquations.png")
-        img = pygame.transform.scale(img,(210,150))
-        equationImg = gui.Image(img)
-        img = pygame.image.load("resistivityDefinitions.png")
-        img = pygame.transform.scale(img,(210,150))
-        defintionsImg = gui.Image(img)
+
+        equationImg = gui.Image(resM.resistivityEquations,width= 210,height=150)
+        defintionsImg = gui.Image(resM.resistivityDefinitions,width = 210, height = 150)
         imgTable = gui.Table()
         imgTable.td(equationImg)
         imgTable.td(defintionsImg)
@@ -289,9 +291,9 @@ class Questions(gui.Dialog):
 class OptionsDialog(gui.Dialog):
     def __init__(self,app):
         self.app = app
-        menuBtn = gui.Button("Back to Menu")
+        menuBtn = gui.Button("Back to Menu",width = 200,height=50)
 
-        restartBtn = gui.Button("Restart Experiment")
+        restartBtn = gui.Button("Restart Experiment",width = 200,height=50)
 
         def restartExperimentBtn_cb():
             self.app.restart()

@@ -1,17 +1,19 @@
-import resources.resourceManager as resM
-from Experiments.InternalResistance.dialogs import *
-from Experiments.InternalResistance.experiment import *
+
+
+from Experiments.InternalResistance import experiment as exp
 import resources.Colour as colours
 from resources.Equipment.ElectricalComponents import *
 from Experiments.InternalResistance import dialogs as dlgs
 from Experiments.InternalResistance import drawGraph as g
-import matplotlib.pyplot as plt
+from Experiments import ExperimentObjects as template
+import externalModules.pgu.pgu.gui as gui
+
+
 
 
 class TableArea(template.TableAreaTemplate):
     def __init__(self,width,height,app):
         super(TableArea, self).__init__(width,height,app)
-        fig = plt.Figure()
         self.voltageCurrentGraph = g.Graph("Current/A","Voltage/V","Voltage-Current",1)
         self.resistanceCurrentGraph = g.Graph("1/(Current/A)","Resistance/Ω","Resistance-Current",2)
 
@@ -59,7 +61,7 @@ class TableArea(template.TableAreaTemplate):
 class MenuArea(template.MenuAreaTemplate):
     def __init__(self,width,height,app):
         super(MenuArea, self).__init__(width,height,app)
-        self.variablesDlg = VariablesDialog(["10","100","10"])
+        self.variablesDlg = dlgs.VariablesDialog(["10","100","10"])
         self.setupButtons()
 
 
@@ -68,7 +70,7 @@ class MenuArea(template.MenuAreaTemplate):
 
         def graph_cb():
             if self.app.experimentFinished:
-                graphDlg = GraphDialog(self.app)
+                graphDlg = dlgs.GraphDialog(self.app)
                 self.open(graphDlg)
             else:
                 errorDlg = template.ErrorDlg("Finish the Experiment")
@@ -85,17 +87,18 @@ class MenuArea(template.MenuAreaTemplate):
                 self.app.minIV = self.variablesDlg.minIVValue
                 self.app.maxIV = self.variablesDlg.maxIVValue
                 self.app.interval = self.variablesDlg.intervalValue
+                self.app.tableArea.setup()
 
         self.variablesBtn.connect(gui.CLICK,variables_cb)
 
         def question():
-            questions = Questions(self.app)
+            questions = dlgs.Questions(self.app)
             self.open(questions)
 
         self.questionBtn.connect(gui.CLICK,question)
 
         def instructions_cb():
-            instructionsDlg = InstructionsLinkDialog()
+            instructionsDlg = dlgs.InstructionsLinkDialog()
             self.open(instructionsDlg)
 
         self.instructionBtn.connect(gui.CLICK,instructions_cb)
@@ -106,10 +109,12 @@ class MenuArea(template.MenuAreaTemplate):
 
         self.optionsBtn.connect(gui.CLICK, optionBtn_cb)
 
+
+
 class AnimationEngine(template.AnimationEngineTemplate):
     def __init__(self, disp):
         super(AnimationEngine, self).__init__(disp)
-        self.app = Experiment(self.disp)
+        self.app = exp.Experiment(self.disp)
         self.app.engine = self
         self.rect = self.app.get_render_area()
         self.components = pygame.sprite.Group()
@@ -147,14 +152,14 @@ class AnimationEngine(template.AnimationEngineTemplate):
         self.endPointCalculated = False
 
     def setExperimentVariables(self):
-        self.endingPoint = self.vResistor.rect.left + ((self.app.maxIV/maxRange) * self.vResistor.rect.width)
+        self.endingPoint = self.vResistor.rect.left + ((self.app.maxIV/exp.maxRange) * self.vResistor.rect.width)
         self.currentResistance = self.app.minIV
 
 
     def genValues(self):
 
-        current = EMF / (self.currentResistance + internalResistance)
-        voltage = -current*internalResistance + EMF
+        current = exp.EMF / (self.currentResistance + exp.internalResistance)
+        voltage = -current*exp.internalResistance + exp.EMF
 
         return current, voltage
 
@@ -217,7 +222,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
 
                 # Calculates where on the wire the next recording should be taken
                 nextRecordPoint = self.vResistor.rect.left + (
-                        self.vResistor.rect.width * (self.currentResistance) // maxRange)
+                        self.vResistor.rect.width * (self.currentResistance) // exp.maxRange)
                 if self.crocSlideX == nextRecordPoint:  # If on recording point
                     self.app.animationArea.save_background()
                     current, resistance = self.genValues()  # Get values for current and resistance

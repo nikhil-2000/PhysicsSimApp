@@ -8,55 +8,29 @@ import externalModules.pgu.pgu.gui as gui
 import Validation.validation as validation
 from externalModules.pgu.pgu import html
 import webbrowser
-from Experiments.InternalResistance import experiment as exp
+from Experiments.EstimateAbsoluteZero import experiment as exp
+import Experiments.creatingGraphs as graph
 import resources.resourceManager as resM
-import Experiments.InternalResistance.drawGraph as graph
 
 
 class GraphDialog(gui.Dialog):
-    def __init__(self,app):
-
-        self.app = app
-        firstGraph = self.app.tableArea.voltageCurrentGraph
-        secondGraph = self.app.tableArea.resistanceCurrentGraph
-        firstGraph.drawGraph()
-        secondGraph.drawGraph()
-
-        s1 = self.createSection(firstGraph)
-        s2 = self.createSection(secondGraph)
-
-        subTbl = gui.Table(width = 640)
-        subTbl.tr()
-        subTbl.td(s1)
-        subTbl.td(s2)
-
+    def __init__(self,table):
+        self.tableArea = table
+        xPoints = self.tableArea.xPoints
+        yPoints = self.tableArea.yPoints
+        gradient,yIntercept = graph.createGraph(xPoints,yPoints,"Temperature/°C","Pressure/kPa")
+        gradientLbl = gui.Label("Gradient:" + str(round(gradient,3)))
+        yInterceptLbl = gui.Label("Y-Intercept:" + str(round(yIntercept,3)))
 
         tbl = gui.Table()
         tbl.tr()
-        tbl.td(gui.Image("graphs.png"))
+        tbl.td(gui.Image("graph.png"))
         tbl.tr()
-        tbl.td(subTbl)
-
-        gui.Dialog.__init__(self,gui.Label("Graphs"),tbl)
-
-    def createSection(self,graph):
-        graphDataTbl = gui.Table()
-        gradient = round(graph.gradient)
-        graphDataTbl.td(gui.Label("Gradient:"))
-        graphDataTbl.td(gui.Label(str(gradient)))
-        graphDataTbl.tr()
-        yInt = round(graph.yInt)
-        graphDataTbl.td(gui.Label("Y-Intercept:"))
-        graphDataTbl.td(gui.Label(str(yInt)))
-
-        tbl = gui.Table()
+        tbl.td(gradientLbl)
         tbl.tr()
-        tbl.td(gui.Label(graph.graphName))
-        tbl.tr()
-        tbl.td(graphDataTbl)
-        return tbl
+        tbl.td(yInterceptLbl)
 
-
+        gui.Dialog.__init__(self,gui.Label("Graph"),tbl)
 
 
 class VariablesDialog(gui.Dialog):
@@ -72,7 +46,7 @@ class VariablesDialog(gui.Dialog):
         #Explaining the paremeters of the input dialog
         explainLbl = gui.Label("Input your variables below")
         nOfResultsLbl = gui.Label("Have between 5-10 recordings")
-        rangeStr = str("The range is " + str(exp.minRange) + " to " + str(exp.maxRange))
+        rangeStr = str("The temperature range is " + str(exp.minRange) + " to " + str(exp.maxRange))
         rangeLbl = gui.Label(rangeStr)
 
         #THe labels for each input
@@ -86,9 +60,9 @@ class VariablesDialog(gui.Dialog):
         intervalIVUserInput = gui.Input()
 
         #The units for each input
-        minIVUnitLbl = gui.Label("Ω")
-        maxIVUnitLbl = gui.Label("Ω")
-        intervalIVUnitLbl = gui.Label("Ω")
+        minIVUnitLbl = gui.Label("°C")
+        maxIVUnitLbl = gui.Label("°C")
+        intervalIVUnitLbl = gui.Label("°C")
 
         #Standard width and height for buttons in this dialog
         buttonHeight = 50
@@ -175,22 +149,20 @@ class InstructionsLinkDialog(gui.Dialog):
         #The method
         method = """<p>
          1. Set up the circuit as shown in the diagram<br>
-         2. Start with crocodile clip at your 0 resistance, record the current<br>
-         3. Increase the resistance by moving the crocodile clip<br>
-         4. Once taking 5 or more results, multiply the resistance by the current for each recording. This gives the voltage<br>
-         5. Now plot a graph for resistance(y-axis) against 1/Current(x-axis). The gradient will be the EMF and the internal resistance is the y-intercept"<br>
-         6. Also plot a 2nd graph for Voltage(y-axis) against Current(x-axis). The gradient will be the internal resistance and the y-intercept is the EMF<br>
+         2. Start with the water at your start temperature<br>
+         3. Increase the temperature by adding hot water or using a bunsen burner. Record the pressure.<br>
+         4. Once taking 5 or more results, plot a graph for temperature against pressure<br>
+         5. Use this to find absolute zero by finding the x-intercept<br>
          </p>
          """
         #Adding the method to the document which html
         doc = html.HTML(method,width = 600)
 
         #Links to the useful websites
-        link1 = "https://www.s-cool.co.uk/a-level/physics/resistance/revise-it/internal-resistance-emf-and-potential-difference"
-        link2 = "http://physicsnet.co.uk/a-level-physics-as-a2/current-electricity/electromotive-force-and-internal-resistance/"
-        link3 = "http://personal.psu.edu/bqw/physics_151/lab/lab151_5.html"
-        pdf = "file:///D:/My%20Docs/School/Computer%20Science/Programming%20Project/physicssimulationapp/resources/Methods/DeterminationOfTheInternalResistanceOfACell.pdf"
-        chrome = "C:\Program Files (x86)\Google\Chrome\chrome.exe"
+        link1 = "https://www.sciencedaily.com/terms/absolute_zero.htm"
+        link2 = "https://physics.info/gas-laws/"
+        link3 = "https://www.education.com/science-fair/article/coldest-temperature-estimating-absolute/"
+        pdf = "file:///D:/My%20Docs/School/Computer%20Science/Programming%20Project/physicssimulationapp/resources/Methods/file:///D:/My%20Docs/School/Computer%20Science/Programming%20Project/physicssimulationapp/resources/Methods/EstimationOfAbsoluteZeroByUseOfTheGasLaws.pdf"
 
         #Linking websites to buttons
         def link1_cb():
@@ -207,13 +179,13 @@ class InstructionsLinkDialog(gui.Dialog):
 
         btnWidth = 200
         btnHeight = 50
-        link1Btn = gui.Button("The Theory behind the Experiment",width = 2*btnWidth, height=btnHeight)
+        link1Btn = gui.Button("Explaing Absolute Zero",width = btnWidth, height=btnHeight)
         link1Btn.connect(gui.CLICK,link1_cb)
-        link2Btn = gui.Button("More Theory",width = btnWidth, height=btnHeight)
+        link2Btn = gui.Button("The Gas Laws",width = btnWidth, height=btnHeight)
         link2Btn.connect(gui.CLICK, link2_cb)
-        link3Btn = gui.Button("Another Method",width = btnWidth, height=btnHeight)
+        link3Btn = gui.Button("Alternative Method",width = btnWidth, height=btnHeight)
         link3Btn.connect(gui.CLICK, link3_cb)
-        link4Btn = gui.Button("Eduqas Practical Sheet", width=2*btnWidth, height=btnHeight)
+        link4Btn = gui.Button("Eduqas Practical Sheet", width=btnWidth, height=btnHeight)
         link4Btn.connect(gui.CLICK, link4_cb)
 
         #Adding buttons to the dialog
@@ -235,7 +207,6 @@ class InstructionsLinkDialog(gui.Dialog):
         tbl.tr()
         tbl.td(bottomBtnTbl)
 
-
         gui.Dialog.__init__(self,gui.Label("Instructions and Links"), tbl)
 
 class Questions(gui.Dialog):
@@ -245,39 +216,40 @@ class Questions(gui.Dialog):
         tdStyle = {'padding':10}
 
         #The controlled variables
-        lbl1 = gui.Label("The equations below show the line the equation for the graphs")
-        lbl2 = gui.Label("Using the graphs, determine values for the EMF and internal resistance of this battery")
+        lbl1 = gui.Label("The equations below show the line the equation for the graph")
         dataTbl = gui.Table()
         dataTbl.tr()
         dataTbl.td(lbl1)
-        dataTbl.tr()
-        dataTbl.td(lbl2)
-
 
         #The equation needed
-        equationImg = gui.Image(resM.internalResistanceEquations)
+        equationImg = gui.Image(resM.absoluteZero)
         imgTable = gui.Table()
         imgTable.td(equationImg)
 
         #The question
-        questionLbl = gui.Label("Enter the values for EMF and internal resistance")
+        questionLbl = gui.Label("What value represents absolute zero?")
         questionTable = gui.Table()
         questionTable.tr()
         questionTable.td(questionLbl)
-        questionTable.tr()
 
         #The Options for answers
-        answerTbl = gui.Table()
-        EMFLbl = gui.Label("EMF")
-        EMFAns = gui.Input()
-        internalRLbl = gui.Label("Internal Resistance")
-        internalRAns = gui.Input()
-        answerTbl.tr()
-        answerTbl.td(EMFLbl,style = tdStyle)
-        answerTbl.td(EMFAns)
-        answerTbl.tr()
-        answerTbl.td(internalRLbl)
-        answerTbl.td(internalRAns,style = tdStyle)
+        optionsTbl = gui.Table()
+        optionsGroup = gui.Group()
+        correctAnswer = gui.Label("X-intercept")
+        correctAnswerCheckBox = gui.Radio(optionsGroup,value=1)
+        incorrectAnswer1 = gui.Label("Y-intercept")
+        incorrectAnswer1CheckBox = gui.Radio(optionsGroup,value=2)
+        incorrectAnswer2 = gui.Label("Gradient")
+        incorrectAnswer2CheckBox = gui.Radio(optionsGroup,value=3)
+
+        tdStyle = {'padding':10}
+        optionsTbl.td(incorrectAnswer1,style = tdStyle)
+        optionsTbl.td(correctAnswer,style = tdStyle)
+        optionsTbl.td(incorrectAnswer2,style = tdStyle)
+        optionsTbl.tr()
+        optionsTbl.td(incorrectAnswer1CheckBox)
+        optionsTbl.td(correctAnswerCheckBox)
+        optionsTbl.td(incorrectAnswer2CheckBox)
 
 
 
@@ -285,10 +257,10 @@ class Questions(gui.Dialog):
         checkAnswerBtn = gui.Button("Check Answer",width=100,height=30)
 
         def checkAnswer():
-            if EMFAns.value == str(exp.EMF) and internalRAns.value == str(exp.internalResistance):
-                dlg = gui.Dialog(gui.Label("Your answers were..."),gui.Label("Correct. Well Done"))
+            if optionsGroup.value == 1:
+                dlg = gui.Dialog(gui.Label("Your answer was..."),gui.Label("Correct. Well Done"))
             else:
-                dlg = gui.Dialog(gui.Label("Your answers were..."),gui.Label("Wrong. Try Again"))
+                dlg = gui.Dialog(gui.Label("Your answer was..."),gui.Label("Wrong. Try Again"))
 
             self.app.open(dlg)
 
@@ -303,7 +275,7 @@ class Questions(gui.Dialog):
         tbl.tr()
         tbl.td(questionTable,style = tdStyle)
         tbl.tr()
-        tbl.td(answerTbl,style = tdStyle)
+        tbl.td(optionsTbl,style = tdStyle)
         tbl.tr()
         tbl.td(checkAnswerBtn,style = tdStyle)
 
