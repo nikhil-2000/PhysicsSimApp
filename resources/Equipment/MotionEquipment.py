@@ -10,7 +10,7 @@ class Cart(pygame.sprite.Sprite):
         super(Cart, self).__init__()
         self.screen = screen
         img = pygame.image.load(resM.cartImg)
-        self.image = pygame.transform.scale(img,(150,100))
+        self.image = pygame.transform.scale(img,(150,170))
 
         self.bench = bench                          #Needs Bench as reference point
 
@@ -23,7 +23,7 @@ class Cart(pygame.sprite.Sprite):
         self.noOfWeights = 0                        #Will determine speed
 
     def drawWeights(self):
-        yCoord = self.rect.bottom - 48              #Marks start point of mass holder on cart
+        yCoord = self.rect.bottom - 65              #Marks start point of mass holder on cart
         for i in range(self.noOfWeights):
             weight = pygame.Surface((40, 10))       #The yellow part of the weight
             weight.fill(cols.YELLOW)
@@ -75,14 +75,14 @@ class MassHolder(pygame.sprite.Sprite):
         #This will have the masses which the cart doesn't have
         #Determines the speed of the cart
         img = pygame.image.load(resM.massHolderImg)
-        self.image = pygame.transform.scale(img,(50,105))
+        self.image = pygame.transform.scale(img,(50,175))
         self.screen = screen
 
         self.pulley = pulley
 
         self.rect = self.image.get_rect()
         self.rect.centerx = self.pulley.x + self.pulley.radius
-        self.rect.top = self.pulley.bench.rect.bottom
+        self.rect.top = self.pulley.bench.rect.bottom - 30
 
         self.noOfWeights = 0
         self.startCenter = self.rect.center

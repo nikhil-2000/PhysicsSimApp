@@ -139,6 +139,36 @@ class LightGate(pygame.sprite.Sprite):
         else:
             self.rect.center = self.bench.rect.centerx + 150,self.bench.rect.top
 
+class Resistor(pygame.sprite.Sprite):
+    def __init__(self,x,y,width,height):
+        super(Resistor, self).__init__()
+
+
+        self.rect = pygame.Rect(x,y,width,height)
+        self.rect.center = x,y
+        self.centerX = self.rect.center[0]
+        self.centerY = self.rect.center[1]
+
+    def draw(self,screen):
+        pygame.draw.rect(screen,cols.BLACK,self.rect,1)
+
+class vResistor(Resistor):
+    def __init__(self,x,y,width,height):
+
+        super(vResistor, self).__init__(x,y,width,height)
+
+        arrowImg = pygame.image.load(resM.arrowImg)
+        self.arrowImg = pygame.transform.scale(arrowImg,(height + 50,height + 10))
+        #self.arrowImg = pygame.transform.rotate(self.arrowImg,45)
+        self.arrowRect = self.arrowImg.get_rect()
+        self.arrowRect.center = self.rect.center
+
+
+    def draw(self,screen):
+        pygame.draw.rect(screen,cols.BLACK,self.rect,1)
+        screen.blit(self.arrowImg,self.arrowRect)
+
+
     
 def shift(cart,massHolder,speed):#Moves the cart by it's current speed
     cart.rect.x += speed
@@ -166,6 +196,8 @@ pulley = Pulley(screen,bench)
 massHolder = MassHolder(screen,pulley)
 LG1 = LightGate(screen,bench,1)
 LG2 = LightGate(screen,bench,2)
+
+vResistor = vResistor(100,300,200,50)
 
 #Adding all sprite objects to group
 equipment = pygame.sprite.Group()
@@ -216,7 +248,7 @@ while not done:
     massHolder.drawWeights()    #Draws Weights for massHolder
     cart.drawWeights()          #Draws Weights for Cart
 
-    screen.blit(button,[100,300])
+    #screen.blit(button,[100,300])
 
 
     if not isPaused:
@@ -231,6 +263,9 @@ while not done:
             massHolder.rect.center = massHolder.startCenter
         else:  # If the cart is about to hit the pulley
             cart.rect.right = pulley.left
+
+    vResistor.draw(screen)
+
 
     pygame.display.flip() #Updates screen
 

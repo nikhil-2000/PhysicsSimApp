@@ -140,7 +140,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
 
 
         # Creating my Equipment
-        self.bench = MEquip.Bench(self.disp,200)
+        self.bench = MEquip.Bench(self.disp,250)
         self.cart = MEquip.Cart(self.disp, self.bench)
         self.pulley = MEquip.Pulley(self.disp, self.bench)
         self.massHolder = MEquip.MassHolder(self.disp, self.pulley)
