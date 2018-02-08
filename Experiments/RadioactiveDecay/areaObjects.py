@@ -125,17 +125,15 @@ class AnimationEngine(template.AnimationEngineTemplate):
     def render(self, rect):
         self.disp.fill(colours.BLUE)    # Background Colour to complement menu colour
 
-        self.container.draw(self.disp)
+        if not self.isPaused:
+            self.container.draw(self.disp)
 
         if not self.isSetup and self.app.variablesInputted:
-
             self.isSetup = True
-
 
         if not self.isPaused and self.app.animationRunning:
 
             pass
-                
-                
+
         return (rect,)  #Give back rect that has been drawn on
 

@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7915d3f9-eaf2-4389-b445-d097a5acdf26" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Experiments/RadioactiveDecay/experiment.py" afterPath="$PROJECT_DIR$/Experiments/RadioactiveDecay/experiment.py" />
-      <change beforePath="$PROJECT_DIR$/resources/resourceManager.py" afterPath="$PROJECT_DIR$/resources/resourceManager.py" />
+      <change beforePath="$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py" afterPath="$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py" />
+      <change beforePath="$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py" afterPath="$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py" />
+      <change beforePath="$PROJECT_DIR$/graph.png" afterPath="$PROJECT_DIR$/graph.png" />
+      <change beforePath="$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py" afterPath="$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +23,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dialogs.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py">
+      <file leaf-file-name="areaObjects.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="269" column="51" lean-forward="false" selection-start-line="269" selection-start-column="51" selection-end-line="269" selection-end-column="51" />
+            <state relative-caret-position="898">
+              <caret line="131" column="31" lean-forward="true" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RadioactivityEquipment.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="37">
+              <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="drawGraph.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="674">
+              <caret line="28" column="54" lean-forward="false" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -142,9 +160,10 @@
         <option value="$PROJECT_DIR$/resources/Equipment/MotionEquipment.py" />
         <option value="$PROJECT_DIR$/resources/resourceManager.py" />
         <option value="$PROJECT_DIR$/Experiments/RadioactiveDecay/experiment.py" />
-        <option value="$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py" />
-        <option value="$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py" />
         <option value="$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py" />
+        <option value="$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py" />
+        <option value="$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py" />
+        <option value="$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py" />
       </list>
     </option>
   </component>
@@ -169,7 +188,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,18 +198,19 @@
             <path>
               <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
-              <item name="Experiments" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
-              <item name="Experiments" type="462c0819:PsiDirectoryNode" />
-              <item name="Newtons2ndLaw" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="Equipment" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -411,7 +430,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1340694" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13387978" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18177083" sideWeight="0.503268" order="2" side_tool="true" content_ui="tabs" />
@@ -435,7 +454,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13442624" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1340694" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18984374" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -691,7 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1638">
           <caret line="84" column="58" lean-forward="false" selection-start-line="84" selection-start-column="58" selection-end-line="84" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -699,7 +717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -743,7 +760,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="957">
           <caret line="151" column="46" lean-forward="false" selection-start-line="151" selection-start-column="46" selection-end-line="151" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -751,15 +767,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -767,7 +774,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1435">
           <caret line="36" column="80" lean-forward="false" selection-start-line="36" selection-start-column="80" selection-end-line="36" selection-end-column="80" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -775,7 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="637">
           <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -783,17 +788,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1767">
           <caret line="165" column="20" lean-forward="false" selection-start-line="165" selection-start-column="20" selection-end-line="167" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="35" column="61" lean-forward="false" selection-start-line="35" selection-start-column="61" selection-end-line="35" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -805,20 +799,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py">
+    <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4756">
-          <caret line="116" column="111" lean-forward="false" selection-start-line="116" selection-start-column="111" selection-end-line="116" selection-end-column="111" />
-          <folding>
-            <element signature="e#0#58#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="-205">
+          <caret line="269" column="51" lean-forward="false" selection-start-line="269" selection-start-column="51" selection-end-line="269" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py">
+    <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="269" column="51" lean-forward="false" selection-start-line="269" selection-start-column="51" selection-end-line="269" selection-end-column="51" />
+        <state relative-caret-position="674">
+          <caret line="28" column="54" lean-forward="false" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="898">
+          <caret line="131" column="31" lean-forward="true" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
           <folding />
         </state>
       </provider>
