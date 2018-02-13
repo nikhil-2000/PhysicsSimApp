@@ -13,16 +13,15 @@ import resources.resourceManager as resM
 
 
 class GraphDialog(gui.Dialog):
-    def __init__(self,app):
+    def __init__(self,tableArea):
 
-        self.app = app
-        firstGraph = self.app.tableArea.exponentialGraph
-        secondGraph = self.app.tableArea.lnGraph
-        firstGraph.drawGraph()
-        secondGraph.drawGraph()
+        firstGraph = tableArea.exponentialGraph
+        secondGraph = tableArea.lnGraph
+        firstGraph.drawGraph(True)
+        secondGraph.drawGraph(False)
 
-        s1 = self.createSection(firstGraph)
-        s2 = self.createSection(secondGraph)
+        s1 = self.createSection(firstGraph,True)
+        s2 = self.createSection(secondGraph,False)
 
         subTbl = gui.Table(width = 640)
         subTbl.tr()
@@ -38,21 +37,23 @@ class GraphDialog(gui.Dialog):
 
         gui.Dialog.__init__(self,gui.Label("Graphs"),tbl)
 
-    def createSection(self,graph):
+    def createSection(self,graph,isExponential):
         graphDataTbl = gui.Table()
-        gradient = round(graph.gradient)
+        gradient = graph.gradient
         graphDataTbl.td(gui.Label("Gradient:"))
         graphDataTbl.td(gui.Label(str(gradient)))
         graphDataTbl.tr()
-        yInt = round(graph.yInt)
+        yInt = graph.yInt
         graphDataTbl.td(gui.Label("Y-Intercept:"))
         graphDataTbl.td(gui.Label(str(yInt)))
 
         tbl = gui.Table()
         tbl.tr()
         tbl.td(gui.Label(graph.graphName))
-        tbl.tr()
-        tbl.td(graphDataTbl)
+        if not isExponential:
+            tbl.tr()
+            tbl.td(graphDataTbl)
+
         return tbl
 
 
@@ -103,18 +104,24 @@ class VariablesDialog(gui.Dialog):
             interval = intervalIVUserInput.value
 
             #Runs through validation algorithm
-            self.isValidated,error = validation.validateInputs(minIV,maxIV,interval,exp.maxRange,exp.minRange)
-            if not self.isValidated:#If they aren't valid
+            isValidated,error = validation.validateInputs(minIV,maxIV,interval,exp.maxRange,exp.minRange)
+
+
+            if not isValidated:#If they aren't valid
                 # Show error
                 errorDlg = template.ErrorDlg(error)
                 self.open(errorDlg)
             else:
-                #Set object variables
-                self.isValidated = True
-                self.startTime = int(minIV)
-                self.endTime = int(maxIV)
-                self.timeInterval = int(interval)
-                self.close()
+                if int(maxIV) - int(minIV) >= 200:
+                    #Set object variables
+                    self.isValidated = True
+                    self.startTime = int(minIV)
+                    self.endTime = int(maxIV)
+                    self.timeInterval = int(interval)
+                    self.close()
+                else:
+                    errorDlg = template.ErrorDlg("Make the range at least 200")
+                    self.open(errorDlg)
 
         def defaultBtn_cb():
             #A set of values if the user can't decide
@@ -167,15 +174,13 @@ class VariablesDialog(gui.Dialog):
         gui.Dialog.__init__(self,gui.Label("Variables"),tbl)
 
 
-
-
 class InstructionsLinkDialog(gui.Dialog):
     def __init__(self):
         #The method
         method = """<p>
          1. This experiment is dependent on observations rather than a practical method<br>
          2. The radioactive isotope shown is to be determined by you<br>
-         3. The undecayed nuclei will be blue while the decayed are red<br>
+         3. The undecayed nuclei will be red while the decayed are yellow<br>
          4. When this isotope decays, it releases a electron and increases the proton number by one<br>
          5. Therefore it is beta decay<br>
          6. Take regular recordings of the number of undecayed nuclei<br>
@@ -255,7 +260,7 @@ class Questions(gui.Dialog):
         imgTable.td(equationImg)
 
         #The question
-        questionLbl = gui.Label("Insert Question")
+        questionLbl = gui.Label("Which radioactive isotope was used in this experiment?")
         questionTable = gui.Table()
         questionTable.tr()
         questionTable.td(questionLbl)

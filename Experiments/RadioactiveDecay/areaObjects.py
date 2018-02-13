@@ -4,9 +4,13 @@ from Experiments.RadioactiveDecay import dialogs as dlgs
 from Experiments import ExperimentObjects as template
 import externalModules.pgu.pgu.gui as gui
 import math
+import pygame
 import Experiments.RadioactiveDecay.drawGraph as g
 import resources.Equipment.RadioactivityEquipment as equipment
+import resources.resourceManager as resM
 
+pygame.font.init()
+myFont = pygame.font.SysFont('Arial',20)
 
 class TableArea(template.TableAreaTemplate):
     def __init__(self,width,height,app):
@@ -41,9 +45,9 @@ class TableArea(template.TableAreaTemplate):
     def addValuesToTable(self,undecayedAtoms):
         #Creates Label and adds it to its relevant Row
         undecayedAtomsLbl = gui.Label(str(round(undecayedAtoms,2)))
-        self.td(undecayedAtomsLbl,col = self.currentColumn, row = 2, style= {'border':1})
+        self.td(undecayedAtomsLbl,col = self.currentColumn, row = 1, style= {'border':1})
         lnuA = gui.Label(str(round(math.log(undecayedAtoms),2)))
-        self.td(lnuA,col = self.currentColumn, row = 3, style= {'border':1})
+        self.td(lnuA,col = self.currentColumn, row = 2, style= {'border':1})
         self.exponentialGraph.yPoints.append(undecayedAtoms)
         self.lnGraph.yPoints.append(math.log(undecayedAtoms))
         self.currentColumn += 1
@@ -51,11 +55,72 @@ class TableArea(template.TableAreaTemplate):
 class MenuArea(template.MenuAreaTemplate):
     def __init__(self,width,height,app):
         super(MenuArea, self).__init__(width,height,app)
-        self.variablesDlg = dlgs.VariablesDialog(["0","450","50"])
+        self.variablesDlg = dlgs.VariablesDialog(["100","1000","100"])
         self.setupButtons()
 
     def setupButtons(self):
-        self.setup()
+        self.graphBtn = template.createButton("Graph")
+
+        self.variablesBtn = template.createButton("Input Variables")
+
+        self.startExperimentBtn = template.createButton("Start Experiment")
+
+        self.pauseExperimentBtn = template.createButton("Pause Experiment")
+
+        self.restartExperimentBtn = template.createButton("Restart Experiment")
+
+        self.instructionBtn = template.createButton("Instructions/Links")
+
+        self.questionBtn = template.createButton("Questions")
+
+        self.optionsBtn = template.createButton("Back To Menu")
+
+        # The buttons' function are defined here
+
+        def startExperiment_cb():
+            if self.variablesDlg.isValidated:  # If the user inputs are valid
+                if not (self.app.animationRunning):  # And if the animation hasn't started yet
+                    self.app.animationRunning = True  # Tell the rest of the program that the animation can now run
+                else:
+                    errorDlg = template.ErrorDlg("Experiment is already running")
+                    errorDlg.open()
+
+            else:
+                errorDlg = template.ErrorDlg("You haven't set the variables")
+                errorDlg.open()
+
+        self.startExperimentBtn.connect(gui.CLICK, startExperiment_cb)
+
+        def pauseExperiment_cb():
+            self.app.animationArea.save_background()
+            if (self.app.engine.isPaused):
+                self.pauseExperimentBtn.value = "Play Experiment"
+            else:
+                self.pauseExperimentBtn.value = "Pause Experiment"
+
+        self.pauseExperimentBtn.connect(gui.CLICK, pauseExperiment_cb)
+
+        def restartExperimentBtn_cb():
+            self.app.restart()
+
+        self.restartExperimentBtn.connect(gui.CLICK, restartExperimentBtn_cb)
+
+        def menuBtn_cb():
+            import MainMenu as m
+            m.run()
+
+        self.optionsBtn.connect(gui.CLICK, menuBtn_cb)
+
+
+        # Adding the buttons to the table
+        self = template.addBtnToTbl(self, self.graphBtn)
+        self = template.addBtnToTbl(self, self.variablesBtn)
+        self = template.addBtnToTbl(self, self.startExperimentBtn)
+        self = template.addBtnToTbl(self, self.pauseExperimentBtn)
+        self = template.addBtnToTbl(self, self.restartExperimentBtn)
+        self = template.addBtnToTbl(self, self.instructionBtn)
+        self = template.addBtnToTbl(self, self.questionBtn)
+        self = template.addBtnToTbl(self, self.optionsBtn)
 
         def graph_cb():
             if self.app.experimentFinished:
@@ -116,24 +181,71 @@ class AnimationEngine(template.AnimationEngineTemplate):
 
         self.container = equipment.Container(self.rect.left + 100,20,self.rect.right - 120,self.rect.bottom - 40)
 
+        self.time = 0
+        self.decayConstant = 0.0029957322737271
 
+        self.startUndecayed = self.container.actualUndecayed
+        self.actualUndecayed = self.container.actualUndecayed
+        self.genExpected()
+
+        atomsLabelImg = pygame.image.load(resM.atomLabels)
+        self.atomsLabelImg = pygame.transform.scale(atomsLabelImg,(90,90))
+        self.undecayedLbl = myFont.render("Undecayed",False,(0,0,0))
+        self.decayedLbl = myFont.render("Decayed",False,(0,0,0))
 
     def sendValues(self,noOfUndecayedAtoms):
         self.app.tableArea.addValuesToTable(noOfUndecayedAtoms)
 
+    def genExpected(self):
+        x = self.startUndecayed * math.exp(-self.decayConstant * self.time)     #Calculate...
+        self.calculatedUndecayed = round(x)                                     #Round as can't have float number of particles
+
+    def setExperimentVariables(self):
+        self.nextRecordPoint = self.startTime
 
     def render(self, rect):
         self.disp.fill(colours.BLUE)    # Background Colour to complement menu colour
 
+        self.container.draw(self.disp)  #Draws Atoms
+
+        #Labels to keep track of time and undecayed nuclei
+        time = myFont.render("Time: "+str(self.time), False, (0, 0, 0))
+        undecayedCount = myFont.render("N: "+str(self.actualUndecayed),False,(0,0,0))
+        self.disp.blit(time, (10, 10))
+        self.disp.blit(undecayedCount,(10,40))
+        self.disp.blit(self.atomsLabelImg,(0,70))
+        self.disp.blit(self.decayedLbl,(15,95))
+        self.disp.blit(self.undecayedLbl,(10,140))
+
         if not self.isPaused:
-            self.container.draw(self.disp)
+            self.container.moveAtoms()
 
         if not self.isSetup and self.app.variablesInputted:
+            self.setExperimentVariables()
             self.isSetup = True
 
         if not self.isPaused and self.app.animationRunning:
 
-            pass
+            if self.time == self.nextRecordPoint and not self.time > self.endTime:
+                self.app.animationArea.save_background()
+                self.sendValues(self.actualUndecayed)
+                self.nextRecordPoint += self.timeInterval
+            else:
+                self.app.experimentFinished = True
+
+            #Increase time then check how many should be decayed
+            self.time += 1
+            self.genExpected()
+
+            #Gets the number of undecayed to the correct amount
+            if self.actualUndecayed > self.calculatedUndecayed:
+                self.container.decayAtoms(self.calculatedUndecayed)
+                self.actualUndecayed = self.calculatedUndecayed #Updates actualUndecayed Value
+
+
+
+            if self.time > 1000:   #Stops particles decaying after 1000s
+                self.app.animationRunning = False
+
 
         return (rect,)  #Give back rect that has been drawn on
-

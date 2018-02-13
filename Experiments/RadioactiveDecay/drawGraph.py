@@ -24,11 +24,12 @@ class Graph():
         self.graph.set_ylabel(yLbl)
 
 
-    def drawGraph(self):
+    def drawGraph(self,isExponential):
         #Plots coordinates
         self.graph.scatter(self.xPoints, self.yPoints)
         #Draws line of best fit
-        self.graph.plot(np.unique(self.xPoints), np.poly1d(np.polyfit(self.xPoints, self.yPoints, 1))(np.unique(self.xPoints)))
+        if not isExponential:
+            self.graph.plot(np.unique(self.xPoints), np.poly1d(np.polyfit(self.xPoints, self.yPoints, 1))(np.unique(self.xPoints)))
         #Sets gradient and y intercept
         self.calcGradient()
         self.calcYintercept()
@@ -41,13 +42,13 @@ class Graph():
     def calcGradient(self):
         #Takes first and last point to find gradient
         self.gradient = (self.yPoints[-1] - self.yPoints[0]) / (self.xPoints[-1] - self.xPoints[0])
-        self.gradient = round(self.gradient,1)
+        self.gradient = round(self.gradient,6)
 
 
     def calcYintercept(self):
         # Finds the y intercept using the gradient
         self.yInt = (self.yPoints[0] - (self.gradient * self.xPoints[0]))
-        self.yInt = round(self.yInt,1)
+        self.yInt = round(self.yInt,2)
 
 
 

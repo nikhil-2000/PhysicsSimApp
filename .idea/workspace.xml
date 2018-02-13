@@ -7,9 +7,12 @@
     <list default="true" id="7915d3f9-eaf2-4389-b445-d097a5acdf26" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py" afterPath="$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py" />
+      <change beforePath="$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py" afterPath="$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py" />
       <change beforePath="$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py" afterPath="$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py" />
-      <change beforePath="$PROJECT_DIR$/graph.png" afterPath="$PROJECT_DIR$/graph.png" />
+      <change beforePath="$PROJECT_DIR$/graphs.png" afterPath="$PROJECT_DIR$/graphs.png" />
       <change beforePath="$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py" afterPath="$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py" />
+      <change beforePath="$PROJECT_DIR$/resources/resourceManager.py" afterPath="$PROJECT_DIR$/resources/resourceManager.py" />
+      <change beforePath="$PROJECT_DIR$/tests/validationTests.py" afterPath="$PROJECT_DIR$/tests/validationTests.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,21 +26,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="areaObjects.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="areaObjects.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="898">
-              <caret line="131" column="31" lean-forward="true" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
-              <folding />
+            <state relative-caret-position="-1112">
+              <caret line="111" column="23" lean-forward="false" selection-start-line="111" selection-start-column="23" selection-end-line="111" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+                <element signature="e#539#2160#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RadioactivityEquipment.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ExperimentObjects.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1020">
+              <caret line="293" column="115" lean-forward="true" selection-start-line="293" selection-start-column="115" selection-end-line="293" selection-end-column="115" />
+              <folding>
+                <element signature="e#4222#6116#0" expanded="false" />
+                <element signature="e#6162#7639#0" expanded="false" />
+                <element signature="e#7738#9443#0" expanded="false" />
+                <element signature="e#9472#11142#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RadioactivityEquipment.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+            <state relative-caret-position="2947">
+              <caret line="78" column="41" lean-forward="false" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -46,9 +67,21 @@
       <file leaf-file-name="drawGraph.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="674">
-              <caret line="28" column="54" lean-forward="false" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+            <state relative-caret-position="610">
+              <caret line="50" column="37" lean-forward="false" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dialogs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="651">
+              <caret line="329" column="0" lean-forward="false" selection-start-line="329" selection-start-column="0" selection-end-line="333" selection-end-column="46" />
+              <folding>
+                <element signature="e#1559#5694#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,14 +92,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Setup Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>variable</find>
-      <find>setup</find>
-      <find>resM</find>
       <find>options</find>
       <find>restart</find>
       <find>plt</find>
@@ -83,7 +114,6 @@
       <find>screen</find>
       <find>cols</find>
       <find>validateInputs</find>
-      <find>validInputs</find>
       <find>print</find>
       <find>speed</find>
       <find>weightSize</find>
@@ -94,6 +124,10 @@
       <find>resistors</find>
       <find>Newtons2ndLaw</find>
       <find>particle</find>
+      <find>validInputs</find>
+      <find>save_backgr</find>
+      <find>variable</find>
+      <find>addBtnToTbl</find>
     </findStrings>
     <replaceStrings>
       <replace>AnimationEngineTemplate</replace>
@@ -112,6 +146,8 @@
       <replace>cols</replace>
       <replace>RadioactiveDecay</replace>
       <replace>atom</replace>
+      <replace>validInputs[0]</replace>
+      <replace>template.addBtnToTbl</replace>
     </replaceStrings>
     <dirStrings>
       <dir>D:\My Docs\School\Computer Science\Programming Project\physicssimulationapp\Experiments\ResistivityOfAMetal</dir>
@@ -139,7 +175,6 @@
         <option value="$PROJECT_DIR$/Experiments/creatingGraphs.py" />
         <option value="$PROJECT_DIR$/Experiments/InternalResistance/drawGraph.py" />
         <option value="$PROJECT_DIR$/Experiments/InternalResistance/dialogs.py" />
-        <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py" />
         <option value="$PROJECT_DIR$/Experiments/InternalResistance/experiment.py" />
         <option value="$PROJECT_DIR$/Experiments/EstimateAbsoluteZero/areaObjects.py" />
         <option value="$PROJECT_DIR$/externalModules/InAppPhysics/CircleCollisions2.py" />
@@ -148,7 +183,6 @@
         <option value="$PROJECT_DIR$/Experiments/EstimateAbsoluteZero/dialogs.py" />
         <option value="$PROJECT_DIR$/Experiments/Newtons2ndLaw/experiment.py" />
         <option value="$PROJECT_DIR$/resources/Colour.py" />
-        <option value="$PROJECT_DIR$/Tests/validationTests.py" />
         <option value="$PROJECT_DIR$/Tests/NetwonValidationTess.py" />
         <option value="$PROJECT_DIR$/Tests/NetwonValidationTests.py" />
         <option value="$PROJECT_DIR$/Validation/validation.py" />
@@ -158,8 +192,10 @@
         <option value="$PROJECT_DIR$/resources/Equipment/ElectricalComponents.py" />
         <option value="$PROJECT_DIR$/Experiments/Newtons2ndLaw/areaObjects.py" />
         <option value="$PROJECT_DIR$/resources/Equipment/MotionEquipment.py" />
-        <option value="$PROJECT_DIR$/resources/resourceManager.py" />
         <option value="$PROJECT_DIR$/Experiments/RadioactiveDecay/experiment.py" />
+        <option value="$PROJECT_DIR$/Tests/validationTests.py" />
+        <option value="$PROJECT_DIR$/resources/resourceManager.py" />
+        <option value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py" />
         <option value="$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py" />
         <option value="$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py" />
         <option value="$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py" />
@@ -187,13 +223,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
               <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="physicssimulationapp" type="462c0819:PsiDirectoryNode" />
+              <item name="Experiments" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="physicssimulationapp" type="b2602c69:ProjectViewProjectNode" />
@@ -210,11 +251,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Graphs/Dijkstra.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Tests/validationTests.py" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -260,24 +301,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="MotionEquipment" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/resources/Equipment" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="physicssimulationapp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/resources/Equipment/MotionEquipment.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="RadioactivityEquipment" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -296,24 +319,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="experiment (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Experiments/Newtons2ndLaw" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="physicssimulationapp" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Experiments/Newtons2ndLaw/experiment.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="experiment" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -327,6 +332,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="physicssimulationapp" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Experiments/ResistivityOfAMetal/experiment.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="resourceManager" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/resources" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="physicssimulationapp" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/resources/resourceManager.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -364,22 +387,36 @@
       <option name="_new_target" value="&quot;$PROJECT_DIR$/Tests/NetwonValidationTests.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
+    <configuration name="Unittests in validationTests.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="physicssimulationapp" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Tests/validationTests.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+    </configuration>
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Python.MainMenu" />
       <item index="1" class="java.lang.String" itemvalue="Python.experiment" />
       <item index="2" class="java.lang.String" itemvalue="Python.testingEquipments (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.experiment (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Python.MotionEquipment" />
-      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittests in NetwonValidationTests.py" />
-      <item index="6" class="java.lang.String" itemvalue="Python.RadioactivityEquipment" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in NetwonValidationTests.py" />
+      <item index="4" class="java.lang.String" itemvalue="Python.RadioactivityEquipment" />
+      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittests in validationTests.py" />
+      <item index="6" class="java.lang.String" itemvalue="Python.resourceManager" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.RadioactivityEquipment" />
-        <item index="1" class="java.lang.String" itemvalue="Python.testingEquipments (1)" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in NetwonValidationTests.py" />
-        <item index="3" class="java.lang.String" itemvalue="Python.experiment (1)" />
-        <item index="4" class="java.lang.String" itemvalue="Python.MotionEquipment" />
+        <item index="0" class="java.lang.String" itemvalue="Python.resourceManager" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in validationTests.py" />
+        <item index="2" class="java.lang.String" itemvalue="Python.RadioactivityEquipment" />
+        <item index="3" class="java.lang.String" itemvalue="Python.testingEquipments (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in NetwonValidationTests.py" />
       </list>
     </recent_temporary>
   </component>
@@ -421,16 +458,25 @@
     <history-entry file="Unittests_in_NetwonValidationTests_py - 2018.01.03 at 21h 48m 39s.xml">
       <configuration name="Unittests in NetwonValidationTests.py" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_in_validationTests_py - 2018.02.12 at 16h 23m 52s.xml">
+      <configuration name="Unittests in validationTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_validationTests_py - 2018.02.12 at 16h 25m 09s.xml">
+      <configuration name="Unittests in validationTests.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_validationTests_py - 2018.02.12 at 16h 37m 33s.xml">
+      <configuration name="Unittests in validationTests.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18984374" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18984374" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972386" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13387978" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5153006" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18177083" sideWeight="0.503268" order="2" side_tool="true" content_ui="tabs" />
@@ -454,7 +500,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1340694" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5153006" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18984374" sideWeight="0.49673203" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -479,7 +525,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="26" />
+      <option name="time" value="27" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -622,20 +668,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/Colour.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tests/validationTests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-615">
-          <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Tests/NetwonValidationTests.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="738">
@@ -650,13 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4264">
-          <caret line="97" column="56" lean-forward="true" selection-start-line="97" selection-start-column="56" selection-end-line="97" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/matplotlib/axes/_axes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="451">
@@ -664,31 +689,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Validation/validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4428">
-          <caret line="108" column="69" lean-forward="false" selection-start-line="108" selection-start-column="69" selection-end-line="108" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3635">
-          <caret line="185" column="26" lean-forward="true" selection-start-line="185" selection-start-column="26" selection-end-line="185" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Graphs/Dijkstra.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/dialogs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="62" column="57" lean-forward="false" selection-start-line="62" selection-start-column="57" selection-end-line="62" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -752,14 +756,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="202" column="0" lean-forward="false" selection-start-line="202" selection-start-column="0" selection-end-line="202" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/areaObjects.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="957">
-          <caret line="151" column="46" lean-forward="false" selection-start-line="151" selection-start-column="46" selection-end-line="151" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -767,13 +763,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/resourceManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1435">
-          <caret line="36" column="80" lean-forward="false" selection-start-line="36" selection-start-column="80" selection-end-line="36" selection-end-column="80" />
         </state>
       </provider>
     </entry>
@@ -799,34 +788,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py">
+    <entry file="file://$PROJECT_DIR$/Tests/validationTests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-205">
-          <caret line="269" column="51" lean-forward="false" selection-start-line="269" selection-start-column="51" selection-end-line="269" selection-end-column="51" />
+        <state relative-caret-position="1122">
+          <caret line="57" column="36" lean-forward="false" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Validation/validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4428">
+          <caret line="108" column="69" lean-forward="false" selection-start-line="108" selection-start-column="69" selection-end-line="108" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/areaObjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="187" column="0" lean-forward="false" selection-start-line="187" selection-start-column="0" selection-end-line="188" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/Newtons2ndLaw/dialogs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="106" column="0" lean-forward="true" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+          <folding>
+            <element signature="e#419#1056#0" expanded="false" />
+            <element signature="e#5923#8576#0" expanded="false" />
+            <element signature="e#8611#10978#0" expanded="false" />
+            <element signature="e#11017#11641#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/Colour.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/resourceManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/drawGraph.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="28" column="54" lean-forward="false" selection-start-line="28" selection-start-column="54" selection-end-line="28" selection-end-column="54" />
+        <state relative-caret-position="610">
+          <caret line="50" column="37" lean-forward="false" selection-start-line="50" selection-start-column="37" selection-end-line="50" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py">
+    <entry file="file://$PROJECT_DIR$/Experiments/ResistivityOfAMetal/areaObjects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="79" column="47" lean-forward="true" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
+        <state relative-caret-position="314">
+          <caret line="60" column="59" lean-forward="false" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="59" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/ExperimentObjects.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="293" column="115" lean-forward="true" selection-start-line="293" selection-start-column="115" selection-end-line="293" selection-end-column="115" />
+          <folding>
+            <element signature="e#4222#6116#0" expanded="false" />
+            <element signature="e#6162#7639#0" expanded="false" />
+            <element signature="e#7738#9443#0" expanded="false" />
+            <element signature="e#9472#11142#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/dialogs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="329" column="0" lean-forward="false" selection-start-line="329" selection-start-column="0" selection-end-line="333" selection-end-column="46" />
+          <folding>
+            <element signature="e#1559#5694#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Experiments/RadioactiveDecay/areaObjects.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="898">
-          <caret line="131" column="31" lean-forward="true" selection-start-line="131" selection-start-column="31" selection-end-line="131" selection-end-column="31" />
+        <state relative-caret-position="-1112">
+          <caret line="111" column="23" lean-forward="false" selection-start-line="111" selection-start-column="23" selection-end-line="111" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+            <element signature="e#539#2160#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/Equipment/RadioactivityEquipment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2947">
+          <caret line="78" column="41" lean-forward="false" selection-start-line="78" selection-start-column="41" selection-end-line="78" selection-end-column="41" />
           <folding />
         </state>
       </provider>

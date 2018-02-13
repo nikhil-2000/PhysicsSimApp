@@ -12,20 +12,19 @@ class Container:
         #Represents the last decayed atom in the list of atoms
         self.lastDecayedIndex = -1
 
+        self.lineWidth = 2
+
         #Creates atoms
         self.atoms = []
         for i in range(200):
-            self.atoms.append(Atom(self.rect,3))
+            self.atoms.append(Atom(self.rect,6))
 
         #The number of atoms which are undecayed
         self.actualUndecayed = len(self.atoms)
 
 
     def draw(self,screen):
-        #Moves all atoms then draws them and the container onto the screen
-        self.moveAtoms()
-
-        pygame.draw.rect(screen,WHITE,self.rect,2)
+        pygame.draw.rect(screen,WHITE,self.rect,self.lineWidth)
         for atom in self.atoms:
             atom.draw(screen)
 
@@ -48,11 +47,11 @@ class Container:
 
     def checkCollision(self,atom):
         #Check wall collision
-        if atom.x + atom.radius >= self.rect.right or atom.x - atom.radius <= self.rect.left:
+        if atom.x + atom.radius >= self.rect.right or atom.x - atom.radius <= self.rect.left + self.lineWidth:
             atom.speedx *=-1
             atom.x += atom.speedx
 
-        if atom.y - atom.radius <= self.rect.top or atom.y + atom.radius >= self.rect.bottom:
+        if atom.y - atom.radius <= self.rect.top + self.lineWidth or atom.y + atom.radius >= self.rect.bottom:
             atom.speedy *= -1
             atom.y += atom.speedy
 
@@ -76,9 +75,14 @@ class Atom:
         self.radius = radius
 
         #Generates the components of velocity randomly
-        self.speedx = random.randint(-20,20)/10
-        self.speedy = random.randint(-20,20)/10
-        
+        speedMultix = random.choice([-1, 1])
+        speedMultiy = random.choice([-1, 1])
+
+        self.speedx = speedMultix * random.randint(10,40)/10
+        self.speedy = speedMultiy * random.randint(10,40)/10
+
+        self.col = RED
+
     def move(self):
         #Moves the atom by its speed in both directions
         self.x = self.x + self.speedx
@@ -86,18 +90,12 @@ class Atom:
 
 
     def draw(self,screen):
-        #Decides colour depending on decay status
-        if self.decayed:
-            col = BLUE
-        else:
-            col = RED
-
         #Coordinates have to be rounded before plotting
         x = int(self.x)
         y = int(self.y)
 
         #Draws the atom
-        pygame.draw.circle(screen,col,(x,y),self.radius)
+        pygame.draw.circle(screen,self.col,(x,y),self.radius)
 
     def setStartSpeeds(self):
         #Function requires for collision module
@@ -106,4 +104,4 @@ class Atom:
 
     def decay(self):
         #Decays the atom
-        self.decayed = True
+        self.col = YELLOW
