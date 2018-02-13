@@ -128,13 +128,15 @@ class AnimationEngine(template.AnimationEngineTemplate):
         self.battery = Battery(self.rect.center[0], self.circuitTop, 40, 40)
         self.batteryResistor = Resistor(self.battery.rect.right + 30, self.circuitTop,30,10)
         self.ammeter = Ammeter(self.circuitLeft, self.rect.center[1], 40)
-        self.vResistor = Resistor(self.rect.centerx,self.circuitBottom,200,30)
+        factor = 8
+        self.vResistor = vResistor(self.rect.centerx,self.circuitBottom,200,50)
         self.batRect = pygame.Rect((self.battery.rect.left - 10, self.battery.rect.top - 10), (120, 60))
 
         self.crocSlideX = self.vResistor.rect.left
 
         self.components.add(self.battery)
         self.components.add(self.ammeter)
+        #self.components.add(self.vResistor)
 
         self.resistors.append(self.batteryResistor)
         self.resistors.append(self.vResistor)
@@ -143,7 +145,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
 
         ammeterLabel = DiagramLabel(self.ammeter.rect.right + 70, self.ammeter.centerY,self.ammeter,False,True,"Ammeter")
         batteryLabel = DiagramLabel2(self.batRect.centerx,self.batRect.bottom+ 30,self.batRect,True,False,"Battery")
-        vResistorLabel = DiagramLabel(self.vResistor.centerX,self.vResistor.rect.bottom+20,self.vResistor,True,False,"Variable Resistor")
+        vResistorLabel = DiagramLabel(self.vResistor.rect.right + 100,self.vResistor.rect.centery,self.vResistor,False,True,"Variable Resistor")
         self.labels = []
         self.labels.append(ammeterLabel)
         self.labels.append(batteryLabel)

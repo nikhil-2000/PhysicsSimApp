@@ -68,4 +68,18 @@ class Resistor(pygame.sprite.Sprite):
     def draw(self,screen):
         pygame.draw.rect(screen,colour.BLACK,self.rect,1)
 
+class vResistor(Resistor):
+    def __init__(self,x,y,width,height):
 
+        super(vResistor, self).__init__(x,y,width,height)
+
+        arrowImg = pygame.image.load(resM.arrowImg)
+        self.arrowImg = pygame.transform.scale(arrowImg,(100,25))
+        self.arrowImg = pygame.transform.rotate(self.arrowImg,45)
+        self.arrowRect = self.arrowImg.get_rect()
+        self.arrowRect.center = self.rect.center
+
+
+    def draw(self,screen):
+        pygame.draw.rect(screen,colour.BLACK,self.rect,1)
+        screen.blit(self.arrowImg,self.arrowRect)
