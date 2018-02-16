@@ -124,3 +124,55 @@ class LightGate(pygame.sprite.Sprite):
             self.rect.center = self.bench.rect.centerx,self.bench.rect.top
         else:
             self.rect.center = self.bench.rect.centerx + 150,self.bench.rect.top
+
+class Ruler(pygame.sprite.Sprite):
+    def __init__(self,x,y,height):
+        super(Ruler, self).__init__()
+        
+        img = pygame.image.load(resM.rulerImg)
+        self.height = height  # Game Area Height
+        self.width = int(517 * height / 3300) #By multiplying by 517/3300, the ratio of height to width is maintained
+        img = pygame.transform.scale(img, (self.height, self.width))    #Resize Image
+        self.image = pygame.transform.rotate(img, 90)                   #Rotate Image
+        
+        
+        self.rect = self.image.get_rect()   #Will be used to determine where the image is drawn
+        self.rect.topleft = x,y
+
+    def getStartPositionY(self,height,screenBottomY):   #Return Y value for the ball depending on height
+        pxHeight = self.height * height/200         #Pixel Height of Ruler x (currentHeight in cm/ Ruler Height in cm)
+        return screenBottomY - pxHeight             #Subtract from the bottom of the screen
+
+class Ball(pygame.sprite.Sprite):
+    def __init__(self,x,y,diameter):
+        super(Ball, self).__init__()
+
+        img = pygame.image.load(resM.atomImg)
+        self.image = pygame.transform.scale(img,(diameter,diameter))    #Width = Height as Circular Image
+
+        self.rect = self.image.get_rect()
+        self.rect.center = x,y                  #Sets location where ball will be drawn
+
+        self.speed = 0
+
+    def setSpeed(self,time):
+        self.speed = 9.81 * time
+
+    def move(self):
+        speed = convertMetresPerSecondToPixelsPerFrame(self.speed)
+        #print()
+        self.rect.y += speed
+
+class ClampStand(pygame.sprite.Sprite):
+    def __init__(self,x,y,height):
+        super(ClampStand, self).__init__()
+
+        img = pygame.image.load(resM.clampStandImg)
+        width = int(height * (527/1025))            #Maintain width:height ratio
+        self.image = pygame.transform.scale(img,(width,height)) #Resize Image
+
+        self.rect = self.image.get_rect()
+        self.rect.topleft = x,y     #Defines where object is drawn
+
+def convertMetresPerSecondToPixelsPerFrame(speed):
+    return (38/20) * speed * (1/30)

@@ -221,7 +221,6 @@ class AnimationEngine(template.AnimationEngineTemplate):
                 self.recordedAtLG1 = False
                 self.recordedAtLG2 = False
                 pygame.time.delay(100)
-
             else:  # If the cart is about to hit the pulley
                 self.cart.rect.right = self.pulley.left
 

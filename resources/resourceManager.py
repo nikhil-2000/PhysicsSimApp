@@ -23,16 +23,24 @@ rulerImg = appresources.get_path("ruler.png")
 voltmeterImg = appresources.get_path("voltmeter.png")
 thermometerImg = appresources.get_path("thermometer.png")
 pressureGaugeImg = appresources.get_path("pressureGauge.png")
+
 internalResistanceEquations = appresources.get_path("internalResistanceEquations.PNG")
 resistivityEquations = appresources.get_path("resistivityEquations.PNG")
 resistivityDefinitions = appresources.get_path("resistivityDefinitions.PNG")
+
 absoluteZero = appresources.get_path("pressureTemperatureEquation.PNG")
+
 cartImg = appresources.get_path("cart.png")
 pulleyImg = appresources.get_path("pulley.png")
 massHolderImg = appresources.get_path("massHolder.png")
 dataLoggerImg = appresources.get_path("dataLogger.png")
 accelerationEquation = appresources.get_path("accelerationEquation.PNG")
+
 variableResistorImg = appresources.get_path("variableResistor.png")
+
 arrowImg = appresources.get_path("arrow.png")
 radioactiveDecayEquations = appresources.get_path("radioactiveDecayEquations.PNG")
 atomLabels = appresources.get_path("atomLabels.png")
+
+measuregEquation = appresources.get_path("measuregEquation.PNG")
+clampStandImg = appresources.get_path("clampStand.png")
