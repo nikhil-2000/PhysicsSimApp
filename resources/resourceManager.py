@@ -35,6 +35,7 @@ pulleyImg = appresources.get_path("pulley.png")
 massHolderImg = appresources.get_path("massHolder.png")
 dataLoggerImg = appresources.get_path("dataLogger.png")
 accelerationEquation = appresources.get_path("accelerationEquation.PNG")
+newtons2ndLawEquation = appresources.get_path("netwons2ndLawEquation.png")
 
 variableResistorImg = appresources.get_path("variableResistor.png")
 
@@ -44,3 +45,13 @@ atomLabels = appresources.get_path("atomLabels.png")
 
 measuregEquation = appresources.get_path("measuregEquation.PNG")
 clampStandImg = appresources.get_path("clampStand.png")
+
+menuResistivity = appresources.get_path("resistivityOfAMetal.png")
+menuInternalResistance = appresources.get_path("internalResistance.png")
+menuAbsoluteZero = appresources.get_path("absoluteZero.png")
+menuNewtons2ndLaw = appresources.get_path("netwons2ndLaw.png")
+menuRadioactiveDecay = appresources.get_path("radioactiveDecay.png")
+menugByFrefall = appresources.get_path("gByFreefall.png")
+menuSHC = appresources.get_path("specificHeatCapacity.png")
+
+exampleExperiment = appresources.get_path("printScreen.PNG")

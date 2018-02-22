@@ -41,13 +41,11 @@ class GraphDialog(gui.Dialog):
 
     def createSection(self,graph):
         graphDataTbl = gui.Table()
-        gradient = round(graph.gradient)
         graphDataTbl.td(gui.Label("Gradient:"))
-        graphDataTbl.td(gui.Label(str(gradient)))
+        graphDataTbl.td(gui.Label(str(graph.gradient)))
         graphDataTbl.tr()
-        yInt = round(graph.yInt)
         graphDataTbl.td(gui.Label("Y-Intercept:"))
-        graphDataTbl.td(gui.Label(str(yInt)))
+        graphDataTbl.td(gui.Label(str(graph.yInt)))
 
         tbl = gui.Table()
         tbl.tr()
