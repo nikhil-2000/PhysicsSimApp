@@ -253,10 +253,10 @@ class Questions(gui.Dialog):
         #The equation needed
         equationImg = gui.Image(resM.absoluteZero)
         imgTable = gui.Table()
-        imgTable.td(gui.Label(""))
+        imgTable.td(gui.Image(resM.newtons2ndLawEquation))
 
         #The question
-        questionLbl = gui.Label("What does the gradient represent?")
+        questionLbl = gui.Label("What does the k represent?")
         questionTable = gui.Table()
         questionTable.tr()
         questionTable.td(questionLbl)

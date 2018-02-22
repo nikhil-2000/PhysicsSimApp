@@ -29,12 +29,13 @@ class Graph():
 
     def calcGradient(self):
         self.gradient = (self.yPoints[-1] - self.yPoints[0]) / (self.xPoints[-1] - self.xPoints[0])
-        self.gradient = round(self.gradient,1)
+        self.gradient = round(self.gradient,3)
+        print(self.gradient)
 
 
     def calcYintercept(self):
         self.yInt = (self.yPoints[0] - (self.gradient * self.xPoints[0]))
-        self.yInt = round(self.yInt,1)
+        self.yInt = round(self.yInt,3)
 
 
 

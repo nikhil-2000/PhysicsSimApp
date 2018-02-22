@@ -8,85 +8,61 @@ import externalModules.pgu.pgu.gui as gui
 import Validation.validation as validation
 from externalModules.pgu.pgu import html
 import webbrowser
-from Experiments.InternalResistance import experiment as exp
+from Experiments.Measureg import experiment as exp
+import Experiments.creatingGraphs as graph
 import resources.resourceManager as resM
-import Experiments.InternalResistance.drawGraph as graph
 
 
 class GraphDialog(gui.Dialog):
-    def __init__(self,app):
-
-        self.app = app
-        firstGraph = self.app.tableArea.voltageCurrentGraph
-        secondGraph = self.app.tableArea.resistanceCurrentGraph
-        firstGraph.drawGraph()
-        secondGraph.drawGraph()
-
-        s1 = self.createSection(firstGraph)
-        s2 = self.createSection(secondGraph)
-
-        subTbl = gui.Table(width = 640)
-        subTbl.tr()
-        subTbl.td(s1)
-        subTbl.td(s2)
-
+    def __init__(self,table):
+        self.tableArea = table
+        xPoints = self.tableArea.xPoints
+        yPoints = self.tableArea.yPoints
+        gradient,yIntercept = graph.createGraph(xPoints,yPoints,"Height/m","Time²/s²")
+        gradientLbl = gui.Label("Gradient:" + str(round(gradient,6)))
+        yInterceptLbl = gui.Label("Y-Intercept:" + str(round(yIntercept,3)))
 
         tbl = gui.Table()
         tbl.tr()
-        tbl.td(gui.Image("graphs.png"))
+        tbl.td(gui.Image("graph.png"))
         tbl.tr()
-        tbl.td(subTbl)
-
-        gui.Dialog.__init__(self,gui.Label("Graphs"),tbl)
-
-    def createSection(self,graph):
-        graphDataTbl = gui.Table()
-        graphDataTbl.td(gui.Label("Gradient:"))
-        graphDataTbl.td(gui.Label(str(graph.gradient)))
-        graphDataTbl.tr()
-        graphDataTbl.td(gui.Label("Y-Intercept:"))
-        graphDataTbl.td(gui.Label(str(graph.yInt)))
-
-        tbl = gui.Table()
+        tbl.td(gradientLbl)
         tbl.tr()
-        tbl.td(gui.Label(graph.graphName))
-        tbl.tr()
-        tbl.td(graphDataTbl)
-        return tbl
+        tbl.td(yInterceptLbl)
 
-
+        gui.Dialog.__init__(self,gui.Label("Graph"),tbl)
 
 
 class VariablesDialog(gui.Dialog):
     def __init__(self,defaultVals):
         #Object can tell menu that inputs are valid if isValidated is True
         self.isValidated = False
-        #Allows menu object to access these variables one defined
-        self.minIVValue = None
-        self.maxIVValue = None
-        self.intervalValue = None
+        #Creates variables to be accessed once defined
+        self.startHeight = None
+        self.endHeight = None
+        self.heightInterval = None
         self.defaultVals = defaultVals
 
         #Explaining the paremeters of the input dialog
         explainLbl = gui.Label("Input your variables below")
         nOfResultsLbl = gui.Label("Have between 5-10 recordings")
-        rangeStr = str("The range is " + str(exp.minRange) + " to " + str(exp.maxRange))
+        rangeStr = str("The height range is " + str(exp.minRange) + "cm to " + str(exp.maxRange) + "cm")
         rangeLbl = gui.Label(rangeStr)
 
-        #THe labels for each input
-        minIVUserLbl = gui.Label("Min")
-        maxIVUserLbl = gui.Label("Max")
-        intervalUserLbl = gui.Label("Interval")
+        # THe labels for each input
+        minIVUserLbl = gui.Label("Start Height")
+        maxIVUserLbl = gui.Label("End Height")
+        intervalUserLbl = gui.Label("Height Interval")
 
-        #The input boxes
+        # The input boxes
         minIVUserInput = gui.Input()
         maxIVUserInput = gui.Input()
         intervalIVUserInput = gui.Input()
 
-        #The units for each input
-        minIVUnitLbl = gui.Label("Ω")
-        maxIVUnitLbl = gui.Label("Ω")
-        intervalIVUnitLbl = gui.Label("Ω")
+        # The units for each input
+        minIVUnitLbl = gui.Label("cm")
+        maxIVUnitLbl = gui.Label("cm")
+        intervalIVUnitLbl = gui.Label("cm")
 
         #Standard width and height for buttons in this dialog
         buttonHeight = 50
@@ -97,23 +73,25 @@ class VariablesDialog(gui.Dialog):
         defaultBtn = gui.Button("Default Values",height=buttonHeight, width=buttonWidth)
 
         def okBtn_cb():
-            #Takes currently inputted values
+            # Takes currently inputted values
             minIV = minIVUserInput.value
             maxIV = maxIVUserInput.value
             interval = intervalIVUserInput.value
 
-            #Runs through validation algorithm
-            self.isValidated,error = validation.validateInputs(minIV,maxIV,interval,exp.maxRange,exp.minRange)
-            if not self.isValidated:#If they aren't valid
+            # Runs through validation algorithm
+            isValidated, error = validation.validateInputs(minIV, maxIV, interval, exp.maxRange, exp.minRange)
+
+            if not isValidated:#If they aren't valid
                 # Show error
                 errorDlg = template.ErrorDlg(error)
                 self.open(errorDlg)
             else:
                 #Set object variables
                 self.isValidated = True
-                self.minIVValue = int(minIV)
-                self.maxIVValue = int(maxIV)
-                self.intervalValue = int(interval)
+                self.startHeight = int(minIV)
+                self.endHeight = int(maxIV)
+                self.heightInterval = int(interval)
+
                 self.close()
 
         def defaultBtn_cb():
@@ -122,11 +100,12 @@ class VariablesDialog(gui.Dialog):
             maxIVUserInput.value = self.defaultVals[1]
             intervalIVUserInput.value = self.defaultVals[2]
 
+
         #Links buttons with functions on click
         okBtn.connect(gui.CLICK,okBtn_cb)
         defaultBtn.connect(gui.CLICK,defaultBtn_cb)
 
-        #Wraps all widgets into tables then put into one large table
+        # Wraps all widgets into tables then put into one large table
         textTbl = gui.Table()
         inputTbl = gui.Table()
         buttonTbl = gui.Table()
@@ -138,23 +117,23 @@ class VariablesDialog(gui.Dialog):
         textTbl.tr()
         textTbl.td(rangeLbl)
 
-        inputTblStyle = {'padding':10}
+        inputTblStyle = {'padding': 10}
         inputTbl.tr()
-        inputTbl.td(minIVUserLbl,style=inputTblStyle)
-        inputTbl.td(minIVUserInput,style=inputTblStyle)
-        inputTbl.td(minIVUnitLbl,style=inputTblStyle)
+        inputTbl.td(minIVUserLbl, style=inputTblStyle)
+        inputTbl.td(minIVUserInput, style=inputTblStyle)
+        inputTbl.td(minIVUnitLbl, style=inputTblStyle)
         inputTbl.tr()
-        inputTbl.td(maxIVUserLbl,style=inputTblStyle)
-        inputTbl.td(maxIVUserInput,style=inputTblStyle)
-        inputTbl.td(maxIVUnitLbl,style=inputTblStyle)
+        inputTbl.td(maxIVUserLbl, style=inputTblStyle)
+        inputTbl.td(maxIVUserInput, style=inputTblStyle)
+        inputTbl.td(maxIVUnitLbl, style=inputTblStyle)
         inputTbl.tr()
-        inputTbl.td(intervalUserLbl,style=inputTblStyle)
-        inputTbl.td(intervalIVUserInput,style=inputTblStyle)
-        inputTbl.td(intervalIVUnitLbl,style=inputTblStyle)
+        inputTbl.td(intervalUserLbl, style=inputTblStyle)
+        inputTbl.td(intervalIVUserInput, style=inputTblStyle)
+        inputTbl.td(intervalIVUnitLbl, style=inputTblStyle)
 
         buttonTbl.tr()
-        buttonTbl.td(okBtn,style=inputTblStyle)
-        buttonTbl.td(defaultBtn,style=inputTblStyle)
+        buttonTbl.td(okBtn, style=inputTblStyle)
+        buttonTbl.td(defaultBtn, style=inputTblStyle)
 
         tbl = gui.Table()
         tbl.tr()
@@ -164,7 +143,7 @@ class VariablesDialog(gui.Dialog):
         tbl.tr()
         tbl.td(buttonTbl)
 
-        gui.Dialog.__init__(self,gui.Label("Variables"),tbl)
+        gui.Dialog.__init__(self, gui.Label("Variables"), tbl)
 
 
 
@@ -172,23 +151,22 @@ class InstructionsLinkDialog(gui.Dialog):
     def __init__(self):
         #The method
         method = """<p>
-         1. Set up the circuit as shown in the diagram<br>
-         2. Start with crocodile clip at your 0 resistance, record the current<br>
-         3. Increase the resistance by moving the crocodile clip<br>
-         4. Once taking 5 or more results, multiply the resistance by the current for each recording. This gives the voltage<br>
-         5. Now plot a graph for resistance(y-axis) against 1/Current(x-axis). The gradient will be the EMF and the internal resistance is the y-intercept"<br>
-         6. Also plot a 2nd graph for Voltage(y-axis) against Current(x-axis). The gradient will be the internal resistance and the y-intercept is the EMF<br>
+         1. Set up the equipment as shown in the diagram<br>
+         2. Release the ball from start height<br>
+         3. Measure the time taken for the ball to drop to the floor<br>
+         4. Increase the height by the your interval and repeat steps 2-3<br>
+         5. After testing for the final height, plot a graph of height(x-axis) against t²(y-axis)<br>
+         6. Use the gradient of the graph to determine g<br>
          </p>
          """
         #Adding the method to the document which html
-        doc = html.HTML(method,width = 600)
+        doc = html.HTML(method,width = 700)
 
         #Links to the useful websites
-        link1 = "https://www.s-cool.co.uk/a-level/physics/resistance/revise-it/internal-resistance-emf-and-potential-difference"
-        link2 = "http://physicsnet.co.uk/a-level-physics-as-a2/current-electricity/electromotive-force-and-internal-resistance/"
-        link3 = "http://personal.psu.edu/bqw/physics_151/lab/lab151_5.html"
-        pdf = "file:///D:/My%20Docs/School/Computer%20Science/Programming%20Project/physicssimulationapp/resources/Methods/DeterminationOfTheInternalResistanceOfACell.pdf"
-        chrome = "C:\Program Files (x86)\Google\Chrome\chrome.exe"
+        link1 = "http://www.physicsclassroom.com/class/1DKin/Lesson-5/Representing-Free-Fall-by-Graphs"
+        link2 = "http://www.physicsclassroom.com/class/1DKin/Lesson-5/Acceleration-of-Gravity"
+        link3 = "http://practicalphysics.org/investigating-free-fall-light-gate.html"
+        pdf = "file:///D:/My%20Docs/School/Physics/Teacher%20-%20technician%20guidance%20for%20specified%20practicals/Measurement%20of%20g%20by%20freefall.pdf"
 
         #Linking websites to buttons
         def link1_cb():
@@ -205,13 +183,13 @@ class InstructionsLinkDialog(gui.Dialog):
 
         btnWidth = 200
         btnHeight = 50
-        link1Btn = gui.Button("The Theory behind the Experiment",width = 2*btnWidth, height=btnHeight)
+        link1Btn = gui.Button("Freefall Graphs",width = btnWidth, height=btnHeight)
         link1Btn.connect(gui.CLICK,link1_cb)
-        link2Btn = gui.Button("More Theory",width = btnWidth, height=btnHeight)
+        link2Btn = gui.Button("Information on acceleration due to gravity",width = btnWidth, height=btnHeight)
         link2Btn.connect(gui.CLICK, link2_cb)
-        link3Btn = gui.Button("Another Method",width = btnWidth, height=btnHeight)
+        link3Btn = gui.Button("Alternative Method",width = btnWidth, height=btnHeight)
         link3Btn.connect(gui.CLICK, link3_cb)
-        link4Btn = gui.Button("Eduqas Practical Sheet", width=2*btnWidth, height=btnHeight)
+        link4Btn = gui.Button("Eduqas Practical Sheet", width=btnWidth, height=btnHeight)
         link4Btn.connect(gui.CLICK, link4_cb)
 
         #Adding buttons to the dialog
@@ -233,7 +211,6 @@ class InstructionsLinkDialog(gui.Dialog):
         tbl.tr()
         tbl.td(bottomBtnTbl)
 
-
         gui.Dialog.__init__(self,gui.Label("Instructions and Links"), tbl)
 
 class Questions(gui.Dialog):
@@ -243,39 +220,29 @@ class Questions(gui.Dialog):
         tdStyle = {'padding':10}
 
         #The controlled variables
-        lbl1 = gui.Label("The equations below show the line the equation for the graphs")
-        lbl2 = gui.Label("Using the graphs, determine values for the EMF and internal resistance of this battery")
+        lbl1 = gui.Label("The equations below show the line the equation for the graph")
         dataTbl = gui.Table()
         dataTbl.tr()
         dataTbl.td(lbl1)
-        dataTbl.tr()
-        dataTbl.td(lbl2)
-
 
         #The equation needed
-        equationImg = gui.Image(resM.internalResistanceEquations)
+        equationImg = gui.Image(resM.absoluteZero)
         imgTable = gui.Table()
-        imgTable.td(equationImg)
+        imgTable.td(gui.Image(resM.measuregEquation))
 
         #The question
-        questionLbl = gui.Label("Enter the values for EMF and internal resistance")
+        questionLbl = gui.Label("What is g to 2dp?")
         questionTable = gui.Table()
         questionTable.tr()
         questionTable.td(questionLbl)
-        questionTable.tr()
 
         #The Options for answers
         answerTbl = gui.Table()
-        EMFLbl = gui.Label("EMF")
-        EMFAns = gui.Input()
-        internalRLbl = gui.Label("Internal Resistance")
-        internalRAns = gui.Input()
+        gLbl = gui.Label("g")
+        gAns = gui.Input()
         answerTbl.tr()
-        answerTbl.td(EMFLbl,style = tdStyle)
-        answerTbl.td(EMFAns)
-        answerTbl.tr()
-        answerTbl.td(internalRLbl)
-        answerTbl.td(internalRAns,style = tdStyle)
+        answerTbl.td(gLbl)
+        answerTbl.td(gAns,style = tdStyle)
 
 
 
@@ -283,10 +250,10 @@ class Questions(gui.Dialog):
         checkAnswerBtn = gui.Button("Check Answer",width=100,height=30)
 
         def checkAnswer():
-            if EMFAns.value == str(exp.EMF) and internalRAns.value == str(exp.internalResistance):
-                dlg = gui.Dialog(gui.Label("Your answers were..."),gui.Label("Correct. Well Done"))
+            if gAns.value == "9.81":
+                dlg = gui.Dialog(gui.Label("Your answer was..."),gui.Label("Correct. Well Done"))
             else:
-                dlg = gui.Dialog(gui.Label("Your answers were..."),gui.Label("Wrong. Try Again"))
+                dlg = gui.Dialog(gui.Label("Your answer was..."),gui.Label("Wrong. Try Again"))
 
             self.app.open(dlg)
 
@@ -332,3 +299,12 @@ class OptionsDialog(gui.Dialog):
         tbl.td(restartBtn)
 
         gui.Dialog.__init__(self,gui.Label("Options"),tbl)
+
+
+def createButton(text):
+    return gui.Button(text, width=225, height=40)
+
+def addBtnToTbl(tbl, btn):
+    tbl.tr()
+    tbl.td(btn)
+    return tbl

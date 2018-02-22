@@ -23,16 +23,35 @@ rulerImg = appresources.get_path("ruler.png")
 voltmeterImg = appresources.get_path("voltmeter.png")
 thermometerImg = appresources.get_path("thermometer.png")
 pressureGaugeImg = appresources.get_path("pressureGauge.png")
+
 internalResistanceEquations = appresources.get_path("internalResistanceEquations.PNG")
 resistivityEquations = appresources.get_path("resistivityEquations.PNG")
 resistivityDefinitions = appresources.get_path("resistivityDefinitions.PNG")
+
 absoluteZero = appresources.get_path("pressureTemperatureEquation.PNG")
+
 cartImg = appresources.get_path("cart.png")
 pulleyImg = appresources.get_path("pulley.png")
 massHolderImg = appresources.get_path("massHolder.png")
 dataLoggerImg = appresources.get_path("dataLogger.png")
 accelerationEquation = appresources.get_path("accelerationEquation.PNG")
+newtons2ndLawEquation = appresources.get_path("netwons2ndLawEquation.png")
+
 variableResistorImg = appresources.get_path("variableResistor.png")
+
 arrowImg = appresources.get_path("arrow.png")
 radioactiveDecayEquations = appresources.get_path("radioactiveDecayEquations.PNG")
 atomLabels = appresources.get_path("atomLabels.png")
+
+measuregEquation = appresources.get_path("measuregEquation.PNG")
+clampStandImg = appresources.get_path("clampStand.png")
+
+menuResistivity = appresources.get_path("resistivityOfAMetal.png")
+menuInternalResistance = appresources.get_path("internalResistance.png")
+menuAbsoluteZero = appresources.get_path("absoluteZero.png")
+menuNewtons2ndLaw = appresources.get_path("netwons2ndLaw.png")
+menuRadioactiveDecay = appresources.get_path("radioactiveDecay.png")
+menugByFrefall = appresources.get_path("gByFreefall.png")
+menuSHC = appresources.get_path("specificHeatCapacity.png")
+
+exampleExperiment = appresources.get_path("printScreen.PNG")

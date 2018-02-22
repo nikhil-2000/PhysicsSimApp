@@ -68,14 +68,17 @@ class MenuArea(template.MenuAreaTemplate):
         self.graphBtn.connect(gui.CLICK,graph_cb)
 
         def variables_cb():
-            self.variablesDlg.open()
-            if self.variablesDlg.isValidated:
-                #Updates the values of the Experiment Object
-                self.app.variableInputted = True
-                self.app.minIV = self.variablesDlg.minIVValue
-                self.app.maxIV = self.variablesDlg.maxIVValue
-                self.app.interval = self.variablesDlg.intervalValue
-                self.app.tableArea.setup()
+            if not self.app.variablesInputted:
+                self.variablesDlg.open()
+                if self.variablesDlg.isValidated:
+                    #Updates the values of the Experiment Object
+                    self.app.variablesInputted = True
+                    self.app.minIV = self.variablesDlg.minIVValue
+                    self.app.maxIV = self.variablesDlg.maxIVValue
+                    self.app.interval = self.variablesDlg.intervalValue
+                    self.app.tableArea.setup()
+            else:
+                self.app.open(template.ErrorDlg("You have already inputted variables."))
 
         self.variablesBtn.connect(gui.CLICK,variables_cb)
 

@@ -48,6 +48,62 @@ class MenuAreaTemplate(gui.Table):
         gui.Table.__init__(self, width=width, height=height)
         self.app = app
 
+    def createButtons(self):
+        # All the buttons are created and organised here
+
+        # The button variables are all created here
+        self.graphBtn = createButton("Graph")
+
+        self.variablesBtn = createButton("Input Variables")
+
+        self.startExperimentBtn = createButton("Start Experiment")
+
+        self.pauseExperimentBtn = createButton("Pause Experiment")
+
+        self.toggleLblsBtn = createButton("Show Labels")
+
+        self.instructionBtn = createButton("Instructions/Links")
+
+        self.questionBtn = createButton("Questions")
+
+        self.optionsBtn = createButton("Options")
+
+        # The buttons' function are defined here
+
+        def startExperiment_cb():
+            if self.variablesDlg.isValidated:  # If the user inputs are valid
+                if not (self.app.animationRunning):  # And if the animation hasn't started yet
+                    self.app.animationRunning = True  # Tell the rest of the program that the animation can now run
+                else:
+                    errorDlg = ErrorDlg("Experiment is already running")
+                    errorDlg.open()
+
+            else:
+                errorDlg = ErrorDlg("You haven't set the variables")
+                errorDlg.open()
+
+        self.startExperimentBtn.connect(gui.CLICK, startExperiment_cb)
+
+        def pauseExperiment_cb():
+            self.app.animationArea.save_background()
+            self.app.engine.isPaused = not (self.app.engine.isPaused)
+            if (self.app.engine.isPaused):
+                self.pauseExperimentBtn.value = "Play Experiment"
+            else:
+                self.pauseExperimentBtn.value = "Pause Experiment"
+
+        self.pauseExperimentBtn.connect(gui.CLICK, pauseExperiment_cb)
+
+        def toggleLblsBtnBtn_cb():
+            self.app.animationArea.save_background()
+            self.app.showLabels = not (self.app.showLabels)
+            if self.app.showLabels:
+                self.toggleLblsBtn.value = "Hide Labels"
+            else:
+                self.toggleLblsBtn.value = "Show Labels"
+
+        self.toggleLblsBtn.connect(gui.CLICK, toggleLblsBtnBtn_cb)
+
     def setup(self):
         # All the buttons are created and organised here
 
@@ -293,7 +349,34 @@ class DiagramLabel2():
 
         pygame.draw.line(screen, colour.BLACK, startPoint, endPoint, lineWidth) #Draw the line from label to target
 
+class DiagramLabelPointToPoint():
+    def __init__(self,lblPoint,targetPoint,isVertical,leftToRightorUpToDown,text):
+        self.LblText = LblFont.render(text, True, colour.BLACK)  # Text for Label
+        self.textRect = self.LblText.get_rect()
+        self.textRect.center = lblPoint  # Setting Label Position
+        self.isVertical = isVertical  # True(Up/Down) False(Left/Right)
+        self.leftToRightorUpToDown = leftToRightorUpToDown
 
+
+        self.targetPoint = targetPoint  # What is being labelled
+
+    def draw(self, screen):
+        screen.blit(self.LblText, self.textRect)  # Draw the Label
+        lineWidth = 3
+        # Setting the start points and end points of the line depending on the variables self.isVertical and self.isPositive
+        if self.isVertical:
+            if self.leftToRightorUpToDown:
+                startPoint = self.textRect.centerx,self.textRect.bottom
+            else:
+                startPoint = self.textRect.centerx,self.textRect.top
+
+        else:
+            if self.leftToRightorUpToDown:
+                startPoint = self.textRect.right,self.textRect.centery
+            else:
+                startPoint = self.textRect.left,self.textRect.centery
+
+        pygame.draw.line(screen, colour.BLACK, startPoint, self.targetPoint, lineWidth)  # Draw the line from label to target
 
 def createButton(text):
     return gui.Button(text, width=225, height=40)
