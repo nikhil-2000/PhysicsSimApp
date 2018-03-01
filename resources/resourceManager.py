@@ -46,6 +46,10 @@ atomLabels = appresources.get_path("atomLabels.png")
 measuregEquation = appresources.get_path("measuregEquation.PNG")
 clampStandImg = appresources.get_path("clampStand.png")
 
+SHCEquation = appresources.get_path("SHCEquation.png")
+SHCThermometer = appresources.get_path("shcThermometer.png")
+SHCHeater = appresources.get_path("shcHeater.png")
+
 menuResistivity = appresources.get_path("resistivityOfAMetal.png")
 menuInternalResistance = appresources.get_path("internalResistance.png")
 menuAbsoluteZero = appresources.get_path("absoluteZero.png")
