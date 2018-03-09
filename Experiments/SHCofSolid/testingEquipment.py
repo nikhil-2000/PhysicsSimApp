@@ -1,6 +1,6 @@
 import resources.Equipment.SHCequipment as sEquip
 from resources.Equipment.PressureEquipment import Thermometer
-
+import resources.resourceManager as resM
 # Import a library of functions called 'pygame'
 import pygame
 from math import pi
@@ -31,11 +31,32 @@ block = sEquip.CopperBlock(100, 100, 400, 300)
 block.insertThermometer()
 block.insertHeater()
 
-equipment.add(block.thermometer)
+arrowGroup = pygame.sprite.Group()
+
+nOfArrows = 7
+spacing = 30
+y = block.y
+for i in range(nOfArrows):
+
+    if i == nOfArrows-1:
+        x = block.heaterBasePoint
+        y += spacing
+        angle = 90
+    elif i % 2 == 0:
+        x = block.heaterBasePoint - 40
+        y += spacing
+        angle = 0
+    else:
+        x = block.heaterBasePoint + 40
+        angle = 180
+
+    a = sEquip.HeatArrow(x,y,angle,2)
+    arrowGroup.add(a)
+
 equipment.add(block.heater)
-block.thermometer.setupMarker(screen,20)
 
 temp = 20
+alpha = 255
 while not done:
 
     # This limits the while loop to a max of 10 times per second.
@@ -52,10 +73,17 @@ while not done:
     # Clear the screen and set the screen background
     screen.fill(WHITE)
     block.draw(screen)
-    block.thermometer.drawMarker(screen,temp)
-    if temp < 100: temp += 1
+    #block.thermometer.drawMarker(screen,temp)
+    #if temp < 100: temp += 1
+
+    for arrow in arrowGroup:
+        arrow.fade()
 
     equipment.draw(screen)
+    arrowGroup.draw(screen)
+
+
+
     #pygame.draw.line(screen, RED, block.thermometer.markerStart, block.thermometer.markerEnd, 10)
 
 

@@ -158,6 +158,8 @@ class InstructionsLinkDialog(gui.Dialog):
          3. Record the temperature at regular time intervals<br>
          4. Once taking 5 or more results, plot a graph for temperature against time<br>
          5. Use the gradient to find the specific heat capacity of the material<br>
+         6. Readings from the ammeter and voltmeter are shown by labels.<br>
+         7. Click the button "Show labels" to see the readings
          </p>
          """
         #Adding the method to the document which html
