@@ -1,4 +1,25 @@
+from contextlib import contextmanager
+import sys, os
 
+@contextmanager
+def suppress_stdout():
+    with open(os.devnull, "w") as devnull:
+        old_stdout = sys.stdout
+        sys.stdout = devnull
+        try:  
+            yield
+        finally:
+            sys.stdout = old_stdout
+
+import pip
+
+required_pkgs = ['pygame', 'matplotlib']
+installed_pkgs = [pkg.key for pkg in pip.get_installed_distributions()]
+
+for package in required_pkgs:
+    if package not in installed_pkgs:
+        with suppress_stdout():
+            pip.main(['install', package])
 
 # The previous lines were taken from https://stackoverflow.com/questions/10272879/how-do-i-import-a-python-script-from-a-sibling-directory
 # It explained how to access modules in sibling directories
