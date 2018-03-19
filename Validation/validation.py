@@ -94,7 +94,7 @@ def validateNewton2ndLaw(cartWeight,massWeight,weightSize,minRange,maxRange):
         return False, error
 
     if cartWeight + massWeight > 10:#Makes sure there are less than 10 weights
-        error = "The maximum amount of weights allowed it 10"
+        error = "The maximum amount of weights allowed is 10"
         return False,error
 
 
