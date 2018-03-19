@@ -159,7 +159,7 @@ class AnimationEngine(template.AnimationEngineTemplate):
 
         thermometerLabel = template.DiagramLabel(self.block.thermometerBasePoint,self.rect.bottom - 40,self.block.thermometer,True,False,"Thermometer")
         heaterLabel = template.DiagramLabel(self.block.heaterBasePoint,self.rect.bottom - 30, self.block.heater,True,False,"Heater")
-        blockLabel = template.DiagramLabelPointToPoint((60,30),(60,self.block.y),True,True,"Metal Block")
+        blockLabel = template.DiagramLabelPointToPoint((70,30),(70,self.block.y),True,True,"1kg Metal Block")
         ammeterReading = template.DiagramLabel(midBetweenBlockAndEdge,self.ammeter.centerY,self.ammeter,False,False,"Reading: 4A")
         voltemeterReading = template.DiagramLabel(midBetweenBlockAndEdge,self.voltmeter.centerY-40,self.voltmeter,True,True,"Reading: 10V")
         self.labels = []
